@@ -36,6 +36,22 @@
 		"@wordpress/scripts": "^26.4.0",
 		"gulp": "^4.0.2"
 	},
+	"files":[
+		"admin/**",
+		"build/**",
+		"includes/**",
+		"languages/**",
+		"public/**",
+		"simple-woo-tabs.php",
+		"uninstall.php",
+		"block.json",
+		"changelog.*",
+		"license.*",
+		"readme.*",
+		"src/**/",
+		"vendor/**/",
+		"assets/**/"
+],
 	"dependencies": {
 	}
 }

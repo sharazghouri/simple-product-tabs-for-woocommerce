@@ -2,7 +2,7 @@
 # This file is distributed under the GPL-2.0+.
 msgid ""
 msgstr ""
-"Project-Id-Version: WooCommerce Product Tabs 2.0.21\n"
+"Project-Id-Version: WooCommerce Product Tabs 1.0.01\n"
 "Report-Msgid-Bugs-To: "
 "https://wordpress.org/support/plugin/simple-woo-tabs\n"
 "POT-Creation-Date: 2023-07-30 05:40:36+00:00\n"

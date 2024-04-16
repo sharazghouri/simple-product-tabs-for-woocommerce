@@ -12,7 +12,7 @@
  * Requires at least: 6.0
  * Tested up to: 6.4.3
  * WC requires at least: 6.5
- * WC tested up to: 8.5.2
+ * WC tested up to: 8.7.0
  *
  * Copyright:       Solution Box
  * License:         GNU General Public License v3.0

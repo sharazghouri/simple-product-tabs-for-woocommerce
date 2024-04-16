@@ -35,12 +35,11 @@ class Post_Type {
 
 	/**
 	 * Register post type
-	 *
 	 */
 	public function tab_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Product Tabss', 'post type general name', 'simple-woo-tabs' ),
+			'name'               => _x( 'Product Tabs', 'post type general name', 'simple-woo-tabs' ),
 			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-woo-tabs' ),
 			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-woo-tabs' ),
 			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-woo-tabs' ),
@@ -152,7 +151,7 @@ class Post_Type {
 
 		$post = get_post();
 
-		$messages[self::POST_SLUG] = array(
+		$messages[ self::POST_SLUG ] = array(
 
 			0  => '', // Unused. Messages start at index 1.
 			1  => __( 'Tab updated.', 'simple-woo-tabs' ),
@@ -193,7 +192,7 @@ class Post_Type {
 
 		if ( 'wta_settings' == $plugin_page ) {
 			$plugin_page  = 'edit.php?post_type=product';
-			$submenu_file = 'edit.php?post_type=' . SELF::POST_SLUG;
+			$submenu_file = 'edit.php?post_type=' . self::POST_SLUG;
 		}
 		return $file;
 	}
@@ -210,7 +209,7 @@ class Post_Type {
 		if ( $submenu['edit.php?post_type=product'] ) {
 			$index = 0;
 			foreach ( $submenu['edit.php?post_type=product'] as $i => $item ) {
-				if ( $item[2] === 'edit.php?post_type='. SELF::POST_SLUG ) {
+				if ( $item[2] === 'edit.php?post_type=' . self::POST_SLUG ) {
 					$index = $i;
 					break;
 				}

@@ -16,12 +16,13 @@ Discover the easy way to add extra tabs to your WooCommerce product pages.
 
 == Screenshots ==
 
-1. Setting page
-
+1. Admin panel Tans listing
+2. Front end view of  Tabs
 
 == Changelog ==
 
 = 1.0.0 =
+ * landing on org
 
 
 

@@ -68,6 +68,7 @@ class Plugin {
 	public function register() {
 
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
+		add_action( 'before_woocommerce_init', array( $this, 'add_hpos_support' ) );
 
 		add_action( 'init', array( $this, 'load_textdomain' ), 5 );
 	}
@@ -81,13 +82,9 @@ class Plugin {
 		// $this->setup_plugin();
 		$this->post_type = new Post_Type();
 		$this->post_type->register();
-		// Admin only services.
-		if ( is_admin() ) {
-			$this->admin = new Admin\Admin_Controller( $this );
-			// $this->admin->register();
-		}
 
-		// $this->product_tabs =  new Product_Tabs();
+		$this->product_tabs = new Product_Tabs();
+		$this->product_tabs->register();
 	}
 
 	/**
@@ -140,4 +137,17 @@ class Plugin {
 	public function get_version() {
 		$this->get_data( 'version' );
 	}
+
+
+	/**
+	 * HPOS support
+	 *
+	 * @see https://woocommerce.com/posts/platform-update-high-performance-order-storage-for-woocommerce/
+	 */
+	public function add_hpos_support() {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $this->get_data( 'file' ), true );
+		}
+	}
+
 }

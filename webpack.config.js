@@ -23,6 +23,7 @@ module.exports = {
 	...{
 		entry: {
 			...defaultConfig.entry,
+			'css/public': path.resolve( process.cwd(), 'assets/scss', 'public.scss' ),
 			'css/admin': path.resolve( process.cwd(), 'assets/scss/admin', 'admin.scss' ),
 			'js/admin': path.resolve( process.cwd(), 'assets/admin', 'admin.js' ), // // TODO: select all files in admin directory
 			'js/public': path.resolve( process.cwd(), 'assets/public', 'public.js' ), // TODO: select all files in public directory
