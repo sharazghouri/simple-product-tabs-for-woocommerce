@@ -2,6 +2,8 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs;
 
+use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
+
 /**
  * The main plugin class.
  *
@@ -79,7 +81,10 @@ class Plugin {
 	 * @return void
 	 */
 	public function init() {
-		// $this->setup_plugin();
+
+		if( is_admin() ) {
+			$this->admin = new Admin\Admin_Controller( $this );
+		}
 		$this->post_type = new Post_Type();
 		$this->post_type->register();
 

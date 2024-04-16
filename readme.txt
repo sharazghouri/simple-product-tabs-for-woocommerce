@@ -14,6 +14,8 @@ Discover the easy way to add extra tabs to your WooCommerce product pages.
 
 == Description ==
 
+ Check Product Tabs under Products Menu.
+ 
 == Screenshots ==
 
 1. Admin panel Tans listing
