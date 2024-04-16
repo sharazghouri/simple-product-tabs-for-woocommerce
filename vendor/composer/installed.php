@@ -5,7 +5,7 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4e8242bcfee448a149aae331fcef6e2c68758004',
+        'reference' => 'bc606d474020af7aa54f5b50c2fbbaf174980d15',
         'name' => 'solutionbox/simple-woo-tabs',
         'dev' => true,
     ),
@@ -52,7 +52,7 @@
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4e8242bcfee448a149aae331fcef6e2c68758004',
+            'reference' => 'bc606d474020af7aa54f5b50c2fbbaf174980d15',
             'dev_requirement' => false,
         ),
         'solutionbox/wordpress-settings-framework' => array(

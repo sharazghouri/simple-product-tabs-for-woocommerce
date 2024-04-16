@@ -9,7 +9,7 @@
 			}
 	],
 	"require": {
-			"woocommerce/woocommerce-sniffs": "^0.1.0",
+		"woocommerce/woocommerce-sniffs": "^0.1.0",
 		"solutionbox/wordpress-settings-framework": "^0.1.0"
 	},
 	"autoload": {

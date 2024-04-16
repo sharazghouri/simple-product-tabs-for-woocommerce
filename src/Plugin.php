@@ -82,7 +82,7 @@ class Plugin {
 	 */
 	public function init() {
 
-		if( is_admin() ) {
+		if ( is_admin() ) {
 			$this->admin = new Admin\Admin_Controller( $this );
 		}
 		$this->post_type = new Post_Type();
