@@ -1,6 +1,6 @@
 <?php
 /**
- * Plugin Name: Simple WooCommerce Product Tabs
+ * Plugin Name: Simple WOO Product Tabs
  * Plugin URI:
  * Description: Boost your sale by adding custom tabs containing extra information.
  * Version: 1.0.0

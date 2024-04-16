@@ -1,4 +1,4 @@
-=== Simple WooCommerce Product Tabs ===
+=== Simple Woo Product Tabs ===
 
 Contributors: sharazghouri, 
 Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs, product tabs, woocommerce product tab, product custom tabs, multiple product tabs, woocommerce custom tabs, woocommerce tabs, tabs for woocommerce, product tab, woocommerce, product, woocommerce product tabs, custom tab, woo product custom tabs, change tab, product page tabs, woocommerce custom tab, woocommerce tab, tabs plugin, woocommerce tabs plugin
