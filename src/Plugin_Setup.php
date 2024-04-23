@@ -2,21 +2,12 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs;
 
-use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Wizard\Starter,
-	Solution_Box\Plugin\Simple_Product_Tabs\Dependencies\Lib\Plugin\Plugin,
-	Solution_Box\Plugin\Simple_Product_Tabs\Dependencies\Lib\Plugin\Plugin_Activation_Listener,
-	Solution_Box\Plugin\Simple_Product_Tabs\Dependencies\Lib\Util as Lib_Util,
-	Solution_Box\Plugin\Simple_Product_Tabs\Dependencies\Lib\Registerable;
-
 /**
  * Plugin Setup
  *
  * @package   Solution_Box/simple-woo-tabs
- * @author    Barn2 Plugins <info@barn2.com>
- * @license   GPL-3.0
- * @copyright Barn2 Media Ltd
  */
-class Plugin_Setup implements Registerable {
+class Plugin_Setup {
 	/**
 	 * Plugin's entry file
 	 *

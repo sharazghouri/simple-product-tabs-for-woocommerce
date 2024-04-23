@@ -2,14 +2,14 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs\Admin;
 
+use Solution_Box\Plugin\Simple_Product_Tabs\Post_Type;
 
 /**
  * Add metaboxes and handles their behavior for the singled edit tab page
  *
  * @package   Solution_Box/simple-woo-tabs
- 
  */
-class Product_Editor_Tabs  {
+class Product_Editor_Tabs {
 
 	private $plugin_dir_path;
 
@@ -18,11 +18,11 @@ class Product_Editor_Tabs  {
 	 */
 	private $product_tabs_list;
 
-	public function __construct( $dir_path ) {
-		$this->plugin_dir_path   = $dir_path;
+	public function __construct( $plugin_file ) {
+		$this->plugin_dir_path   = plugin_dir_path( $plugin_file );
 		$this->product_tabs_list = get_posts(
 			array(
-				'post_type'      => 'woo_product_tab',
+				'post_type'      => Post_Type::POST_SLUG,
 				'posts_per_page' => -1,
 				'orderby'        => 'menu_order',
 				'order'          => 'asc',
@@ -36,8 +36,8 @@ class Product_Editor_Tabs  {
 	}
 
 	public function register() {
-		add_filter( 'woocommerce_product_data_tabs', array( $this, 'product_data_tab' ), 99, 1 );
-		add_action( 'woocommerce_product_data_panels', array( $this, 'product_data_fields' ) );
+		add_filter( 'woocommerce_product_data_tabs', array( $this, 'simple_woo_tabs_data_tab' ), 99, 1 );
+		add_action( 'woocommerce_product_data_panels', array( $this, 'add_simple_woo_tabs_data_fields' ) );
 		add_action( 'save_post', array( $this, 'save_product_tab_data' ) );
 		add_filter( 'wp_insert_post_data', array( $this, 'insert_tab_menu_order' ), 99, 2 );
 		add_action( 'admin_head', array( $this, 'post_type_menu_active' ) );
@@ -48,10 +48,10 @@ class Product_Editor_Tabs  {
 	 *
 	 * @since 1.0.0
 	 */
-	function product_data_tab( $product_data_tabs ) {
-		$product_data_tabs['product-tab'] = array(
+	function simple_woo_tabs_data_tab( $product_data_tabs ) {
+		$product_data_tabs['swtp-product-tab'] = array(
 			'label'  => __( 'Product Tabs', 'simple-woo-tabs' ),
-			'target' => 'product_tabs',
+			'target' => 'simple-product-tabs',
 		);
 		return $product_data_tabs;
 	}
@@ -61,7 +61,8 @@ class Product_Editor_Tabs  {
 	 *
 	 * @since 1.0.0
 	 */
-	function product_data_fields() {
+	function add_simple_woo_tabs_data_fields() {
+
 		include_once $this->plugin_dir_path . 'templates/product-tab-html.php';
 	}
 
@@ -71,10 +72,10 @@ class Product_Editor_Tabs  {
 	 * @since 1.0.0
 	 */
 	function save_product_tab_data( $post_id ) {
-		$nonce = filter_input( INPUT_POST, '_wpt_product_data_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
+		$nonce = filter_input( INPUT_POST, '_swt_product_data_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
 
 		// Verify that the nonce is valid.
-		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'wpt_product_data' ) ) {
+		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'swt_product_data' ) ) {
 			return;
 		}
 
@@ -89,20 +90,20 @@ class Product_Editor_Tabs  {
 		$posted_tab_data = array_filter(
 			$_POST,
 			function ( $key ) {
-				return '_wpt_field_' === substr( $key, 0, 11 );
+				return '_swt_field_' === substr( $key, 0, 11 );
 			},
 			ARRAY_FILTER_USE_KEY
 		);
 
 		foreach ( $posted_tab_data as $post_key => $tab_content ) {
 			$tab_slug       = substr( $post_key, 11 );
-			$override_value = filter_input( INPUT_POST, '_wpt_override_' . $tab_slug, FILTER_SANITIZE_SPECIAL_CHARS );
+			$override_value = filter_input( INPUT_POST, '_swt_override_' . $tab_slug, FILTER_SANITIZE_SPECIAL_CHARS );
 
 			if ( 'yes' !== $override_value ) {
 				$override_value = 'no';
 			}
 
-			update_post_meta( $post_id, '_wpt_override_' . $tab_slug, $override_value );
+			update_post_meta( $post_id, '_swt_override_' . $tab_slug, $override_value );
 
 			if ( 'yes' === $override_value ) {
 				// Update the tab content.

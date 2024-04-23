@@ -263,23 +263,23 @@
         },
         {
             "name": "solutionbox/wordpress-settings-framework",
-            "version": "0.1.0",
-            "version_normalized": "0.1.0.0",
+            "version": "1.0.0",
+            "version_normalized": "1.0.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sharazghouri/soution-box-settings.git",
-                "reference": "796e3b7574bf471caa6850236d573c66983e24c9"
+                "reference": "1f47fca269f23b2f23f4e474a519b26d92a30f07"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/796e3b7574bf471caa6850236d573c66983e24c9",
-                "reference": "796e3b7574bf471caa6850236d573c66983e24c9",
+                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/1f47fca269f23b2f23f4e474a519b26d92a30f07",
+                "reference": "1f47fca269f23b2f23f4e474a519b26d92a30f07",
                 "shasum": ""
             },
             "require": {
                 "woocommerce/woocommerce-sniffs": "^0.1.0"
             },
-            "time": "2023-03-24T11:04:00+00:00",
+            "time": "2024-04-22T11:12:35+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
@@ -305,7 +305,7 @@
             ],
             "support": {
                 "issues": "https://github.com/sharazghouri/soution-box-settings/issues",
-                "source": "https://github.com/sharazghouri/soution-box-settings/tree/0.1.0"
+                "source": "https://github.com/sharazghouri/soution-box-settings/tree/1.0.0"
             },
             "install-path": "../solutionbox/wordpress-settings-framework"
         },

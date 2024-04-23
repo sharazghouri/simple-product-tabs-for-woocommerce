@@ -58,6 +58,7 @@ class Plugin {
 			'version'        => $version,
 			'file'           => $file,
 			'is_woocommerce' => true,
+			'settings_path'  => 'edit.php?post_type=woo_product_tabs',
 		);
 
 	}
@@ -81,13 +82,20 @@ class Plugin {
 		// $this->setup_plugin();
 		$this->post_type = new Post_Type();
 		$this->post_type->register();
+
 		// Admin only services.
 		if ( is_admin() ) {
 			$this->admin = new Admin\Admin_Controller( $this );
-			// $this->admin->register();
+			$this->admin->register();
 		}
 
-		// $this->product_tabs =  new Product_Tabs();
+		// All meta fields  functionality belong to this class.
+		 $this->single_tab = new Single_Tab();
+		 $this->single_tab->register();
+
+		 // All frontend stuff belongs to this class.
+		$this->product_tabs = new Product_Tabs();
+		$this->product_tabs->register();
 	}
 
 	/**
@@ -139,5 +147,13 @@ class Plugin {
 	 */
 	public function get_version() {
 		$this->get_data( 'version' );
+	}
+
+	/**
+	 * Get plugin base name
+	 */
+	public function get_basename() {
+		$base_file = basename( dirname( $this->get_data( 'file' ) ) ) . '/' . $this->get_slug() . '.php';
+		return $base_file;
 	}
 }

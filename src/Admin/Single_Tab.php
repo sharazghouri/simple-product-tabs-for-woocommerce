@@ -2,14 +2,12 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs\Admin;
 
-use Solution_Box\Plugin\Simple_Product_Tabs\Util;
-
 /**
  * Add metaboxes and handles their behavior for the singled edit tab page
  *
  * @package   Solution_Box/simple-woo-tabs
  */
-class Single_Tab  {
+class Single_Tab {
 
 	public function register() {
 		add_action( 'add_meta_boxes', array( $this, 'add_tab_meta_boxes' ) );
@@ -22,51 +20,51 @@ class Single_Tab  {
 	 * Categories selector.
 	 */
 	public function wta_inclusion_categories_selector( $post_id, $times_svg_icon ) {
-		$wpt_conditions_category = get_post_meta( $post_id, '_wpt_conditions_category', true );
-		$selected_categories     = $this->get_selected_terms( $wpt_conditions_category, 'product_cat' );
+		$swt_conditions_category = get_post_meta( $post_id, '_swt_conditions_category', true );
+		$selected_categories     = $this->get_selected_terms( $swt_conditions_category, 'product_cat' );
 		?>
-		<div class="wta-categories-selector wta-inclusion-selector">
-			<div class="wta-component-search-field">
-				<input data-type="category" type="text" data-taxonomy="categories" id="wta-category-search" class="wta-component-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-woo-tabs' ); ?>">
+		<div class="swtcategories-selector swtinclusion-selector">
+			<div class="swtcomponent-search-field">
+				<input data-type="category" type="text" data-taxonomy="categories" id="swtcategory-search" class="swtcomponent-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-woo-tabs' ); ?>">
 			</div>
-			<div class="wta-spinner wta-loader">
+			<div class="swtspinner swtloader">
 				<svg width="18" height="18" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#c3c4c7"> <g fill="none" fillRule="evenodd"> <g transform="translate(1 1)" strokeWidth="2"> <circle strokeOpacity="1" cx="18" cy="18" r="18"/> <path d="M36 18c0-9.94-8.06-18-18-18"> <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/> </path> </g> </g></svg>
 			</div>
-			<div class="wta-component-no-results">
+			<div class="swtcomponent-no-results">
 				<span><?php _e( 'No categories found', 'simple-woo-tabs' ); ?></span>
 			</div>
-			<ul class="barn2-search-list__list">
+			<ul class="solution-box-search-list__list">
 			</ul>
-			<div class="barn2-search-list__selected <?php echo ( $selected_categories ) ? '' : 'wpt-hide-selected-terms-section'; ?>">
-				<div class="barn2-search-list__selected-header">
+			<div class="solution-box-search-list__selected <?php echo ( $selected_categories ) ? '' : 'wpt-hide-selected-terms-section'; ?>">
+				<div class="solution-box-search-list__selected-header">
 					<strong><?php _e( 'Selected categories', 'simple-woo-tabs' ); ?></strong>
 					<?php
 						printf(
-							'<button type="button" aria-label="%1$s" class="barn2-search-list-clear__all barn2-remove-inclusions">%1$s</button>',
+							'<button type="button" aria-label="%1$s" class="solution-box-search-list-clear__all solution-box-remove-inclusions">%1$s</button>',
 							__( 'Clear all selected categories', 'simple-woo-tabs' ),
 						);
 					?>
 				</div>
-				<ul class="barn2-search-list__selected_terms">
+				<ul class="solution-box-search-list__selected_terms">
 					<?php
 					if ( $selected_categories ) {
 						foreach ( $selected_categories as $category ) :
 							?>
 							<li data-term-id="<?php echo $category->term_id; ?>">
-								<span class="barn2-selected-list__tag">
+								<span class="solution-box-selected-list__tag">
 									<?php
 										printf(
-											'<span class="barn2-tag__text" id="barn2-tag__label-%s"><span class="screen-reader-text">%s</span><span aria-hidden="true">%s</span></span>',
+											'<span class="solution-box-tag__text" id="solution-box-tag__label-%s"><span class="screen-reader-text">%s</span><span aria-hidden="true">%s</span></span>',
 											$category->term_id,
 											$category->name,
 											$category->name
 										);
 									?>
-									<input type="hidden" name="wpt_category_list[]" value="<?php echo $category->term_id; ?>">
+									<input type="hidden" name="swt_category_list[]" value="<?php echo $category->term_id; ?>">
 									
 									<?php
 										printf(
-											'<button type="button" aria-describedby="barn2-tag__label-%s" class="components-button barn2-tag__remove" id="barn2-remove-term" aria-label="%s">',
+											'<button type="button" aria-describedby="solution-box-tag__label-%s" class="components-button solution-box-tag__remove" id="solution-box-remove-term" aria-label="%s">',
 											$category->term_id,
 											$category->name
 										);
@@ -82,16 +80,16 @@ class Single_Tab  {
 				</ul>
 			</div>
 		</div>
-	<div class="wta-component-search-field disabled">
-			<input disabled type="text" class="wta-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-woo-tabs' ); ?>">
-	  <a class="pro-version-link" target="_blank" href="https://barn2.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=wta-settings">
+	<div class="swtcomponent-search-field disabled">
+			<input disabled type="text" class="swtcomponent-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-woo-tabs' ); ?>">
+	  <a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
 		  <?php _e( 'Pro version only', 'simple-woo-tabs' ); ?>
 	  </a>
 	</div>
 	
-	<div class="wta-component-search-field disabled">
-			<input disabled type="text" class="wta-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-woo-tabs' ); ?>">
-	  <a class="pro-version-link" target="_blank" href="https://barn2.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=wta-settings">
+	<div class="swtcomponent-search-field disabled">
+			<input disabled type="text" class="swtcomponent-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-woo-tabs' ); ?>">
+	  <a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
 		<?php _e( 'Pro version only', 'simple-woo-tabs' ); ?>
 	  </a>
 	</div>
@@ -125,11 +123,11 @@ class Single_Tab  {
 	 */
 	public function save_category_selector( $post_id ) {
 		// Check if our nonce is set.
-		if ( ! isset( $_POST['wpt_meta_box_tab_nonce'] ) ) {
+		if ( ! isset( $_POST['swt_meta_box_tab_nonce'] ) ) {
 			return;
 		}
 			// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['wpt_meta_box_tab_nonce'], 'wpt_tab_meta_box' ) ) {
+		if ( ! wp_verify_nonce( $_POST['swt_meta_box_tab_nonce'], 'swt_tab_meta_box' ) ) {
 			return;
 		}
 
@@ -142,16 +140,16 @@ class Single_Tab  {
 			return;
 		}
 
-		$wpt_conditions_category = '';
-		if ( isset( $_POST['wpt_category_list'] ) && ! empty( $_POST['wpt_category_list'] ) ) {
-			$wpt_conditions_category = $_POST['wpt_category_list'];
+		$swt_conditions_category = '';
+		if ( isset( $_POST['swt_category_list'] ) && ! empty( $_POST['swt_category_list'] ) ) {
+			$swt_conditions_category = $_POST['swt_category_list'];
 		}
-		if ( ! isset( $_POST['wpt_category_list'] ) ) {
-			delete_post_meta( $post_id, '_wpt_conditions_category' );
-			update_post_meta( $post_id, '_wpt_display_tab_globally', 'yes' );
+		if ( ! isset( $_POST['swt_category_list'] ) ) {
+			delete_post_meta( $post_id, '_swt_conditions_category' );
+			update_post_meta( $post_id, '_swt_display_tab_globally', 'yes' );
 			return;
 		}
-		update_post_meta( $post_id, '_wpt_conditions_category', $wpt_conditions_category );
+		update_post_meta( $post_id, '_swt_conditions_category', $swt_conditions_category );
 
 	}
 
@@ -162,11 +160,11 @@ class Single_Tab  {
 	 */
 	public function save_visibility_condition( $post_id ) {
 		// Check if our nonce is set.
-		if ( ! isset( $_POST['wpt_meta_box_tab_nonce'] ) ) {
+		if ( ! isset( $_POST['swt_meta_box_tab_nonce'] ) ) {
 			return;
 		}
 			// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['wpt_meta_box_tab_nonce'], 'wpt_tab_meta_box' ) ) {
+		if ( ! wp_verify_nonce( $_POST['swt_meta_box_tab_nonce'], 'swt_tab_meta_box' ) ) {
 			return;
 		}
 			// If this is an autosave, our form has not been submitted, so we don't want to do anything.
@@ -180,25 +178,25 @@ class Single_Tab  {
 
 			// Show tabs on all products
 		$display_globally = '';
-		if ( isset( $_POST['_wpt_display_tab_globally'] ) ) {
-			$display_globally = $_POST['_wpt_display_tab_globally'];
+		if ( isset( $_POST['_swt_display_tab_globally'] ) ) {
+			$display_globally = $_POST['_swt_display_tab_globally'];
 		}
-		if ( ! isset( $_POST['_wpt_display_tab_globally'] ) ) {
+		if ( ! isset( $_POST['_swt_display_tab_globally'] ) ) {
 			$display_globally = 'no';
 		}
 		// show each tab on the product screen by default
-		update_post_meta( $post_id, '_wpt_option_use_default_for_all', 'no' );
-		update_post_meta( $post_id, '_wpt_display_tab_globally', $display_globally );
+		update_post_meta( $post_id, '_swt_option_use_default_for_all', 'no' );
+		update_post_meta( $post_id, '_swt_display_tab_globally', $display_globally );
 
 	}
 
 	public function save_tab_priority( $post_id ) {
 		// Check if our nonce is set.
-		if ( ! isset( $_POST['wpt_meta_box_tab_nonce'] ) ) {
+		if ( ! isset( $_POST['swt_meta_box_tab_nonce'] ) ) {
 			return;
 		}
 			// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['wpt_meta_box_tab_nonce'], 'wpt_tab_meta_box' ) ) {
+		if ( ! wp_verify_nonce( $_POST['swt_meta_box_tab_nonce'], 'swt_tab_meta_box' ) ) {
 			return;
 		}
 			// If this is an autosave, our form has not been submitted, so we don't want to do anything.
@@ -210,7 +208,7 @@ class Single_Tab  {
 			return;
 		}
 		// priority
-		$priority = $_POST['_wpt_option_priority'];
+		$priority = $_POST['_swt_option_priority'];
 		$priority = absint( $priority );
 
 		global $wpdb;
@@ -236,7 +234,7 @@ class Single_Tab  {
 			add_meta_box(
 				'simple-woo-tabs_conditions_section',
 				__( 'Conditions', 'simple-woo-tabs' ),
-				array( $this, 'wpt_conditions_section' ),
+				array( $this, 'swt_conditions_section' ),
 				$screen,
 				'normal',
 				'high'
@@ -244,7 +242,7 @@ class Single_Tab  {
 			add_meta_box(
 				'simple-woo-tabs_icon_section',
 				__( 'Select icon', 'simple-woo-tabs' ),
-				array( $this, 'wpt_icon_section' ),
+				array( $this, 'swt_icon_section' ),
 				$screen,
 				'side',
 				'high'
@@ -252,18 +250,18 @@ class Single_Tab  {
 			add_meta_box(
 				'simple-woo-tabs_priority_section',
 				__( 'Settings', 'simple-woo-tabs' ),
-				array( $this, 'wpt_priority_section' ),
+				array( $this, 'swt_priority_section' ),
 				$screen,
 				'side',
 			);
 		}
 	}
 
-	public function wpt_conditions_section( $post ) {
+	public function swt_conditions_section( $post ) {
 		$post_id = $post->ID;
 
 		// Add an nonce field so we can check for it later.
-		wp_nonce_field( 'wpt_tab_meta_box', 'wpt_meta_box_tab_nonce' );
+		wp_nonce_field( 'swt_tab_meta_box', 'swt_meta_box_tab_nonce' );
 		$is_tab_global  = Util::is_tab_global( $post_id );
 		$times_svg_icon = '<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="clear-icon" aria-hidden="true" focusable="false"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.5303 8.46967C15.8232 8.76256 15.8232 9.23744 15.5303 9.53033L13.0607 12L15.5303 14.4697C15.8232 14.7626 15.8232 15.2374 15.5303 15.5303C15.2374 15.8232 14.7626 15.8232 14.4697 15.5303L12 13.0607L9.53033 15.5303C9.23744 15.8232 8.76256 15.8232 8.46967 15.5303C8.17678 15.2374 8.17678 14.7626 8.46967 14.4697L10.9393 12L8.46967 9.53033C8.17678 9.23744 8.17678 8.76256 8.46967 8.46967C8.76256 8.17678 9.23744 8.17678 9.53033 8.46967L12 10.9393L14.4697 8.46967C14.7626 8.17678 15.2374 8.17678 15.5303 8.46967Z"></path></svg>';
 		?>
@@ -275,11 +273,11 @@ class Single_Tab  {
 							<fieldset>
 								<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-woo-tabs' ); ?></span></legend>
 								<label>
-									<input type="radio" id="_wpt_display_tab_globally" name="_wpt_display_tab_globally" class="wta-visibility_condition" checked="checked" value="yes" <?php checked( 'yes', $is_tab_global, true ); ?>>
+									<input type="radio" id="_swt_display_tab_globally" name="_swt_display_tab_globally" class="swtvisibility_condition" checked="checked" value="yes" <?php checked( 'yes', $is_tab_global, true ); ?>>
 										<?php _e( 'Display globally on all products', 'simple-woo-tabs' ); ?>
 								</label><br>
 								<label>
-									<input type="radio" id="_wpt_display_tab_globally" name="_wpt_display_tab_globally" class="wta-visibility_condition" value="no" <?php checked( 'no', $is_tab_global, true ); ?>>
+									<input type="radio" id="_swt_display_tab_globally" name="_swt_display_tab_globally" class="swtvisibility_condition" value="no" <?php checked( 'no', $is_tab_global, true ); ?>>
 										<?php _e( 'Show on specific categories', 'simple-woo-tabs' ); ?>
 								</label><br>
 							</fieldset>
@@ -292,7 +290,7 @@ class Single_Tab  {
 				<tbody>
 					<tr>
 						<th><?php _e( 'Inclusions', 'simple-woo-tabs' ); ?></th>
-						<td class="wta-term-inclusions-section">
+						<td class="swtterm-inclusions-section">
 							<?php
 							$this->wta_inclusion_categories_selector( $post_id, $times_svg_icon );
 							?>
@@ -303,20 +301,20 @@ class Single_Tab  {
 		<?php
 	}
 
-	public function wpt_icon_section() {
+	public function swt_icon_section() {
 		?>
 		<div class="icon-wrap">
 		<a href="#" class="tab_icon disabled button button-secondary"><?php esc_html_e( 'Select Icon', 'simple-woo-tabs' ); ?></a>
-		<a href="https://barn2.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=wta-settings" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
+		<a href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
 		</div>
 		<?php
 	}
 
-	public function wpt_priority_section( $post ) {
+	public function swt_priority_section( $post ) {
 		$priority = $post->menu_order;
-		echo '<p><label for="_wpt_option_priority"><strong>';
+		echo '<p><label for="_swt_option_priority"><strong>';
 		echo __( 'Priority', 'simple-woo-tabs' );
 		echo '</strong></label></p>';
-		echo '<input type="number" name="_wpt_option_priority" id="_wpt_option_priority" value="' . $priority . '" min="0" style="max-width:70px;"/>';
+		echo '<input type="number" name="_swt_option_priority" id="_swt_option_priority" value="' . $priority . '" min="0" style="max-width:70px;"/>';
 	}
 }

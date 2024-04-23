@@ -22,7 +22,7 @@ class Post_Type {
 		add_action( 'admin_head-post.php', array( $this, 'hide_publishing_actions' ) );
 		add_action( 'admin_head-post-new.php', array( $this, 'hide_publishing_actions' ) );
 		add_filter( 'manage_woo_product_tab_posts_columns', array( $this, 'add_columns_in_tab_listing' ) );
-		add_action( 'manage_woo_product_tab_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
+		add_action( 'manage_woo_product_tabs_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
 		add_filter( 'post_updated_messages', array( $this, 'tab_post_updated_messages' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'tab_post_row_actions' ), 10, 2 );
 		add_filter( 'manage_edit-woo_product_tab_sortable_columns', array( $this, 'sortable_tab_columns' ) );
@@ -35,7 +35,6 @@ class Post_Type {
 
 	/**
 	 * Register post type
-	 *
 	 */
 	public function tab_post_type() {
 
@@ -128,8 +127,8 @@ class Post_Type {
 				echo '<code>' . $post->post_name . '</code>';
 				break;
 			case 'display-globally':
-				$flag_default_for_all = Util::is_tab_global( $post_id );
-				$tab_categories       = get_post_meta( $post_id, '_wpt_conditions_category', true );
+				$flag_default_for_all = true; // TODO: Rix it
+				$tab_categories       = get_post_meta( $post_id, '_swt_conditions_category', true );
 				if ( 'no' === $flag_default_for_all && $tab_categories ) {
 					echo '<span class="dashicons dashicons-no-alt"></span>';
 				} else {
@@ -152,7 +151,7 @@ class Post_Type {
 
 		$post = get_post();
 
-		$messages[self::POST_SLUG] = array(
+		$messages[ self::POST_SLUG ] = array(
 
 			0  => '', // Unused. Messages start at index 1.
 			1  => __( 'Tab updated.', 'simple-woo-tabs' ),
@@ -193,7 +192,7 @@ class Post_Type {
 
 		if ( 'wta_settings' == $plugin_page ) {
 			$plugin_page  = 'edit.php?post_type=product';
-			$submenu_file = 'edit.php?post_type=' . SELF::POST_SLUG;
+			$submenu_file = 'edit.php?post_type=' . self::POST_SLUG;
 		}
 		return $file;
 	}
@@ -210,7 +209,7 @@ class Post_Type {
 		if ( $submenu['edit.php?post_type=product'] ) {
 			$index = 0;
 			foreach ( $submenu['edit.php?post_type=product'] as $i => $item ) {
-				if ( $item[2] === 'edit.php?post_type='. SELF::POST_SLUG ) {
+				if ( $item[2] === 'edit.php?post_type=' . self::POST_SLUG ) {
 					$index = $i;
 					break;
 				}

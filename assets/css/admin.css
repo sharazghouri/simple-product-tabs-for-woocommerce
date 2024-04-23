@@ -1,8 +1,311 @@
 /*!*****************************************************************************************************************************************************************************************************************************************************!*\
   !*** css ./node_modules/css-loader/dist/cjs.js??ruleSet[1].rules[4].use[1]!./node_modules/postcss-loader/dist/cjs.js??ruleSet[1].rules[4].use[2]!./node_modules/sass-loader/dist/cjs.js??ruleSet[1].rules[4].use[3]!./assets/scss/admin/admin.scss ***!
   \*****************************************************************************************************************************************************************************************************************************************************/
-a {
+.form-table.hide-section {
+  display: none;
+}
+
+#woocommerce-product-tabs_conditions_section.postbox .postbox-header {
+  display: none;
+}
+
+#woocommerce-product-tabs_tab_inclusions_section.postbox .postbox-header {
+  display: none;
+}
+
+#woocommerce-product-tabs_tab_inclusions_section .form-table {
+  display: none;
+}
+#woocommerce-product-tabs_tab_inclusions_section .form-table.display-section {
+  display: table;
+}
+
+.swt-loader {
+  display: none;
+}
+
+.swt-component-no-results {
+  display: none;
+  background: #fff;
+  border-bottom: 1px solid #c3c4c7;
+  border-right: 1px solid #c3c4c7;
+  border-top: 1px solid #c3c4c7;
+  border-left: 4px solid #007cba;
+  box-shadow: 0 1px 1px rgba(0, 0, 0, 0.04);
+  margin: 1em 0;
+  text-align: center;
+  padding: 11px;
+  font-size: 13px;
+}
+
+.swt-spinner {
+  text-align: center;
+  margin-top: 20px;
+}
+.swt-spinner svg path {
+  stroke: #007cba;
+}
+
+.swt-term-inclusions-section {
+  display: flex;
+  gap: 22px;
+  margin-bottom: 0 !important;
+  flex-direction: column;
+}
+.swt-term-inclusions-section > div {
+  flex-grow: 1;
+  max-width: 60%;
+}
+.swt-term-inclusions-section .swt-component-search-field-control {
+  min-height: 36px;
+  padding: 0px 8px;
+  line-height: 2;
+  border-radius: 4px;
+  border: 1px solid #8c8f94;
+  box-shadow: 0 0 0 transparent;
+  color: #2c3338;
+  font-size: 13px;
+  width: 100%;
+}
+
+.solution-box-search-list__list {
+  display: none;
+  padding: 0;
+  margin: 20px 0;
+  max-height: 17em;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border: 1px solid #e0e0e0;
+}
+.solution-box-search-list__list li {
+  margin-bottom: 0;
+}
+.solution-box-search-list__list .solution-box-search-list__item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 0;
+  padding: 12px 16px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0 !important;
+  color: #757575;
+  border-bottom: none;
+  margin: 0px !important;
+}
+.solution-box-search-list__list .solution-box-search-list__item:hover {
+  background-color: #f0f0f0;
+}
+.solution-box-search-list__list .solution-box-search-list__item .solution-box-search-list__item-input {
+  margin: 0 8px 0 0;
+}
+.solution-box-search-list__list .solution-box-search-list__item .solution-box-search-list__item-label {
+  display: flex;
+  flex: 1;
+}
+.solution-box-search-list__list .solution-box-search-list__item .solution-box-search-list__item-name {
+  display: inline-block;
+}
+
+.solution-box-search-list__selected {
+  margin-top: 20px;
+}
+.solution-box-search-list__selected ul {
+  display: flex;
+  flex-wrap: wrap;
+}
+.solution-box-search-list__selected .solution-box-search-list__selected-header {
+  margin-bottom: 8px;
+  display: flex;
+  gap: 12px;
+}
+
+.solution-box-search-list__selected.swt-hide-selected-terms-section {
+  display: none;
+}
+
+.solution-box-search-list-clear__all {
+  background: none;
+  border: 0;
+  border-radius: 0;
+  box-shadow: none;
+  color: #cc1818;
+  height: auto;
+  margin: 0;
+  outline: none;
+  padding: 0;
+  text-align: left;
+  text-decoration: underline;
+  transition-duration: 0.05s;
+  transition-property: border, background, color;
+  transition-timing-function: ease-in-out;
+  cursor: pointer;
+}
+
+.solution-box-selected-list__tag {
+  display: inline-flex;
+  margin: 1px 4px 1px 0;
+  overflow: hidden;
+  align-items: center;
+}
+.solution-box-selected-list__tag .solution-box-tag__text {
+  padding: 0 4px 0 8px;
+  border-radius: 12px 0 0 12px;
+}
+.solution-box-selected-list__tag .solution-box-tag__remove {
+  cursor: pointer;
+  height: inherit;
+  padding: 0 2px;
+  border-radius: 0 12px 12px 0;
+  color: #757575;
+  line-height: 10px;
+  text-indent: 0;
+  height: 24px;
+  display: inline-block;
+  background: none;
+  transition: all 0.2s cubic-bezier(0.4, 1, 0.4, 1);
+  font-size: 13px;
+  font-weight: 400;
+  border: 0;
+}
+.solution-box-selected-list__tag .solution-box-tag__remove svg {
+  fill: #757575;
+  transition: all 0.2s ease-in;
+}
+.solution-box-selected-list__tag .solution-box-tag__remove:hover svg {
+  fill: #000;
+}
+
+.form-table.hide-section {
+  display: none;
+}
+
+.swt-component-search-field.disabled input {
+  background-color: #f1f1f1;
+}
+
+/* product edit page */
+#simple-product-tabs {
+  padding: 20px;
+}
+#simple-product-tabs .add-new-tab {
+  margin-top: 10px;
+}
+#simple-product-tabs .remove-tabs {
+  margin-bottom: 15px;
+  float: right;
+}
+#simple-product-tabs .remove_product_tab {
+  color: #b32d2e;
+}
+#simple-product-tabs .tab_title_field {
+  width: 100%;
+  border-color: #ceced0;
+}
+#simple-product-tabs .tabs_content_field {
+  width: 100%;
+  border-color: #ceced0;
+}
+#simple-product-tabs .icon-wrap {
+  float: left;
+}
+#simple-product-tabs .tab-content-wrap .swt_accordion {
+  border: 1px solid #eee;
+  cursor: pointer;
+  padding: 12px;
+  font-size: 14px;
+  transition: 0.4s;
+  margin: 0;
+  color: #1d2327;
+}
+#simple-product-tabs .tab-content-wrap .wp-editor-wrap {
+  padding: 0 15px 15px;
+  background-color: white;
+  overflow: hidden;
+  border: 1px solid #eee;
+  border-bottom: none;
+  border-top: none;
+  flex: 1 1 100%;
+}
+#simple-product-tabs .tab-content-wrap .tab-container.hidden {
+  display: none;
+}
+#simple-product-tabs .tab-content-wrap .tab-container.hidden > * {
+  display: hidden;
+}
+#simple-product-tabs .tab-content-wrap .tab-container {
+  display: flex;
+  border: 1px solid #eee;
+  border-top: none;
+  flex-wrap: wrap;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .override-tab-content-label {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+  align-items: center;
+  flex: 1;
+  padding: 15px 15px !important;
+  margin: 0;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .override-tab-content-label label {
+  margin: 0 0 0 5px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .icon-container {
+  padding: 15px;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .icon-container p {
+  margin: 0;
+  padding: 0;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .icon-container .icon-output {
+  margin: 0;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .edit-tab-product {
+  width: 100%;
+  box-sizing: border-box;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .edit-tab-product .icon-output {
+  margin: 15px 0 0 !important;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .edit-tab-product .icon-output a {
   color: red;
+  text-decoration: none;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .edit-tab-product.edit-tab-footer {
+  display: flex;
+  flex: 1;
+  justify-content: flex-end;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .edit-tab-product.edit-tab-footer .edit-global-tab {
+  padding: 15px;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  text-decoration: none;
+}
+#simple-product-tabs .tab-content-wrap .tab-container .wp-core-ui.wp-editor-wrap {
+  padding-bottom: 0;
+}
+#simple-product-tabs .wp-editor-area {
+  border: 1px solid #ceced0;
+}
+#simple-product-tabs p.form-field {
+  padding: 5px 0 0 !important;
+}
+#simple-product-tabs .tab_icon {
+  padding: 5px 10px;
+  text-decoration: none;
+  border: 1px solid #2271b1;
+  border-radius: 3px;
+}
+#simple-product-tabs .new-tab-container {
+  display: flex;
+  width: 100%;
+  position: relative;
+  top: -3px;
+}
+#simple-product-tabs .icon-output {
+  margin-top: 10px;
 }
 
 /*# sourceMappingURL=admin.css.map*/
