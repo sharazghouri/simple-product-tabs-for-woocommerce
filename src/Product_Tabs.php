@@ -6,7 +6,7 @@ use WP_Embed;
 /**
  * Show the tabs on the single product page
  *
- * @package   Solution_Box/simple-woo-tabs
+ * @package   Solution_Box/simple-product-tabs
  */
 class Product_Tabs {
 

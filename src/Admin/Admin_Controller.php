@@ -11,7 +11,7 @@ use const Solution_Box\Plugin\Simple_Product_Tabs\SWT_PLUGIN_FILE;
 /**
  * Handles the admin functions.
  *
- * @package   Solution_Box\simple-woo-tabs
+ * @package   Solution_Box\simple-product-tabs
  */
 class Admin_Controller {
 

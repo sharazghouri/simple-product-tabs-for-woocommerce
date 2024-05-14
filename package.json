@@ -1,13 +1,13 @@
 {
-	"name": "simple-woo-tabs",
+	"name": "simple-product-tabs",
 	"title": "Simple WooCommerce Product Tabs (Free)",
 	"version": "1.0.0",
 	"license": "GPL-2.0+",
-	"main_file": "simple-woo-tabs.php",
+	"main_file": "simple-product-tabs.php",
 	"author": "Solution Box <solutionboxdev@gmail.com>",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/sharazghouri/simple-woo-tabs.git"
+		"url": "https://github.com/sharazghouri/simple-product-tabs.git"
 	},
 	"directories": {
 		"lib": "lib"
@@ -28,9 +28,9 @@
 		"test:unit": "wp-scripts test-unit-js"
 	},
 	"bugs": {
-		"url": "https://github.com/sharazghouri/simple-woo-tabs/issues"
+		"url": "https://github.com/sharazghouri/simple-product-tabs/issues"
 	},
-	"homepage": "https://github.com/sharazghouri/simple-woo-tabs#readme",
+	"homepage": "https://github.com/sharazghouri/simple-product-tabs#readme",
 	"devDependencies": {
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.8.0",
 		"@wordpress/scripts": "^26.4.0",
@@ -42,7 +42,7 @@
 		"includes/**",
 		"languages/**",
 		"public/**",
-		"simple-woo-tabs.php",
+		"simple-product-tabs.php",
 		"uninstall.php",
 		"block.json",
 		"changelog.*",

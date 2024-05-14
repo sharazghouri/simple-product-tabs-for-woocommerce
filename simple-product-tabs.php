@@ -1,12 +1,12 @@
 <?php
 /**
- * Plugin Name: Simple WOO Product Tabs
+ * Plugin Name: Simple Product Tabs for WooCommerce
  * Plugin URI:
  * Description: Boost your sale by adding custom tabs containing extra information.
- * Version: 1.0.0
+ * Version: 1.0.1
  * Author: Solution Box
  * Author URI: https://solbox.dev/
- * Text Domain: simple-woo-tabs
+ * Text Domain: simple-product-tabs
  * Domain Path: /languages
  * Requires PHP: 7.4
  * Requires at least: 6.0
@@ -18,7 +18,7 @@
  * License:         GNU General Public License v3.0
  * License URI:     https://www.gnu.org/licenses/gpl.html
  *
- * @package Solution_Box\simple-woo-tabs
+ * @package Solution_Box\simple-product-tabs
  */
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs;

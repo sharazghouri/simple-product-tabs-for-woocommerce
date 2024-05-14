@@ -7,7 +7,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
 /**
  * The main plugin class.
  *
- * @package   Solution_Box\simple-woo-tabs
+ * @package   Solution_Box\simple-product-tabs
  */
 class Plugin {
 
@@ -97,7 +97,7 @@ class Plugin {
 	 */
 	public function load_textdomain() {
 
-		load_plugin_textdomain( 'simple-woo-tabs', false, $this->get_slug() . '/languages' );
+		load_plugin_textdomain( 'simple-product-tabs', false, $this->get_slug() . '/languages' );
 	}
 
 
