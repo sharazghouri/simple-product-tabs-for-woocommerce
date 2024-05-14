@@ -21,7 +21,7 @@ class Post_Type {
 		add_action( 'init', array( $this, 'tab_post_type' ), 99 );
 		add_action( 'admin_head-post.php', array( $this, 'hide_publishing_actions' ) );
 		add_action( 'admin_head-post-new.php', array( $this, 'hide_publishing_actions' ) );
-		add_filter( 'manage_woo_product_tab_posts_columns', array( $this, 'add_columns_in_tab_listing' ) );
+		add_filter( 'manage_woo_product_tabs_posts_columns', array( $this, 'add_columns_in_tab_listing' ) );
 		add_action( 'manage_woo_product_tabs_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
 		add_filter( 'post_updated_messages', array( $this, 'tab_post_updated_messages' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'tab_post_row_actions' ), 10, 2 );
@@ -127,7 +127,8 @@ class Post_Type {
 				echo '<code>' . $post->post_name . '</code>';
 				break;
 			case 'display-globally':
-				$flag_default_for_all = true; // TODO: Rix it
+				$flag_default_for_all =  Util::is_tab_global( $post_id );
+
 				$tab_categories       = get_post_meta( $post_id, '_swt_conditions_category', true );
 				if ( 'no' === $flag_default_for_all && $tab_categories ) {
 					echo '<span class="dashicons dashicons-no-alt"></span>';
