@@ -4,7 +4,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Utility functions for WooCommerce Product Tabs.
  *
- * @package   Solution_Box\simple-woo-tabs
+ * @package   Solution_Box\simple-product-tabs
  */
 final class Util {
 

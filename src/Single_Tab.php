@@ -5,7 +5,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Add metaboxes and handles their behavior for the singled edit tab page
  *
- * @package   Solution_Box\simple-woo-tabs
+ * @package   Solution_Box\simple-product-tabs
  * @author    Solution Box <solutionboxdev@gmail.com>
  */
 class Single_Tab {
@@ -26,23 +26,23 @@ class Single_Tab {
 		?>
 				<div class="swt-categories-selector swt-inclusion-selector">
 						<div class="swt-component-search-field">
-								<input data-type="category" type="text" data-taxonomy="categories" id="swt-category-search" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-woo-tabs' ); ?>">
+								<input data-type="category" type="text" data-taxonomy="categories" id="swt-category-search" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-product-tabs' ); ?>">
 						</div>
 						<div class="swt-spinner swt-loader">
 								<svg width="18" height="18" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#c3c4c7"> <g fill="none" fillRule="evenodd"> <g transform="translate(1 1)" strokeWidth="2"> <circle strokeOpacity="1" cx="18" cy="18" r="18"/> <path d="M36 18c0-9.94-8.06-18-18-18"> <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/> </path> </g> </g></svg>
 						</div>
 						<div class="swt-component-no-results">
-								<span><?php _e( 'No categories found', 'simple-woo-tabs' ); ?></span>
+								<span><?php _e( 'No categories found', 'simple-product-tabs' ); ?></span>
 						</div>
 						<ul class="solution-box-search-list__list">
 						</ul>
 						<div class="solution-box-search-list__selected <?php echo ( $selected_categories ) ? '' : 'swt-hide-selected-terms-section'; ?>">
 								<div class="solution-box-search-list__selected-header">
-										<strong><?php _e( 'Selected categories', 'simple-woo-tabs' ); ?></strong>
+										<strong><?php _e( 'Selected categories', 'simple-product-tabs' ); ?></strong>
 									<?php
 											printf(
 												'<button type="button" aria-label="%1$s" class="solution-box-search-list-clear__all solution-box-remove-inclusions">%1$s</button>',
-												__( 'Clear all selected categories', 'simple-woo-tabs' ),
+												__( 'Clear all selected categories', 'simple-product-tabs' ),
 											);
 									?>
 								</div>
@@ -82,16 +82,16 @@ class Single_Tab {
 						</div>
 				</div>
 		<div class="swt-component-search-field disabled">
-						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-woo-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
-					<?php _e( 'Pro version only', 'simple-woo-tabs' ); ?>
+						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
+			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
+					<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 			</a>
 		</div>
 		
 		<div class="swt-component-search-field disabled">
-						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-woo-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
-				<?php _e( 'Pro version only', 'simple-woo-tabs' ); ?>
+						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
+			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
+				<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 			</a>
 		</div>
 				<?php
@@ -233,24 +233,24 @@ class Single_Tab {
 		foreach ( $screens as $screen ) {
 				// Settings Metabox
 				add_meta_box(
-					'simple-woo-tabs_conditions_section',
-					__( 'Conditions', 'simple-woo-tabs' ),
+					'simple-product-tabs_conditions_section',
+					__( 'Conditions', 'simple-product-tabs' ),
 					array( $this, 'swt_conditions_section' ),
 					$screen,
 					'normal',
 					'high'
 				);
 				add_meta_box(
-					'simple-woo-tabs_icon_section',
-					__( 'Select icon', 'simple-woo-tabs' ),
+					'simple-product-tabs_icon_section',
+					__( 'Select icon', 'simple-product-tabs' ),
 					array( $this, 'swt_icon_section' ),
 					$screen,
 					'side',
 					'high'
 				);
 				add_meta_box(
-					'simple-woo-tabs_priority_section',
-					__( 'Settings', 'simple-woo-tabs' ),
+					'simple-product-tabs_priority_section',
+					__( 'Settings', 'simple-product-tabs' ),
 					array( $this, 'swt_priority_section' ),
 					$screen,
 					'side',
@@ -275,17 +275,17 @@ class Single_Tab {
 						<table class="form-table visibility-form">
 								<tbody>
 										<tr>
-												<th><?php _e( 'Visibility', 'simple-woo-tabs' ); ?></th>
+												<th><?php _e( 'Visibility', 'simple-product-tabs' ); ?></th>
 												<td>
 														<fieldset>
-																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-woo-tabs' ); ?></span></legend>
+																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-product-tabs' ); ?></span></legend>
 																<label>
 																		<input type="radio" id="_swt_display_tab_globally" name="_swt_display_tab_globally" class="swt_visibility_condition" checked="checked" value="yes" <?php checked( 'yes', $is_tab_global, true ); ?>>
-																			<?php _e( 'Display globally on all products', 'simple-woo-tabs' ); ?>
+																			<?php _e( 'Display globally on all products', 'simple-product-tabs' ); ?>
 																</label><br>
 																<label>
 																		<input type="radio" id="_swt_display_tab_globally" name="_swt_display_tab_globally" class="swt_visibility_condition" value="no" <?php checked( 'no', $is_tab_global, true ); ?>>
-																			<?php _e( 'Show on specific categories', 'simple-woo-tabs' ); ?>
+																			<?php _e( 'Show on specific categories', 'simple-product-tabs' ); ?>
 																</label><br>
 														</fieldset>
 												</td>
@@ -296,7 +296,7 @@ class Single_Tab {
 						<table id="inclusions-list" class="form-table <?php echo ( $is_tab_global === 'no' ) ? '' : 'hide-section'; ?> ">
 								<tbody>
 										<tr>
-												<th><?php _e( 'Inclusions', 'simple-woo-tabs' ); ?></th>
+												<th><?php _e( 'Inclusions', 'simple-product-tabs' ); ?></th>
 												<td class="swt-term-inclusions-section">
 													<?php
 													$this->wta_inclusion_categories_selector( $post_id, $times_svg_icon );
@@ -311,8 +311,8 @@ class Single_Tab {
 	public function swt_icon_section() {
 		?>
 				<div class="icon-wrap">
-				<a href="#" class="tab_icon disabled button button-secondary"><?php esc_html_e( 'Select Icon', 'simple-woo-tabs' ); ?></a>
-				<a href="https://solution-box.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
+				<a href="#" class="tab_icon disabled button button-secondary"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
+				<a href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
 				</div>
 				<?php
 	}
@@ -320,7 +320,7 @@ class Single_Tab {
 	public function swt_priority_section( $post ) {
 			$priority = $post->menu_order;
 		echo '<p><label for="_swt_option_priority"><strong>';
-			echo __( 'Priority', 'simple-woo-tabs' );
+			echo __( 'Priority', 'simple-product-tabs' );
 		echo '</strong></label></p>';
 			echo '<input type="number" name="_swt_option_priority" id="_swt_option_priority" value="' . $priority . '" min="0" style="max-width:70px;"/>';
 	}

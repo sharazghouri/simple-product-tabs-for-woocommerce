@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
 
 				// Checking this option would enable the content
 				$args = array(
-					'label'         => __( 'Override the default tab content for this product', 'simple-woo-tabs' ),
+					'label'         => __( 'Override the default tab content for this product', 'simple-product-tabs' ),
 					'id'            => '_swt_override_' . $tab->post_name,
 					'name'          => '_swt_override_' . $tab->post_name,
 					'class'         => 'override-tab-content',
@@ -69,7 +69,7 @@ defined( 'ABSPATH' ) || exit;
 
 				wp_editor( $tab_value, '_swt_field_' . esc_attr( $tab->post_name ), $settings );
 				echo '<div class="edit-tab-product edit-tab-footer">';
-				echo '<a class="edit-global-tab" target="_blank" href="' . get_edit_post_link( $tab->ID ) . '"><span class="dashicons dashicons-edit"></span> ' . __( 'Manage global tab', 'simple-woo-tabs' ) . '</a>';
+				echo '<a class="edit-global-tab" target="_blank" href="' . get_edit_post_link( $tab->ID ) . '"><span class="dashicons dashicons-edit"></span> ' . __( 'Manage global tab', 'simple-product-tabs' ) . '</a>';
 				echo '</div></div><br />';
 			}
 		}

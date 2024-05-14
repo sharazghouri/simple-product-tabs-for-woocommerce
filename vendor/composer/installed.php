@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => 'efe7b521c788ba4ee152865b9f6963416070228b',
-        'name' => 'solutionbox/simple-woo-tabs',
+        'name' => 'solutionbox/simple-product-tabs',
         'dev' => true,
     ),
     'versions' => array(
@@ -46,7 +46,7 @@
             'reference' => 'b6c1e3ee1c35de6c41a511d5eb9bd03e447480a5',
             'dev_requirement' => false,
         ),
-        'solutionbox/simple-woo-tabs' => array(
+        'solutionbox/simple-product-tabs' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'library',

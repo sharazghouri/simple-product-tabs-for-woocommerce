@@ -11,7 +11,7 @@ use const Solution_Box\Plugin\Simple_Product_Tabs\SWT_PLUGIN_FILE;
 /**
  * Handles the admin functions.
  *
- * @package   Solution_Box\simple-woo-tabs
+ * @package   Solution_Box\simple-product-tabs
  */
 class Admin_Controller {
 
@@ -56,8 +56,8 @@ class Admin_Controller {
 		$this->settings_page->add_settings_page(
 			array(
 				'parent_slug' => 'woocommerce',
-				'page_title'  => __( 'Woocommerce Product Tabs', 'simple-woo-tabs' ),
-				'menu_title'  => __( 'Woocommerce Product Tabs', 'simple-woo-tabs' ),
+				'page_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs' ),
+				'menu_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs' ),
 				'capability'  => 'manage_woocommerce',
 			)
 		);
@@ -75,7 +75,7 @@ class Admin_Controller {
 			sprintf(
 				'<a href="%1$s">%2$s</a>',
 				esc_url( $this->plugin->get_data( 'settings_path' ) ),
-				esc_html__( 'Settings', 'simple-woo-tabs' )
+				esc_html__( 'Settings', 'simple-product-tabs' )
 			)
 		);
 		return $links;
@@ -92,14 +92,14 @@ class Admin_Controller {
 		if ( $file === $this->plugin->get_basename() ) {
 			$links[] = sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
-				esc_url( 'https://solutionbox.com/kb/simple-woo-tabs-free-documentation/' ),
-				esc_html__( 'Docs', 'simple-woo-tabs' )
+				esc_url( 'https://solutionbox.com/kb/simple-product-tabs-free-documentation/' ),
+				esc_html__( 'Docs', 'simple-product-tabs' )
 			);
 
 			$links[] = sprintf(
 				'<a href="%1$s" target="_blank"><strong>%2$s</strong></a>',
-				esc_url( 'https://solutionbox.com/wordpress-plugins/simple-woo-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=pluginsadmin&utm_content=swtplugins' ),
-				esc_html__( 'Pro version', 'simple-woo-tabs' )
+				esc_url( 'https://solutionbox.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=pluginsadmin&utm_content=swtplugins' ),
+				esc_html__( 'Pro version', 'simple-product-tabs' )
 			);
 		}
 
@@ -140,10 +140,10 @@ class Admin_Controller {
 		?>
 		<ul class="sbsa-nav">
 			<li class="sbsa-nav__item sbsa-nav__item--active">
-				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-woo-tabs' ); ?></a>
+				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-product-tabs' ); ?></a>
 			</li>
 			<li class="sbsa-nav__item">
-				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-woo-tabs-settings' ); ?>"><?php echo __( 'Settings', 'simple-woo-tabs' ); ?></a>
+				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs' ); ?></a>
 			</li>
 		</ul>
 		<style>
