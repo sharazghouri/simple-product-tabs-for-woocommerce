@@ -21,8 +21,7 @@ class Admin_Controller {
 	private $version;
 	private $settings_page;
 
-	const SETTING_SLUG = 'simple_woo_tabs';
-
+	const SETTING_SLUG = 'simple_product_tabs';
 
 	public function __construct( Plugin $plugin ) {
 		$this->plugin      = $plugin;
