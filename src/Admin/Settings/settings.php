@@ -33,16 +33,20 @@ function swt_tabbed_settings( $sbsa_settings ) {
 	$sbsa_settings['tabs'] = array(
 		array(
 			'id'    => 'product_tabs',
-			'title' => esc_html__( 'Product Tabs', 'text-domain' ),
+			'title' => esc_html__( 'Product Tabs', 'simple-product-tabs' ),
 			'link'  => admin_url( 'edit.php?post_type=woo_product_tabs' )
 		),
 		array(
 			'id'    => 'settings',
-			'title' => esc_html__( 'Settings', 'text-domain' ),
+			'title' => esc_html__( 'Settings', 'simple-product-tabs' ),
+		),
+		array(
+			'id'    => 'reorder',
+			'title' => esc_html__( 'Reorder', 'simple-product-tabs' ),
 		),
 		array(
 			'id'                => 'license',
-			'title'             => esc_html__( 'License', 'text-domain' ),
+			'title'             => esc_html__( 'License', 'simple-product-tabs' ),
 			'tab_control_group' => 'tab-control',
 			'show_if'           => array( // Field will only show if the control `settings_section_2_tab-control` is set to true.
 				array(
@@ -171,6 +175,20 @@ function swt_tabbed_settings( $sbsa_settings ) {
 					'title'    => 'Enable Page Builder Support',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Disable <pre style="display:inline-block;margin:0">the_content</pre> filter if you are having issue in tab content while using page builders.', 'simple-woo-tabs' ),
+				),
+			),
+		),
+		array(
+			'tab_id'        => 'reorder',
+			'section_id'    => 'section_5',
+			'section_title' => __( 'Reorder The Tabs', 'simple-woo-tabs' ),
+			'section_order' => 11,
+			'fields'        => array(
+				array(
+					'id'       => 'tabs_order',
+					'title'    => 'Search By Tabs Content',
+					'type'     => 'toggle',
+					'subtitle' => __( 'Enhance the product search by adding product tabs title and content.', 'simple-woo-tabs' ),
 				),
 			),
 		),
