@@ -50,7 +50,7 @@
 		"readme.*",
 		"src/**/",
 		"vendor/**/",
-		"assets/**/"
+		"composer.json"
 ],
 	"dependencies": {
 	}
