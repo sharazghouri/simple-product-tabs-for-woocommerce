@@ -72,10 +72,10 @@ class Product_Editor_Tabs {
 	 * @since 1.0.0
 	 */
 	function save_product_tab_data( $post_id ) {
-		$nonce = filter_input( INPUT_POST, '_swt_product_data_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
+		$nonce = filter_input( INPUT_POST, '_sptb_product_data_nonce', FILTER_SANITIZE_SPECIAL_CHARS );
 
 		// Verify that the nonce is valid.
-		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'swt_product_data' ) ) {
+		if ( empty( $nonce ) || ! wp_verify_nonce( $nonce, 'sptb_product_data' ) ) {
 			return;
 		}
 
@@ -90,20 +90,20 @@ class Product_Editor_Tabs {
 		$posted_tab_data = array_filter(
 			$_POST,
 			function ( $key ) {
-				return '_swt_field_' === substr( $key, 0, 11 );
+				return '_sptb_field_' === substr( $key, 0, 11 );
 			},
 			ARRAY_FILTER_USE_KEY
 		);
 
 		foreach ( $posted_tab_data as $post_key => $tab_content ) {
 			$tab_slug       = substr( $post_key, 11 );
-			$override_value = filter_input( INPUT_POST, '_swt_override_' . $tab_slug, FILTER_SANITIZE_SPECIAL_CHARS );
+			$override_value = filter_input( INPUT_POST, '_sptb_override_' . $tab_slug, FILTER_SANITIZE_SPECIAL_CHARS );
 
 			if ( 'yes' !== $override_value ) {
 				$override_value = 'no';
 			}
 
-			update_post_meta( $post_id, '_swt_override_' . $tab_slug, $override_value );
+			update_post_meta( $post_id, '_sptb_override_' . $tab_slug, $override_value );
 
 			if ( 'yes' === $override_value ) {
 				// Update the tab content.

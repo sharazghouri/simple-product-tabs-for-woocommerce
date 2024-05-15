@@ -20,7 +20,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  * and check out the tabbed settings function on line 156.
  */
 
- add_filter( 'sbsa_register_settings_' . Admin_Controller::SETTING_SLUG, 'swt_tabbed_settings' );
+ add_filter( 'sbsa_register_settings_' . Admin_Controller::SETTING_SLUG, 'sptb_tabbed_settings' );
 
 
 /**
@@ -28,7 +28,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  *
  * @param array $sbsa_settings settings.
  */
-function swt_tabbed_settings( $sbsa_settings ) {
+function sptb_tabbed_settings( $sbsa_settings ) {
 	// Tabs.
 	$sbsa_settings['tabs'] = array(
 		array(

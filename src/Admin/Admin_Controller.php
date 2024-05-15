@@ -131,11 +131,11 @@ class Admin_Controller {
 			return;
 		}
 
-		echo $this->get_swt_admin_header_html();
+		echo $this->get_sptb_admin_header_html();
 	}
 
 
-	public function get_swt_admin_header_html() {
+	public function get_sptb_admin_header_html() {
 		?>
 		<ul class="sbsa-nav">
 			<li class="sbsa-nav__item sbsa-nav__item--active">

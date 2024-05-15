@@ -57,7 +57,7 @@
   /**
    * Display/Hide inclusions sections based on the visibility condition
    */
-  $('.swt_visibility_condition').on('change', function () {
+  $('.sptb_visibility_condition').on('change', function () {
     
     if ($(this).val() === 'yes') {
       $('#inclusions-list.form-table').addClass('hide-section');
@@ -78,7 +78,7 @@
     if (selectedTerms.includes(checkedTerm)) {
       return;
     }
-    let termListHTML = `<li><span class="solution-box-selected-list__tag"><span class="solution-box-tag__text" id="solution-box-tag__label-${checkedTerm}"><span class="screen-reader-text">${checkedTermName}</span><span aria-hidden="true">${checkedTermName}</span></span><input type="hidden" name="swt_${wptInclusionType}_list[]" value="${checkedTerm}"><button type="button" aria-describedby="solution-box-tag__label-${checkedTerm}" class="components-button solution-box-tag__remove" id="solution-box-remove-term" aria-label="${checkedTermName}"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="clear-icon" aria-hidden="true" focusable="false"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.5303 8.46967C15.8232 8.76256 15.8232 9.23744 15.5303 9.53033L13.0607 12L15.5303 14.4697C15.8232 14.7626 15.8232 15.2374 15.5303 15.5303C15.2374 15.8232 14.7626 15.8232 14.4697 15.5303L12 13.0607L9.53033 15.5303C9.23744 15.8232 8.76256 15.8232 8.46967 15.5303C8.17678 15.2374 8.17678 14.7626 8.46967 14.4697L10.9393 12L8.46967 9.53033C8.17678 9.23744 8.17678 8.76256 8.46967 8.46967C8.76256 8.17678 9.23744 8.17678 9.53033 8.46967L12 10.9393L14.4697 8.46967C14.7626 8.17678 15.2374 8.17678 15.5303 8.46967Z"></path></svg></button></span></li>`;
+    let termListHTML = `<li><span class="solution-box-selected-list__tag"><span class="solution-box-tag__text" id="solution-box-tag__label-${checkedTerm}"><span class="screen-reader-text">${checkedTermName}</span><span aria-hidden="true">${checkedTermName}</span></span><input type="hidden" name="sptb_${wptInclusionType}_list[]" value="${checkedTerm}"><button type="button" aria-describedby="solution-box-tag__label-${checkedTerm}" class="components-button solution-box-tag__remove" id="solution-box-remove-term" aria-label="${checkedTermName}"><svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" width="20" height="20" class="clear-icon" aria-hidden="true" focusable="false"><path d="M12 21C16.9706 21 21 16.9706 21 12C21 7.02944 16.9706 3 12 3C7.02944 3 3 7.02944 3 12C3 16.9706 7.02944 21 12 21ZM15.5303 8.46967C15.8232 8.76256 15.8232 9.23744 15.5303 9.53033L13.0607 12L15.5303 14.4697C15.8232 14.7626 15.8232 15.2374 15.5303 15.5303C15.2374 15.8232 14.7626 15.8232 14.4697 15.5303L12 13.0607L9.53033 15.5303C9.23744 15.8232 8.76256 15.8232 8.46967 15.5303C8.17678 15.2374 8.17678 14.7626 8.46967 14.4697L10.9393 12L8.46967 9.53033C8.17678 9.23744 8.17678 8.76256 8.46967 8.46967C8.76256 8.17678 9.23744 8.17678 9.53033 8.46967L12 10.9393L14.4697 8.46967C14.7626 8.17678 15.2374 8.17678 15.5303 8.46967Z"></path></svg></button></span></li>`;
     inclusionWrapper.find('.solution-box-search-list__selected').removeClass('wpt-hide-selected-terms-section');
     inclusionWrapper.find('.solution-box-search-list__selected').show();
     inclusionWrapper.find('.solution-box-search-list__selected_terms').append(termListHTML);
@@ -107,7 +107,7 @@
 
 
    //Accordion - Product Edit page
-   const acc = document.getElementsByClassName( 'swt_accordion' );
+   const acc = document.getElementsByClassName( 'sptb_accordion' );
    if ( acc ) {
      let i;
      for ( i = 0; i < acc.length; i++ ) {
@@ -123,7 +123,7 @@
    }
  
    // Show the editor field
-   const overrideInputs = $( '.swt_accordion .override-tab-content' );
+   const overrideInputs = $( '.sptb_accordion .override-tab-content' );
    if( overrideInputs ) {
      overrideInputs.each( function( i ) {
        let editor = $( this ).parents('.tab-container').find( '.wp-editor-wrap' );

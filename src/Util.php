@@ -17,15 +17,15 @@ final class Util {
 	 */
 	public static function is_tab_global( $tab_id ) {
 
-		// In the older versions of the plugin, the _swt_display_tab_globally meta doesn't exist
-		if ( ! metadata_exists( 'post', $tab_id, '_swt_display_tab_globally' ) ) {
-			if ( get_post_meta( $tab_id, '_swt_conditions_category', true ) ) { // Check it the category selected the go with category.
+		// In the older versions of the plugin, the _sptb_display_tab_globally meta doesn't exist
+		if ( ! metadata_exists( 'post', $tab_id, '_sptb_display_tab_globally' ) ) {
+			if ( get_post_meta( $tab_id, '_sptb_conditions_category', true ) ) { // Check it the category selected the go with category.
 				return 'no';
 			} else {
 				return 'yes';
 			}
 		} else {
-			return get_post_meta( $tab_id, '_swt_display_tab_globally', true );
+			return get_post_meta( $tab_id, '_sptb_display_tab_globally', true );
 		}
 	}
 
@@ -78,11 +78,11 @@ final class Util {
 			return false;
 		}
 
-		$override_meta = get_post_meta( $product_id, '_swt_override_' . $tab_key, true );
+		$override_meta = get_post_meta( $product_id, '_sptb_override_' . $tab_key, true );
 
-		// The _swt_override key doesn't exist in the older version of the plugin and the best way
-		// to check it, is to check for the _swt_field_ meta for the product
-		if ( empty( $override_meta ) && get_post_meta( $product_id, '_swt_field_' . $tab_key, true ) ) {
+		// The _sptb_override key doesn't exist in the older version of the plugin and the best way
+		// to check it, is to check for the _sptb_field_ meta for the product
+		if ( empty( $override_meta ) && get_post_meta( $product_id, '_sptb_field_' . $tab_key, true ) ) {
 			$override_meta = 'yes';
 		}
 
@@ -99,7 +99,7 @@ final class Util {
 			return;
 		}
 
-		$plugin_options = wp_parse_args( (array) get_option( 'swt_options' ), array( 'description', 'hide_description', 'info', 'hide_info', 'review', 'hide_review', 'search_by_tabs', 'enable_accordion', 'accordion_shown_size', 'description_priority', 'info_priority', 'review_priority', 'license' ) );
+		$plugin_options = wp_parse_args( (array) get_option( 'sptb_options' ), array( 'description', 'hide_description', 'info', 'hide_info', 'review', 'hide_review', 'search_by_tabs', 'enable_accordion', 'accordion_shown_size', 'description_priority', 'info_priority', 'review_priority', 'license' ) );
 
 		$value = null;
 

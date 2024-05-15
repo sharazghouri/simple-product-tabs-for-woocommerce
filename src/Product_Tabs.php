@@ -16,11 +16,11 @@ class Product_Tabs {
 		// Public custom hooks
 		add_filter( 'woocommerce_product_tabs', array( $this, 'custom_woocommerce_product_tabs' ), 20 );
 
-		add_filter( 'swt_filter_product_tabs', array( $this, 'tab_status_check' ) );
+		add_filter( 'sptb_filter_product_tabs', array( $this, 'tab_status_check' ) );
 
 		if ( $this->enable_the_content_filter() ) {
-			add_filter( 'swt_use_the_content_filter', '__return_false' );
-			add_filter( 'swt_filter_tab_content', array( $this, 'product_tabs_filter_content' ), 10, 1 );
+			add_filter( 'sptb_use_the_content_filter', '__return_false' );
+			add_filter( 'sptb_filter_tab_content', array( $this, 'product_tabs_filter_content' ), 10, 1 );
 		}
 	}
 
@@ -46,20 +46,20 @@ class Product_Tabs {
 			return $tabs;
 		}
 
-		$swt_tabs = array();
+		$sptb_tabs = array();
 		foreach ( $this->product_tabs_list as $key => $prd ) {
-			$swt_tabs[ $key ]['id']                  = $prd->post_name;
-			$swt_tabs[ $key ]['title']               = esc_attr( $prd->post_title );
-			$swt_tabs[ $key ]['priority']            = esc_attr( $prd->menu_order );
-			$swt_tabs[ $key ]['conditions_category'] = get_post_meta( $prd->ID, '_swt_conditions_category', true );
-			$swt_tabs[ $key ]['display_globally']    = esc_attr( Util::is_tab_global( $prd->ID ) );
+			$sptb_tabs[ $key ]['id']                  = $prd->post_name;
+			$sptb_tabs[ $key ]['title']               = esc_attr( $prd->post_title );
+			$sptb_tabs[ $key ]['priority']            = esc_attr( $prd->menu_order );
+			$sptb_tabs[ $key ]['conditions_category'] = get_post_meta( $prd->ID, '_sptb_conditions_category', true );
+			$sptb_tabs[ $key ]['display_globally']    = esc_attr( Util::is_tab_global( $prd->ID ) );
 		}
 
-		$swt_tabs = apply_filters( 'swt_filter_product_tabs', $swt_tabs );
+		$sptb_tabs = apply_filters( 'sptb_filter_product_tabs', $sptb_tabs );
 
-		if ( ! empty( $swt_tabs ) ) {
+		if ( ! empty( $sptb_tabs ) ) {
 
-			foreach ( $swt_tabs as $key => $tab ) {
+			foreach ( $sptb_tabs as $key => $tab ) {
 				$tab_temp             = array();
 				$tab_temp['title']    = $tab['title'];
 				$tab_temp['priority'] = $tab['priority'];
@@ -90,7 +90,7 @@ class Product_Tabs {
 					$content_to_show = $tab_default_value;
 
 					if ( Util::is_tab_overridden( $key, $product->get_id() ) ) {
-						$tab_value = get_post_meta( $product->get_id(), '_swt_field_' . $key, true );
+						$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
 						if ( ! empty( $tab_value ) ) {
 							$content_to_show = $tab_value;
 						}
@@ -132,7 +132,7 @@ class Product_Tabs {
 			// Display default tab content.
 			echo $this->get_filter_content( $tab_post->post_content );
 		} else {
-			$tab_value = get_post_meta( $product->get_id(), '_swt_field_' . $key, true );
+			$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
 			echo $this->get_filter_content( $tab_value );
 		}
 	}
@@ -170,12 +170,12 @@ class Product_Tabs {
 	 * @since 2.0.2
 	 */
 	public function get_filter_content( $content ) {
-		$use_the_content_filter = apply_filters( 'swt_use_the_content_filter', true );
+		$use_the_content_filter = apply_filters( 'sptb_use_the_content_filter', true );
 
 		if ( $use_the_content_filter === true ) {
 			$content = apply_filters( 'the_content', $content );
 		} else {
-			$content = apply_filters( 'swt_filter_tab_content', $content );
+			$content = apply_filters( 'sptb_filter_tab_content', $content );
 		}
 		return $content;
 	}
