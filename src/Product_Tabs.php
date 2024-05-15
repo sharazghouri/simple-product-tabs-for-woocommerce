@@ -14,9 +14,9 @@ class Product_Tabs {
 		// Public custom hooks
 		add_filter( 'woocommerce_product_tabs', array( $this, 'custom_woocommerce_product_tabs' ), 20 );
 
-		if ( ! apply_filters( 'swt_enable_the_content_filters', false ) ) {
-			add_filter( 'swt_use_the_content_filter', '__return_false' );
-			add_filter( 'swt_filter_tab_content', array( $this, 'product_tabs_filter_content' ), 10, 1 );
+		if ( ! apply_filters( 'sptb_enable_the_content_filters', false ) ) {
+			add_filter( 'sptb_use_the_content_filter', '__return_false' );
+			add_filter( 'sptb_filter_tab_content', array( $this, 'product_tabs_filter_content' ), 10, 1 );
 		}
 	}
 
@@ -42,18 +42,18 @@ class Product_Tabs {
 			return $tabs;
 		}
 
-		$swt_tabs = array();
+		$sptb_tabs = array();
 		foreach ( $this->product_tabs_list as $key => $prd ) {
-			$swt_tabs[ $key ]['id']       = $prd->post_name;
-			$swt_tabs[ $key ]['title']    = esc_attr( $prd->post_title );
-			$swt_tabs[ $key ]['priority'] = esc_attr( $prd->menu_order );
+			$sptb_tabs[ $key ]['id']       = $prd->post_name;
+			$sptb_tabs[ $key ]['title']    = esc_attr( $prd->post_title );
+			$sptb_tabs[ $key ]['priority'] = esc_attr( $prd->menu_order );
 		}
 
-		$swt_tabs = apply_filters( 'swt_filter_product_tabs', $swt_tabs );
+		$sptb_tabs = apply_filters( 'sptb_filter_product_tabs', $sptb_tabs );
 
-		if ( ! empty( $swt_tabs ) ) {
+		if ( ! empty( $sptb_tabs ) ) {
 
-			foreach ( $swt_tabs as $key => $tab ) {
+			foreach ( $sptb_tabs as $key => $tab ) {
 				$tab_temp             = array();
 				$tab_temp['title']    = $tab['title'];
 				$tab_temp['priority'] = $tab['priority'];
@@ -115,12 +115,12 @@ class Product_Tabs {
 	 * @since 1.0.0
 	 */
 	public function get_filter_content( $content ) {
-		$use_the_content_filter = apply_filters( 'swt_use_the_content_filter', true );
+		$use_the_content_filter = apply_filters( 'sptb_use_the_content_filter', true );
 
 		if ( $use_the_content_filter === true ) {
 			$content = apply_filters( 'the_content', $content );
 		} else {
-			$content = apply_filters( 'swt_filter_tab_content', $content );
+			$content = apply_filters( 'sptb_filter_tab_content', $content );
 		}
 		return $content;
 	}

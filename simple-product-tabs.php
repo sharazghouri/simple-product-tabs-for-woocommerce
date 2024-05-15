@@ -28,9 +28,9 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const SWT_PLUGIN_VERSION = '1.0.0';
-const SWT_PLUGIN_FILE    = __FILE__;
-const SWT_PLUGIN_DIR     = __DIR__;
+const SPTB_PLUGIN_VERSION = '1.0.0';
+const SPTB_PLUGIN_FILE    = __FILE__;
+const SPTB_PLUGIN_DIR     = __DIR__;
 
 require_once __DIR__ . '/vendor/autoload.php';
 
@@ -40,7 +40,7 @@ require_once __DIR__ . '/vendor/autoload.php';
  * @return Plugin
  */
 function simple_woo_tabs() {
-	return Plugin_Factory::create( SWT_PLUGIN_FILE, SWT_PLUGIN_VERSION );
+	return Plugin_Factory::create( SPTB_PLUGIN_FILE, SPTB_PLUGIN_VERSION );
 }
 
 simple_woo_tabs()->register();
