@@ -6,7 +6,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Plugin;
 use Solution_Box\Plugin\Simple_Product_Tabs\Post_Type;
 use  SolutionBoxSettings as Settings_API_Helper;
 
-use const Solution_Box\Plugin\Simple_Product_Tabs\SWT_PLUGIN_FILE;
+use const Solution_Box\Plugin\Simple_Product_Tabs\SPTB_PLUGIN_FILE;
 
 /**
  * Handles the admin functions.
