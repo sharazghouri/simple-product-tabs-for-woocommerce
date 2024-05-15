@@ -43,7 +43,7 @@ class Post_Type {
 			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs' ),
 			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-product-tabs' ),
 			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs' ),
-			'add_new'            => _x( 'Add New', 'simple-product-tabs' ),
+			'add_new'            => _x( 'Add New', 'add new item', 'simple-product-tabs' ),
 			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs' ),
 			'new_item'           => __( 'New Tab', 'simple-product-tabs' ),
 			'edit_item'          => __( 'Edit Tab', 'simple-product-tabs' ),
@@ -121,10 +121,10 @@ class Post_Type {
 		$post = get_post( $post_id );
 		switch ( $column ) {
 			case 'priority':
-				echo $post->menu_order;
+				esc_html( $post->menu_order );
 				break;
 			case 'tab-key':
-				echo '<code>' . $post->post_name . '</code>';
+				echo '<code>' . esc_html( $post->post_name ) . '</code>';
 				break;
 			case 'display-globally':
 				$flag_default_for_all = Util::is_tab_global( $post_id );

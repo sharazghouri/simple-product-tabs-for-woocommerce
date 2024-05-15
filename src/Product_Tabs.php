@@ -76,8 +76,9 @@ class Product_Tabs {
 			return;
 		}
 
-			// Display default tab content.
-			echo $this->get_filter_content( $tab_post->post_content );
+		//get_filter_content already using the_content filter
+		// phpcs:ignore WordPress.Security.EscapeOutput.OutputNotEscaped 
+		echo $this->get_filter_content( $tab_post->post_content );
 
 	}
 
