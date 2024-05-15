@@ -20,7 +20,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  * and check out the tabbed settings function on line 156.
  */
 
- add_filter( 'sbsa_register_settings_' . Admin_Controller::SETTING_SLUG, 'swt_tabbed_settings' );
+add_filter( 'sbsa_register_settings_' . Admin_Controller::SETTING_SLUG, 'swt_tabbed_settings' );
 
 
 /**
@@ -29,6 +29,17 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  * @param array $sbsa_settings settings.
  */
 function swt_tabbed_settings( $sbsa_settings ) {
+
+	$Plugin_Factory = '\Solution_Box\Plugin\Simple_Product_Tabs\Plugin_Factory';
+	$tab_list = array();
+
+	if ( ! empty( $t_list =  $Plugin_Factory::$plugin->admin->product_tabs_list ) ) {
+		foreach ( $t_list as $key => $t ) {
+			var_dump( $t );
+			die;
+		}
+	}
+
 	// Tabs.
 	$sbsa_settings['tabs'] = array(
 		array(
@@ -38,6 +49,10 @@ function swt_tabbed_settings( $sbsa_settings ) {
 		array(
 			'id'    => 'settings',
 			'title' => esc_html__( 'Settings', 'text-domain' ),
+		),
+		array(
+			'id'    => 'reorder',
+			'title' => esc_html__( 'Reorder', 'text-domain' ),
 		),
 		array(
 			'id'                => 'license',
@@ -170,6 +185,28 @@ function swt_tabbed_settings( $sbsa_settings ) {
 					'title'    => 'Enable Page Builder Support',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Disable <pre style="display:inline-block;margin:0">the_content</pre> filter if you are having issue in tab content while using page builders.', 'simple-product-tabs' ),
+				),
+			),
+		),
+		array(
+			'tab_id'        => 'reorder',
+			'section_id'    => 'section_5',
+			'section_title' => __( 'Reorder ', 'simple-product-tabs' ),
+			'section_order' => 11,
+			'fields'        => array(
+				array(
+					'id'      => 'tabs_order',
+					'title'   => 'Products Tabs Order',
+					'desc'    => __( 'Reorder the tabs on product page', 'simple-product-tabs' ),
+					'type'    => 'sortable_list',
+					'default' => '',
+					'choices' => array(
+						'w1as' => 'One',
+						'e2as' => 'Two',
+						's3as' => 'Three',
+						'd4as' => 'Four',
+						'a5as' => 'Five',
+					),
 				),
 			),
 		),
