@@ -16,7 +16,7 @@ class Plugin_Factory {
 	 *
 	 * @var Plugin
 	 */
-	private static $plugin = null;
+	public static $plugin = null;
 
 	/**
 	 * Return the shared instance of the plugin.

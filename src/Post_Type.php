@@ -269,7 +269,7 @@ class Post_Type {
 
 		remove_action( 'save_post', array( $this, 'woo_product_tab_override_tab_slug' ), 20 );
 
-		$unique_slug = 'swt-' . $post_id;
+		$unique_slug = 'sptb-' . $post_id;
 
 		$new_data = array(
 			'ID'        => $post_id,

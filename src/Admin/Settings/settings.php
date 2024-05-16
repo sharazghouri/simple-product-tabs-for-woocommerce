@@ -29,6 +29,30 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  * @param array $sbsa_settings settings.
  */
 function sptb_tabbed_settings( $sbsa_settings ) {
+
+	$plugin_factory = '\Solution_Box\Plugin\Simple_Product_Tabs\Plugin_Factory';
+	$simple_product_tabs = array();
+
+	if ( ! empty( $_product_tabs = $plugin_factory::$plugin->admin->product_tabs_list ) ) {
+		foreach ( $_product_tabs as $k => $item ) {
+		 $simple_product_tabs[ $item->post_name ] =  $item->post_title;
+		}
+	}
+	// Define a function to create a tab object for better reusability
+	function create_tab($id, $title ) {
+		return [ $id => $title ];
+	}
+
+	// Create tab objects with localization and priority settings
+	$description = create_tab( 'description', 'Description' );
+	$info        = create_tab( 'info', 'Additional Information' );
+	$review      = create_tab( 'review', 'Review' );
+
+	// Add tabs to the $tab_posts array using array_merge
+	$simple_product_tabs = array_merge( $simple_product_tabs,  $description, $info, $review  );
+
+
+
 	// Tabs.
 	$sbsa_settings['tabs'] = array(
 		array(
@@ -43,6 +67,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 		array(
 			'id'    => 'reorder',
 			'title' => esc_html__( 'Reorder', 'simple-product-tabs' ),
+
 		),
 		array(
 			'id'                => 'license',
@@ -64,31 +89,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'section_id'    => 'section_1',
 			'section_title' => 'Section 1',
 			'section_order' => 10,
-			'fields'        => array(
-				array(
-					'id'      => 'text-1',
-					'title'   => 'Text',
-					'desc'    => 'This is a description.',
-					'type'    => 'text',
-					'default' => 'This is default',
-				),
-			),
-		),
-		array(
-			'tab_id'        => 'product_tabs',
-			'section_id'    => 'section_2',
-			'section_title' => 'Section 2',
-			'section_order' => 10,
-			'fields'        => array(
-				array(
-					'id'      => 'text-2',
-					'title'   => 'Text',
-					// Format of href is #tab-id|field-id. You can choose to skip the field id.
-					'desc'    => 'This is a description. This is a <a href="#tab-settings|settings_section_3_text-3" class="wsf-internal-link">link</a> to a setting in a different tab.',
-					'type'    => 'text',
-					'default' => 'This is default',
-				),
-			),
+			'fields'        => array()
 		),
 		array(
 			'tab_id'        => 'settings',
@@ -186,13 +187,12 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'       => 'tabs_order',
-					'title'    => 'Search By Tabs Content',
-					'type'     => 'toggle',
-					'subtitle' => __( 'Enhance the product search by adding product tabs title and content.', 'simple-woo-tabs' ),
+					'title'    => __( 'Reorder', 'simple-woo-tabs' ),
+					'type'     => 'sortable_list',
+					'choices'  => $simple_product_tabs
 				),
 			),
 		),
-
 	);
 
 	return $sbsa_settings;

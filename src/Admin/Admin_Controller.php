@@ -20,6 +20,7 @@ class Admin_Controller {
 	private $plugin_name;
 	private $version;
 	private $settings_page;
+	public  $product_tabs_list;
 
 	const SETTING_SLUG = 'simple_product_tabs';
 
@@ -28,6 +29,7 @@ class Admin_Controller {
 		$this->plugin_name = $plugin->get_slug();
 		$this->version     = $plugin->get_version();
 
+		$this->set_tab_list();
 	}
 
 	public function register() {
@@ -48,6 +50,20 @@ class Admin_Controller {
 	}
 
 
+	/**
+	 * Set Tab list.
+	 *
+	 */
+	function set_tab_list(){
+		$this->product_tabs_list = get_posts(
+			[
+				'post_type'      => Post_Type::POST_SLUG,
+				'posts_per_page' => -1,
+				'order'          => 'asc',
+			]
+		);
+
+	}
 	/**
 	 * Add WooCommerce sub settings page.
 	 */
