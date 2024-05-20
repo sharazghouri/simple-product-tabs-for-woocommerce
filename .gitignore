@@ -57,5 +57,5 @@ vendor-bin
 !vendor/composer
 !vendor/ernilambar
 bin
-woocommerce-product-tabs.zip
+simple-product-tabs.zip
 .npmrc

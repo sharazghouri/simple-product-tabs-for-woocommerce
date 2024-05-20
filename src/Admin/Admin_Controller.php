@@ -39,7 +39,7 @@ class Admin_Controller {
 	public function add_plugin_action_links( $links ) {
 		$output = array_merge(
 			array(
-				'product-tabs' => '<a href="' . esc_url( admin_url( 'edit.php?post_type=woo_product_tabs' ) ) . '">' . esc_html__( 'Product Tabs', 'woocommerce-product-tabs' ) . '</a>',
+				'product-tabs' => '<a href="' . esc_url( admin_url( 'edit.php?post_type=woo_product_tabs' ) ) . '">' . esc_html__( 'Product Tabs', 'simple-product-tabs' ) . '</a>',
 
 			),
 			$links
