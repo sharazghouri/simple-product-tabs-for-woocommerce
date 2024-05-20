@@ -35,7 +35,8 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 
 	if ( ! empty( $_product_tabs = $plugin_factory::$plugin->admin->product_tabs_list ) ) {
 		foreach ( $_product_tabs as $k => $item ) {
-		 $simple_product_tabs[ $item->post_name ] =  $item->post_title;
+		 $simple_product_tabs[ $item->post_name  ] =  $item->post_title;
+		 
 		}
 	}
 	// Define a function to create a tab object for better reusability
@@ -45,13 +46,12 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 
 	// Create tab objects with localization and priority settings
 	$description = create_tab( 'description', 'Description' );
-	$info        = create_tab( 'info', 'Additional Information' );
-	$review      = create_tab( 'review', 'Review' );
+	$info        = create_tab( 'additional_information', 'Additional Information' );
+	$review      = create_tab( 'reviews', 'Reviews' );
+
 
 	// Add tabs to the $tab_posts array using array_merge
 	$simple_product_tabs = array_merge( $simple_product_tabs,  $description, $info, $review  );
-
-
 
 	// Tabs.
 	$sbsa_settings['tabs'] = array(

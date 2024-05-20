@@ -2,6 +2,8 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs;
 
+
+
 /**
  * The main plugin class.
  *
@@ -36,6 +38,14 @@ class Plugin {
 	 * @var Admin_Controller
 	 */
 	public $admin;
+
+
+	/**
+	 * Frontend interface
+	 *
+	 * @var Admin_Controller
+	 */
+	public $frontend;
 
 	/**
 	 * Product tabs.
@@ -87,6 +97,12 @@ class Plugin {
 		if ( is_admin() ) {
 			$this->admin = new Admin\Admin_Controller( $this );
 			$this->admin->register();
+		}
+
+
+		if ( ! is_admin() ) {
+			$this->frontend = new Frontend\Frontend( $this );
+			$this->frontend->register();
 		}
 
 		// All meta fields  functionality belong to this class.

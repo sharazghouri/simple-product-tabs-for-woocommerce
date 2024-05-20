@@ -94,12 +94,16 @@ final class Util {
 	 *
 	 * @since 1.0.0
 	 */
-	public static function get_option( $key ) {
+	public static function get_option( $key , $section = '' ) {
 		if ( empty( $key ) ) {
 			return;
 		}
 
-		$plugin_options = wp_parse_args( (array) get_option( 'sptb_options' ), array( 'description', 'hide_description', 'info', 'hide_info', 'review', 'hide_review', 'search_by_tabs', 'enable_accordion', 'accordion_shown_size', 'description_priority', 'info_priority', 'review_priority', 'license' ) );
+		if( ! empty( $section ) ) {
+			$key = "settings_section_{$section}_{$key}";
+		}
+
+		$plugin_options =  get_option( 'simple_product_tabs_settings' );
 
 		$value = null;
 
