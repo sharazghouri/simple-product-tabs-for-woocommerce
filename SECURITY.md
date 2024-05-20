@@ -2,6 +2,6 @@
 
 ## Reporting a Vulnerability
 
-Please report security bugs found in the source code for the *WooCommerce Product Tabs* plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/simple-product-tabs). 
+Please report security bugs found in the source code for the *Simple Product Tabs* plugin through the [Patchstack Vulnerability Disclosure Program](https://patchstack.com/database/vdp/simple-product-tabs). 
 
 The Patchstack team will assist you with verification, CVE assignment, and notify the developers of this plugin.

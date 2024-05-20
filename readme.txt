@@ -5,7 +5,7 @@ Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs,
 Requires PHP: 8.1
 Requires at least: 6.0
 Tested up to: 6.4.3
-Stable tag: 1.0.2
+Stable tag: 1.0.3
 License: GNU General Public License v3.0
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://solbox.dev/

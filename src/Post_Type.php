@@ -11,7 +11,7 @@ class Post_Type {
 
 
 
-	const POST_SLUG = 'woo_product_tabs';
+	const POST_SLUG = 'product_tabs_woo';
 	/**
 	 * Register function to hook.
 	 *
@@ -41,7 +41,7 @@ class Post_Type {
 		$labels = array(
 			'name'               => _x( 'Product Tabs', 'post type general name', 'simple-product-tabs' ),
 			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs' ),
-			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-product-tabs' ),
+			'menu_name'          => _x( 'Simple Product Tabs', 'admin menu', 'simple-product-tabs' ),
 			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs' ),
 			'add_new'            => _x( 'Add New', 'add new item', 'simple-product-tabs' ),
 			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs' ),

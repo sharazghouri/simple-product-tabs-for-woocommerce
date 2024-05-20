@@ -49,7 +49,7 @@ class Plugin {
 
 
 	/**
-	 * Constructs and initializes the WooCommerce Product Tabs plugin instance.
+	 * Constructs and initializes the Simple Product Tabs plugin instance.
 	 *
 	 * @param string $file    The main plugin __FILE__ .
 	 * @param string $version The current plugin version.
