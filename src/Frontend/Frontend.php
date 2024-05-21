@@ -107,26 +107,7 @@ class Frontend {
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_files' ] );
 	}
 
-	/**
-	 * Get plugin option.
-	 *
-	 * @since 1.0.0
-	 */
-	public function get_option( $key ) {
-		if ( empty( $key ) ) {
-			return;
-		}
 
-		$plugin_options = wp_parse_args( (array) get_option( 'sptb_options' ), [ 'description', 'hide_description', 'info', 'hide_info', 'review', 'hide_review', 'search_by_tabs', 'enable_accordion', 'disable_content_filter', 'accordion_shown_size', 'description_icon', 'info_icon', 'review_icon', 'description_priority', 'info_priority', 'review_priority' ] );
-
-		$value = null;
-
-		if ( isset( $plugin_options[ $key ] ) ) {
-			$value = $plugin_options[ $key ];
-		}
-
-		return $value;
-	}
 
 	public function custom_woocommerce_product_tabs( $tabs ) {
 		global $product;
@@ -169,9 +150,7 @@ class Frontend {
 				$tabs[ $tab['id'] ]   = $tab_temp;
 			}
 		}
-		$tabs_reorder = Util::get_option( 'reorder_section_5_tabs_order' );
-		$woo_tabs = array( 'description', 'additional_information', 'reviews' );
-		
+		$tabs_reorder = Util::get_option( 'tabs_order' );
 
 		$tabs_reorder = explode(',', $tabs_reorder );
 
@@ -189,13 +168,13 @@ class Frontend {
 		if ( ! empty( $tabs['description']['title'] ) ) {
 
 			//Maybe update the title
-			if ( ! empty( $tab_title = Util::get_option( 'settings_section_3_description_tab_title' ) ) ) {
+			if ( ! empty( $tab_title = Util::get_option( 'description_tab_title' ) ) ) {
 				$tabs['description']['title'] = $tab_title;
 			}
 
 			$des_icon = '';
 				//Maybe Add the icon
-			if ( ! empty( $tab_icon = Util::get_option( 'settings_section_3_desc_tab_icon' ) ) ) {
+			if ( ! empty( $tab_icon = Util::get_option( 'desc_tab_icon' ) ) ) {
 				$des_icon = '<span class="' . $tab_icon . '"></span> ';
 			}
 
@@ -205,12 +184,12 @@ class Frontend {
 
 		if ( ! empty( $tabs['additional_information']['title'] ) ) {
 
-			if ( ! empty(  $tab_title = Util::get_option( 'settings_section_3_information_tab_title' ) ) ) {
+			if ( ! empty(  $tab_title = Util::get_option( 'information_tab_title' ) ) ) {
 				$tabs['additional_information']['title'] = $tab_title;
 			}
 
 			$info_icon = '';
-			if ( ! empty( $tab_icon = Util::get_option( 'settings_section_3_add_info_tab_icon' ) ) ) {
+			if ( ! empty( $tab_icon = Util::get_option( 'add_info_tab_icon' ) ) ) {
 				$info_icon = '<span class="' . $tab_icon . '"></span> ';
 			}
 
@@ -220,12 +199,12 @@ class Frontend {
 
 		if ( ! empty( $tabs['reviews']['title'] ) ) {
 
-			if ( ! empty( $tab_title = Util::get_option( 'settings_section_3_review_tab_title' ) ) ) {
+			if ( ! empty( $tab_title = Util::get_option( 'review_tab_title' ) ) ) {
 				$tabs['reviews']['title'] = $tab_title;
 			}
 
 			$review_icon = '';
-			if ( ! empty( $tab_icon = Util::get_option( 'settings_section_3_review_tab_icon' ) ) ) {
+			if ( ! empty( $tab_icon = Util::get_option( 'review_tab_icon' ) ) ) {
 				$review_icon = '<span class="' . $tab_icon. '"></span>' ;
 			}
 
@@ -236,15 +215,15 @@ class Frontend {
 
 
 		 
-		if (Util::get_option( 'settings_section_3_hide_description')) {
+		if (Util::get_option( 'hide_description' ) ) {
 			unset( $tabs['description'] );
 		}
 
-		if (Util::get_option( 'settings_section_3_hide_information')) {
+		if (Util::get_option( 'hide_information' ) ) {
 			unset( $tabs['additional_information'] );
 		}
 
-		if (Util::get_option( 'settings_section_3_hide_reviews')) {
+		if (Util::get_option( 'hide_reviews' ) ) {
 			unset( $tabs['reviews'] );
 		}
 
@@ -347,7 +326,7 @@ class Frontend {
 	function meta_query_search_join( $join ) {
 		global $wpdb;
 
-		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
+		$search_by_tab = Util::get_option( 'search_by_tabs' );
 		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 			$join .= ' LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
 		}
@@ -356,7 +335,7 @@ class Frontend {
 
 	function meta_query_search_where( $where, \WP_Query $query ) {
 		global $wpdb;
-		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
+		$search_by_tab = Util::get_option( 'search_by_tabs' );
 
 		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 
@@ -458,7 +437,7 @@ class Frontend {
 	function meta_query_search_distinct( $where ) {
 		global $wpdb;
 
-		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
+		$search_by_tab = Util::get_option( 'search_by_tabs' );
 		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 			return 'DISTINCT';
 		}
@@ -527,7 +506,7 @@ class Frontend {
 	 * @since 1.0.0
 	 */
 	public function enable_the_content_filter() {
-		$disable_the_content_filter = Util::get_option( 'page_builder_support' , 4);
+		$disable_the_content_filter = Util::get_option( 'page_builder_support' );
 		
 		$output                     = false;
 

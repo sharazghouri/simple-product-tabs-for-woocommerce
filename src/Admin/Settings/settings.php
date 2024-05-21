@@ -99,60 +99,70 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'          => 'description_tab_title',
+					'name'          => 'description_tab_title',
 					'title'       => 'Description',
 					'type'        => 'text',
 					'placeholder' => 'Description',
 				),
 				array(
 					'id'      => 'hide_description',
+					'name'      => 'hide_description',
 					'title'   => __( 'Hide Description', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
 				),
 				array(
 					'id'          => 'information_tab_title',
+					'name'          => 'information_tab_title',
 					'title'       => 'Additional Information	',
 					'type'        => 'text',
 					'placeholder' => 'Additional Information',
 				),
 				array(
 					'id'      => 'hide_information',
+					'name'      => 'hide_information',
 					'title'   => __( 'Hide Additional Information', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
 				),
 				array(
 					'id'          => 'review_tab_title',
+					'name'          => 'review_tab_title',
 					'title'       => __( 'Review', 'simple-woo-tabs' ),
 					'type'        => 'text',
 					'placeholder' => 'Review',
 				),
 				array(
 					'id'      => 'hide_reviews',
+					'name'      => 'hide_reviews',
 					'title'   => __( 'Hide Reviews', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
 				),
 				array(
 					'id'      => 'desc_tab_icon',
+					'name'      => 'desc_tab_icon',
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
 				),
 				array(
 					'id'      => 'add_info_tab_icon',
+					'name'    => 'add_info_tab_icon',
 					'title'   => __( 'Additional information Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
 				),
 				array(
 					'id'      => 'desc_tab_icon',
+					'name'      => 'desc_tab_icon',
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
 				),
 				array(
 					'id'      => 'review_tab_icon',
+					'name'      => 'review_tab_icon',
 					'title'   => __( 'Reviews Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
@@ -167,12 +177,14 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'       => 'search_by_tabs',
+					'name'       => 'search_by_tabs',
 					'title'    => 'Search By Tabs Content',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Enhance the product search by adding product tabs title and content.', 'simple-woo-tabs' ),
 				),
 				array(
 					'id'       => 'page_builder_support',
+					'name'       => 'page_builder_support',
 					'title'    => 'Enable Page Builder Support',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Disable <pre style="display:inline-block;margin:0">the_content</pre> filter if you are having issue in tab content while using page builders.', 'simple-woo-tabs' ),
@@ -187,6 +199,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'       => 'tabs_order',
+					'name'       => 'tabs_order',
 					'title'    => __( 'Reorder', 'simple-woo-tabs' ),
 					'type'     => 'sortable_list',
 					'choices'  => $simple_product_tabs
