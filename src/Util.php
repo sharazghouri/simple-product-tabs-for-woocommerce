@@ -8,6 +8,11 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
  */
 final class Util {
 
+
+
+	const PRO_LINK = 'https://solbox.dev/plugins/sticky-cart/';
+
+
 	/**
 	 * Checks the tab against the old version to see if it's global or not.
 	 *

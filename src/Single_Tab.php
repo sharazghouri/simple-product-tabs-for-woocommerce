@@ -83,14 +83,14 @@ class Single_Tab {
 				</div>
 		<div class="swt-component-search-field disabled">
 						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
+			<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
 					<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 			</a>
 		</div>
 		
 		<div class="swt-component-search-field disabled">
 						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings">
+			<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
 				<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 			</a>
 		</div>
@@ -311,7 +311,7 @@ class Single_Tab {
 		?>
 				<div class="icon-wrap">
 				<a href="#" class="tab_icon disabled button button-secondary"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
-				<a href="https://solution-box.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=settingsinline&amp;utm_content=swtsettings" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
+				<a href="<?php echo esc_url( Util::PRO_LINK ) ;?>" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
 				</div>
 				<?php
 	}

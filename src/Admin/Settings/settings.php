@@ -6,6 +6,8 @@
  * @package sbsa
  */
 use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
+use Solution_Box\Plugin\Simple_Product_Tabs\Util;
+
 
 /**
  * Define your settings
@@ -29,6 +31,14 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Admin\Admin_Controller;
  * @param array $sbsa_settings settings.
  */
 function sptb_tabbed_settings( $sbsa_settings ) {
+
+
+	$pro_link = array(
+		'url'      => esc_url( Util::PRO_LINK ),
+		'type'     => 'pro-link', // Can be 'tooltip', 'pro-link'or 'link'. Default is 'tooltip'.
+		'text'     => 'Pro', // Default is 'Learn More'.
+		'external' => true, // Default is `true`.
+	);
 
 	$plugin_factory = '\Solution_Box\Plugin\Simple_Product_Tabs\Plugin_Factory';
 	$simple_product_tabs = array();
@@ -110,6 +120,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Hide Description', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'          => 'information_tab_title',
@@ -124,6 +135,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Hide Additional Information', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'          => 'review_tab_title',
@@ -138,6 +150,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Hide Reviews', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'      => 'desc_tab_icon',
@@ -145,6 +158,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'      => 'add_info_tab_icon',
@@ -152,6 +166,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Additional information Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'      => 'desc_tab_icon',
@@ -159,6 +174,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 				array(
 					'id'      => 'review_tab_icon',
@@ -166,6 +182,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'   => __( 'Reviews Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
+					'link'    => $pro_link,
 				),
 			),
 		),
@@ -181,6 +198,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'    => 'Search By Tabs Content',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Enhance the product search by adding product tabs title and content.', 'simple-woo-tabs' ),
+					'link'    => $pro_link,
 				),
 				array(
 					'id'       => 'page_builder_support',
@@ -188,6 +206,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'title'    => 'Enable Page Builder Support',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Disable <pre style="display:inline-block;margin:0">the_content</pre> filter if you are having issue in tab content while using page builders.', 'simple-woo-tabs' ),
+					'link'    => $pro_link,
 				),
 			),
 		),
@@ -202,7 +221,8 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'name'       => 'tabs_order',
 					'title'    => __( 'Reorder', 'simple-woo-tabs' ),
 					'type'     => 'sortable_list',
-					'choices'  => $simple_product_tabs
+					'choices'  => $simple_product_tabs,
+					'link'    => $pro_link,
 				),
 			),
 		),
