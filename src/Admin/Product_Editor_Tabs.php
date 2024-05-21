@@ -90,13 +90,15 @@ class Product_Editor_Tabs {
 		$posted_tab_data = array_filter(
 			$_POST,
 			function ( $key ) {
-				return '_sptb_field_' === substr( $key, 0, 11 );
+				return '_sptb_field_' === substr( $key, 0, 12 );
 			},
 			ARRAY_FILTER_USE_KEY
 		);
 
+	
 		foreach ( $posted_tab_data as $post_key => $tab_content ) {
-			$tab_slug       = substr( $post_key, 11 );
+
+			$tab_slug       = substr( $post_key, 12 );
 			$override_value = filter_input( INPUT_POST, '_sptb_override_' . $tab_slug, FILTER_SANITIZE_SPECIAL_CHARS );
 
 			if ( 'yes' !== $override_value ) {

@@ -186,8 +186,7 @@ class Single_Tab {
 			$display_globally = 'no';
 		}
 
-			// show each tab on the product screen by default
-			update_post_meta( $post_id, '_sptb_option_use_default_for_all', 'no' ); // TODO : Check the  we using this value.
+
 			update_post_meta( $post_id, '_sptb_display_tab_globally', $display_globally );
 
 	}

@@ -104,7 +104,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'placeholder' => 'Description',
 				),
 				array(
-					'id'      => 'display_description',
+					'id'      => 'hide_description',
 					'title'   => __( 'Hide Description', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
@@ -116,7 +116,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'placeholder' => 'Additional Information',
 				),
 				array(
-					'id'      => 'display_information',
+					'id'      => 'hide_information',
 					'title'   => __( 'Hide Additional Information', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
@@ -128,8 +128,8 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'placeholder' => 'Review',
 				),
 				array(
-					'id'      => 'Description Tab Icon',
-					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
+					'id'      => 'hide_reviews',
+					'title'   => __( 'Hide Reviews', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
 				),
@@ -153,7 +153,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'      => 'review_tab_icon',
-					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
+					'title'   => __( 'Reviews Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
 				),

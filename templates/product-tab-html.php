@@ -19,14 +19,14 @@ defined( 'ABSPATH' ) || exit;
 				$tab_lang = wpml_get_language_information( '', $tab->ID );
 			}
 			$show = true;
-			if ( 'yes' === $tab->_swt_display_tab_globally ) {
+			if ( 'yes' === $tab->_sptb_display_tab_globally ) {
 				$show = true;
 			} else {
-				if ( empty( $tab->_swt_conditions_category ) ) {
+				if ( empty( $tab->_sptb_conditions_category ) ) {
 					$show = true;
 				} else {
 
-					if ( ! empty( $tab->_swt_conditions_category ) && is_array( $tab->_swt_conditions_category ) && array_intersect( $cat_list, Util::get_all_categories( $tab->_swt_conditions_category ) ) ) {
+					if ( ! empty( $tab->_sptb_conditions_category ) && is_array( $tab->_sptb_conditions_category ) && array_intersect( $cat_list, Util::get_all_categories( $tab->_sptb_conditions_category ) ) ) {
 						$show = true;
 					} else {
 						$show = false;
@@ -40,15 +40,15 @@ defined( 'ABSPATH' ) || exit;
 				unset( $tab );
 			} else {
 
-				echo '<h4 class="swt_accordion">' . esc_html( $tab->post_title ) . '</h4>';
-				$tab_value = get_post_meta( $post_id, '_swt_field_' . $tab->post_name, true );
+				echo '<h4 class="sptb_accordion">' . esc_html( $tab->post_title ) . '</h4>';
+				$tab_value = get_post_meta( $post_id, '_sptb_field_' . $tab->post_name, true );
 
 				if ( empty( $tab_value ) ) {
 					$tab_value = $tab->post_content;
 				}
 
 				$settings = array(
-					'textarea_name' => '_swt_field_' . $tab->post_name,
+					'textarea_name' => '_sptb_field_' . $tab->post_name,
 					'editor_height' => '150px',
 					'editor_class'  => 'test-class',
 				);
@@ -59,15 +59,15 @@ defined( 'ABSPATH' ) || exit;
 				// Checking this option would enable the content
 				$args = array(
 					'label'         => __( 'Override the default tab content for this product', 'simple-product-tabs' ),
-					'id'            => '_swt_override_' . $tab->post_name,
-					'name'          => '_swt_override_' . $tab->post_name,
+					'id'            => '_sptb_override_' . $tab->post_name,
+					'name'          => '_sptb_override_' . $tab->post_name,
 					'class'         => 'override-tab-content',
 					'wrapper_class' => 'override-tab-content-label',
 					'value'         => $override_value,
 				);
 				woocommerce_wp_checkbox( $args );
 
-				wp_editor( $tab_value, '_swt_field_' . esc_attr( $tab->post_name ), $settings );
+				wp_editor( $tab_value, '_sptb_field_' . esc_attr( $tab->post_name ), $settings );
 				echo '<div class="edit-tab-product edit-tab-footer">';
 				echo '<a class="edit-global-tab" target="_blank" href="' . get_edit_post_link( $tab->ID ) . '"><span class="dashicons dashicons-edit"></span> ' . __( 'Manage global tab', 'simple-product-tabs' ) . '</a>';
 				echo '</div></div><br />';
@@ -79,7 +79,7 @@ defined( 'ABSPATH' ) || exit;
 	?>
 
 	<input type="hidden" name="count" value="0" id="count">
-	<?php wp_nonce_field( 'swt_product_data', '_swt_product_data_nonce' ); ?>
+	<?php wp_nonce_field( 'sptb_product_data', '_sptb_product_data_nonce' ); ?>
 	<div class="tabs-layout hidden">
 		<?php
 		woocommerce_wp_text_input(

@@ -80,11 +80,6 @@ final class Util {
 
 		$override_meta = get_post_meta( $product_id, '_sptb_override_' . $tab_key, true );
 
-		// The _sptb_override key doesn't exist in the older version of the plugin and the best way
-		// to check it, is to check for the _sptb_field_ meta for the product
-		if ( empty( $override_meta ) && get_post_meta( $product_id, '_sptb_field_' . $tab_key, true ) ) {
-			$override_meta = 'yes';
-		}
 
 		return 'yes' === $override_meta;
 	}
@@ -112,5 +107,29 @@ final class Util {
 		}
 
 		return $value;
+	}
+
+
+	public static function  tabs_frontend_callback( $key, $tab ) {
+
+		global $product;
+
+		$tab_post = get_page_by_path( $key, OBJECT, Post_Type::POST_SLUG );
+		if ( empty( $tab_post ) ) {
+			return;
+		}
+
+		$override_content = Util::is_tab_overridden( $key, $product->get_id() );
+
+		if ( ! $override_content ) {
+			// Display default tab content.
+			echo $this->get_filter_content( $tab_post->post_content );
+		} else {
+			$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
+			echo $this->get_filter_content( $tab_value );
+		}
+
+		return;
+
 	}
 }

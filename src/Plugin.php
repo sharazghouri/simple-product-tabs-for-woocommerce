@@ -90,28 +90,31 @@ class Plugin {
 	 */
 	public function init() {
 		// $this->setup_plugin();
-		$this->post_type = new Post_Type();
-		$this->post_type->register();
+		
 
 		// Admin only services.
 		if ( is_admin() ) {
+			$this->post_type = new Post_Type();
+			$this->post_type->register();
+
 			$this->admin = new Admin\Admin_Controller( $this );
 			$this->admin->register();
+
+			// All meta fields  functionality belong to this class.
+			$this->single_tab = new Single_Tab();
+			$this->single_tab->register();
 		}
 
 
 		if ( ! is_admin() ) {
 			$this->frontend = new Frontend\Frontend( $this );
 			$this->frontend->register();
+
 		}
 
-		// All meta fields  functionality belong to this class.
-		 $this->single_tab = new Single_Tab();
-		 $this->single_tab->register();
+	
 
-		 // All frontend stuff belongs to this class.
-		$this->product_tabs = new Product_Tabs();
-		$this->product_tabs->register();
+
 	}
 
 	/**

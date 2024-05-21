@@ -82,7 +82,6 @@ class Frontend {
 			add_filter( 'sptb_filter_tab_content', [ $this, 'product_tabs_filter_content' ], 10, 1 );
 		}
 
-	
 	}
 
 	/**
@@ -144,7 +143,6 @@ class Frontend {
 				$sptb_tabs[ $key ]['title']               = esc_attr( $prd->post_title );
 				$sptb_tabs[ $key ]['priority']            = esc_attr( $prd->menu_order );
 				$sptb_tabs[ $key ]['conditions_category'] = get_post_meta( $prd->ID, '_sptb_conditions_category', true );
-				$sptb_tabs[ $key ]['use_default_for_all'] = esc_attr( get_post_meta( $prd->ID, '_sptb_option_use_default_for_all', true ) );
 				$sptb_tabs[ $key ]['conditions_tag']      = wp_get_post_terms( $prd->ID, 'product_tag', [ 'fields' => 'ids' ] );
 				$sptb_tabs[ $key ]['conditions_product']  = get_post_meta( $prd->ID, '_sptb_conditions_product', true );
 				$sptb_tabs[ $key ]['tab_icon']            = esc_attr( get_post_meta( $prd->ID, '_sptb_tab_icon', true ) );
@@ -238,19 +236,19 @@ class Frontend {
 
 
 		 
-		// if ( ! empty( $sptb_options['hide_description'] ) && $sptb_options['hide_description'] == 1 ) {
-		// 	unset( $tabs['description'] );
-		// }
+		if (Util::get_option( 'settings_section_3_hide_description')) {
+			unset( $tabs['description'] );
+		}
 
-		// if ( ! empty( $sptb_options['hide_info'] ) && $sptb_options['hide_info'] == 1 ) {
-		// 	unset( $tabs['additional_information'] );
-		// }
-		// if ( ! empty( $sptb_options['hide_review'] ) && $sptb_options['hide_review'] == 1 ) {
-		// 	unset( $tabs['reviews'] );
-		// }
+		if (Util::get_option( 'settings_section_3_hide_information')) {
+			unset( $tabs['additional_information'] );
+		}
 
-		var_dump( $tabs );
-// die;
+		if (Util::get_option( 'settings_section_3_hide_reviews')) {
+			unset( $tabs['reviews'] );
+		}
+
+
 
 		return $tabs;
 
@@ -274,7 +272,7 @@ class Frontend {
 					}
 				}
 
-				$tab_post = get_page_by_path( $key, OBJECT, WOOCOMMERCE_PRODUCT_TABS_POST_TYPE_TAB );
+				$tab_post = get_page_by_path( $key, OBJECT, Post_Type::POST_SLUG );
 
 				if ( ! empty( $tab_post ) ) {
 
@@ -282,7 +280,7 @@ class Frontend {
 
 					$content_to_show = $tab_default_value;
 
-					if ( 'yes' != $tab['use_default_for_all'] ) {
+					if ( Util::is_tab_overridden( $tab_post->name , $product->get_id() ) ) {
 						$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
 						if ( ! empty( $tab_value ) ) {
 							$content_to_show = $tab_value;
@@ -327,25 +325,21 @@ class Frontend {
 
 		global $product;
 
-		$tab_post = get_page_by_path( $key, OBJECT, WOOCOMMERCE_PRODUCT_TABS_POST_TYPE_TAB );
+		$tab_post = get_page_by_path( $key, OBJECT, Post_Type::POST_SLUG );
 		if ( empty( $tab_post ) ) {
 			return;
 		}
-		$flag_sptb_option_use_default_for_all = get_post_meta( $tab_post->ID, '_sptb_option_use_default_for_all', true );
-		if ( 'yes' == $flag_sptb_option_use_default_for_all ) {
-			// Default content for all
+
+		$override_content = Util::is_tab_overridden( $key, $product->get_id() );
+
+		if ( ! $override_content ) {
+			// Display default tab content.
 			echo $this->get_filter_content( $tab_post->post_content );
 		} else {
-			// no default
 			$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
-			if ( ! empty( $tab_value ) ) {
-				// Value is set for Product
-				echo $this->get_filter_content( $tab_value );
-			} else {
-				// Value is empty; show default
-				echo $this->get_filter_content( $tab_post->post_content );
-			}
+			echo $this->get_filter_content( $tab_value );
 		}
+
 		return;
 
 	}
@@ -353,7 +347,7 @@ class Frontend {
 	function meta_query_search_join( $join ) {
 		global $wpdb;
 
-		$search_by_tab = $this->get_option( 'search_by_tabs' );
+		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
 		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 			$join .= ' LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
 		}
@@ -362,13 +356,13 @@ class Frontend {
 
 	function meta_query_search_where( $where, \WP_Query $query ) {
 		global $wpdb;
-		$search_by_tab = $this->get_option( 'search_by_tabs' );
+		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
 
 		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 
 			$tabs_args = [
 				's'              => sanitize_text_field( $_GET['s'] ),
-				'post_type'      => WOOCOMMERCE_PRODUCT_TABS_POST_TYPE_TAB,
+				'post_type'      => Post_Type::POST_SLUG,
 				'post_status'    => 'publish',
 				'posts_per_page' => -1,
 			];
@@ -387,10 +381,8 @@ class Frontend {
 						'fields'         => 'ids',
 					];
 
-					$use_default_for_all = get_post_meta( $tab_id, '_sptb_option_use_default_for_all', true );
 
 					// check meta key tab in product
-					if ( ! empty( $use_default_for_all ) && $use_default_for_all == 'no' ) {
 						$product_args['meta_query'] = [
 							'relation' => 'AND',
 							[
@@ -398,7 +390,7 @@ class Frontend {
 								'compare' => 'NOT EXISTS'
 							]
 						];
-					}
+
 
 					$product_ids = get_posts( $product_args );
 
@@ -466,7 +458,7 @@ class Frontend {
 	function meta_query_search_distinct( $where ) {
 		global $wpdb;
 
-		$search_by_tab = $this->get_option( 'search_by_tabs' );
+		$search_by_tab = Util::get_option( 'settings_section_4_search_by_tabs' );
 		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
 			return 'DISTINCT';
 		}
@@ -477,18 +469,9 @@ class Frontend {
 	function enqueue_files() {
 
 		if ( is_singular( 'product' ) ) {
-			wp_enqueue_style( $this->plugin_name . '-fontawesome', WOOCOMMERCE_PRODUCT_TABS_URL . '/assets/css/font-awesome/all.min.css', [], $this->version, 'all' );
-			wp_enqueue_style( $this->plugin_name . '-tab', WOOCOMMERCE_PRODUCT_TABS_URL . '/assets/css/public.css', [], $this->version, 'all' );
-			wp_enqueue_script( $this->plugin_name . '-custom', WOOCOMMERCE_PRODUCT_TABS_URL . '/assets/js/public.js', [ 'jquery' ], $this->version, true );
+			wp_enqueue_style( $this->plugin_name . '-fontawesome', plugin_dir_url( __DIR__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/assets/vendor/fontawesome/css/all.min.css' , [], 	'6.5.2', 'all' );
 
-			wp_localize_script(
-				$this->plugin_name . '-custom',
-				'sptb_LOCALIZED',
-				[
-					'sptb_acc_enable' => $this->get_option( 'enable_accordion' ),
-					'sptb_acc_size'   => $this->get_option( 'accordion_shown_size' )
-				]
-			);
+			wp_enqueue_style( $this->plugin_name . '-public', plugin_dir_url( __DIR__ ) . '../assets/css/public.css' , [  $this->plugin_name . '-fontawesome' ], $this->version, 'all' );
 		}
 
 	}
@@ -496,7 +479,7 @@ class Frontend {
 	/**
 	 * Filter the tab content.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.0
 	 *
 	 * @param string $content Content for the current tab.
 	 * @return string Tab content.
@@ -511,8 +494,8 @@ class Frontend {
 		$content = function_exists( 'wp_filter_content_tags' ) ? wp_filter_content_tags( $content ) : $content;
 		$content = function_exists( 'do_shortcode' ) ? do_shortcode( $content ) : $content;
 
-		if ( class_exists( 'WP_Embed' ) ) {
-			$embed   = new WP_Embed();
+		if ( class_exists( '\WP_Embed' ) ) {
+			$embed   = new \WP_Embed();
 			$content = method_exists( $embed, 'autoembed' ) ? $embed->autoembed( $content ) : $content;
 		}
 
@@ -522,7 +505,7 @@ class Frontend {
 	/**
 	 * Get filter for the content.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.0
 	 *
 	 * @param string $content Content to apply filter.
 	 * @return string Tab content.
@@ -541,7 +524,7 @@ class Frontend {
 	/**
 	 * Check to enable custom filter for the content.
 	 *
-	 * @since 1.0.7
+	 * @since 1.0.0
 	 */
 	public function enable_the_content_filter() {
 		$disable_the_content_filter = Util::get_option( 'page_builder_support' , 4);
@@ -558,8 +541,5 @@ class Frontend {
 		return $output;
 	}
 
-	function update_tab_data( $id, $tab, $data ) {
-
-	}
 
 }
