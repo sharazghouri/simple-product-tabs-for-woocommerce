@@ -64,6 +64,7 @@ class Plugin {
 	 */
 	public function __construct( $file = null, $version = '1.0' ) {
 
+
 		$this->data = array(
 			'version'        => $version,
 			'file'           => $file,

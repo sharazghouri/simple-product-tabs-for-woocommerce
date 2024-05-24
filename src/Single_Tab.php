@@ -15,6 +15,7 @@ class Single_Tab {
 			add_action( 'save_post', array( $this, 'save_visibility_condition' ) );
 			add_action( 'save_post', array( $this, 'save_category_selector' ) );
 			add_action( 'save_post', array( $this, 'save_tab_priority' ) );
+			add_action( 'save_post', array( $this, 'save_tab_icon' ) );
 	}
 
 		/**
@@ -81,19 +82,23 @@ class Single_Tab {
 								</ul>
 						</div>
 				</div>
-		<div class="swt-component-search-field disabled">
-						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
-					<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
-			</a>
-		</div>
-		
-		<div class="swt-component-search-field disabled">
-						<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
-			<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
-				<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
-			</a>
-		</div>
+
+				<?php if( ! Util::is_pro_active() ) { ?>
+					<div class="swt-component-search-field disabled">
+									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
+						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
+								<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
+						</a>
+					</div>
+					<div class="swt-component-search-field disabled">
+									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
+						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
+							<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
+						</a>
+					</div>
+				<?php } else {
+					do_action( 'sptb_inclusion_categories_options', $post_id, $times_svg_icon  );
+				} ?>
 				<?php
 	}
 
@@ -154,6 +159,32 @@ class Single_Tab {
 
 	}
 
+	/**
+	 * Check meta box nonce
+	 *
+	 * @return boolean
+	 */
+	public function check_meta_box_nonce(){
+
+		// Check if our nonce is set.
+		if ( ! isset( $_POST['sptb_meta_box_tab_nonce'] ) ) {
+				return false;
+		}
+					// Verify that the nonce is valid.
+		if ( ! wp_verify_nonce( $_POST['sptb_meta_box_tab_nonce'], 'sptb_tab_meta_box' ) ) {
+				return false;
+		}
+					// If this is an autosave, our form has not been submitted, so we don't want to do anything.
+		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
+				return false;
+		}
+
+		if ( Post_Type::POST_SLUG != $_POST['post_type'] ) {
+				return false;
+		}
+		return true;
+	}
+
 		/**
 		 *  Save product tabs settings.
 		 *
@@ -161,25 +192,11 @@ class Single_Tab {
 		 */
 	public function save_visibility_condition( $post_id ) {
 
-			// Check if our nonce is set.
-		if ( ! isset( $_POST['sptb_meta_box_tab_nonce'] ) ) {
-				return;
+		if( $this->check_meta_box_nonce() ){
+			return false;
 		}
-					// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['sptb_meta_box_tab_nonce'], 'sptb_tab_meta_box' ) ) {
-				return;
-		}
-					// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-				return;
-		}
-
-		if ( Post_Type::POST_SLUG != $_POST['post_type'] ) {
-				return;
-		}
-
-					// Show tabs on all products
-			$display_globally = '';
+		// Show tabs on all products
+		$display_globally = '';
 		if ( isset( $_POST['_sptb_display_tab_globally'] ) ) {
 				$display_globally = $_POST['_sptb_display_tab_globally'];
 		} else {
@@ -191,21 +208,33 @@ class Single_Tab {
 
 	}
 
-	public function save_tab_priority( $post_id ) {
-			// Check if our nonce is set.
-		if ( ! isset( $_POST['sptb_meta_box_tab_nonce'] ) ) {
-				return;
-		}
-					// Verify that the nonce is valid.
-		if ( ! wp_verify_nonce( $_POST['sptb_meta_box_tab_nonce'], 'sptb_tab_meta_box' ) ) {
-				return;
-		}
-					// If this is an autosave, our form has not been submitted, so we don't want to do anything.
-		if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE ) {
-				return;
-		}
+	/**
+	 *  Save product tabs icon.
+	 *
+	 * @since 1.0.0
+	 */
+public function save_tab_icon( $post_id ) {
 
-		if ( Post_Type::POST_SLUG != $_POST['post_type'] ) {
+
+
+	if ( $this->check_meta_box_nonce() ) {
+			return;
+	}
+
+	$tab_icon = '';
+	if ( isset( $_POST['_sptb_tab_icon'] ) ) {
+		$tab_icon = sanitize_text_field( wp_unslash( $_POST['_sptb_tab_icon'] ?? '' ) );
+			
+	}
+
+
+	update_post_meta( $post_id, '_sptb_tab_icon', $tab_icon );
+
+}
+
+	public function save_tab_priority( $post_id ) {
+
+		if ( $this->check_meta_box_nonce() ) {
 				return;
 		}
 			// priority
@@ -279,11 +308,11 @@ class Single_Tab {
 														<fieldset>
 																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-product-tabs' ); ?></span></legend>
 																<label>
-																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" checked="checked" value="yes" <?php checked( 'yes', $is_tab_global, true ); ?>>
+																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" checked="checked" value="yes" <?php checked( true, $is_tab_global, true ); ?>>
 																			<?php _e( 'Display globally on all products', 'simple-product-tabs' ); ?>
 																</label><br>
 																<label>
-																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" value="no" <?php checked( 'no', $is_tab_global, true ); ?>>
+																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" value="no" <?php checked( false, $is_tab_global, true ); ?>>
 																			<?php _e( 'Show on specific categories', 'simple-product-tabs' ); ?>
 																</label><br>
 														</fieldset>
@@ -292,7 +321,7 @@ class Single_Tab {
 								</tbody>
 						</table>
 
-						<table id="inclusions-list" class="form-table <?php echo ( $is_tab_global === 'no' ) ? '' : 'hide-section'; ?> ">
+						<table id="inclusions-list" class="form-table <?php echo (! $is_tab_global  ) ? '' : 'hide-section'; ?> ">
 								<tbody>
 										<tr>
 												<th><?php _e( 'Inclusions', 'simple-product-tabs' ); ?></th>
@@ -307,11 +336,26 @@ class Single_Tab {
 				<?php
 	}
 
-	public function sptb_icon_section() {
-		?>
+	public function sptb_icon_section( $post ) {
+			
+		?>	
 				<div class="icon-wrap">
-				<a href="#" class="tab_icon disabled button button-secondary"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
+				<a href="#" class="tab_icon  button button-secondary  sbsa-browse-icon <?php echo !Util::is_pro_active() ? 'disabled': ''; ?>" data-model="sbsa-modal-icon-product-tab-screen"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
+				<input type="text" name="_sptb_tab_icon" id="sbsa-browse-icon" value="" class="regular-text hidden sbsa-icon-input ">
+				<?php  
+
+				$icon_output = '';
+				if( $icon_value = get_post_meta( $post->ID, '_sptb_tab_icon', true ) ) {
+					$icon_output = sprintf('<i class="%s"></i><a href="#" class="sbsa-icon-remove">Remove</a>', esc_attr( $icon_value  ), __( 'Remove', 'simple-product-tabs-pro' ) );
+				}
+
+				echo sprintf('<div class="sbsa-icon-output">%s</div>', $icon_output );
+
+				$args['id' ] = 'product-tab-screen';
+				include_once plugin_dir_path( __FILE__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/includes/icons.php'; ?>
+				<?php if( ! Util::is_pro_active() ){ ?>
 				<a href="<?php echo esc_url( Util::PRO_LINK ) ;?>" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
+				<?php } ?>
 				</div>
 				<?php
 	}

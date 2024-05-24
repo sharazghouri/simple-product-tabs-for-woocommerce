@@ -22,16 +22,8 @@ final class Util {
 	 */
 	public static function is_tab_global( $tab_id ) {
 
-		// In the older versions of the plugin, the _sptb_display_tab_globally meta doesn't exist
-		if ( ! metadata_exists( 'post', $tab_id, '_sptb_display_tab_globally' ) ) {
-			if ( get_post_meta( $tab_id, '_sptb_conditions_category', true ) ) { // Check it the category selected the go with category.
-				return 'no';
-			} else {
-				return 'yes';
-			}
-		} else {
-			return get_post_meta( $tab_id, '_sptb_display_tab_globally', true );
-		}
+			return  'yes' == get_post_meta( $tab_id, '_sptb_display_tab_globally', true );
+
 	}
 
 	/**
@@ -136,5 +128,17 @@ final class Util {
 
 		return;
 
+	}
+
+
+	/**
+	 * Whether the pro plugin is active
+	 *
+	 * @return boolean
+	 */
+	public static function is_pro_active(){
+
+	
+		return class_exists( '\Solution_Box\Plugin\Simple_Product_Tabs_Pro\Plugin_Pro' );
 	}
 }

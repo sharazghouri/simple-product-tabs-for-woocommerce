@@ -96,14 +96,7 @@ class Frontend {
 		add_filter( 'woocommerce_product_tabs', [ $this, 'custom_woocommerce_product_tabs' ], 60 );
 
 
-		add_filter( 'sptb_filter_product_tabs', [ $this, 'tab_status_check' ] );
-
 		// Public Search by meta query
-		add_filter( 'posts_join', [ $this, 'meta_query_search_join' ] );
-		add_filter( 'posts_where', [ $this, 'meta_query_search_where' ], 10, 2 );
-		add_filter( 'posts_distinct', [ $this, 'meta_query_search_distinct' ] );
-		add_filter( 'posts_clauses', [ $this, 'meta_query_search_where' ], 11, 2 );
-
 		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_files' ] );
 	}
 
@@ -112,8 +105,6 @@ class Frontend {
 	public function custom_woocommerce_product_tabs( $tabs ) {
 		global $product;
 
-
-		$check_product_review_count = $product->get_review_count();
 
 		$sptb_tabs = [];
 		if ( ! empty( $this->product_tabs_list ) ) {
@@ -124,15 +115,13 @@ class Frontend {
 				$sptb_tabs[ $key ]['title']               = esc_attr( $prd->post_title );
 				$sptb_tabs[ $key ]['priority']            = esc_attr( $prd->menu_order );
 				$sptb_tabs[ $key ]['conditions_category'] = get_post_meta( $prd->ID, '_sptb_conditions_category', true );
-				$sptb_tabs[ $key ]['conditions_tag']      = wp_get_post_terms( $prd->ID, 'product_tag', [ 'fields' => 'ids' ] );
-				$sptb_tabs[ $key ]['conditions_product']  = get_post_meta( $prd->ID, '_sptb_conditions_product', true );
-				$sptb_tabs[ $key ]['tab_icon']            = esc_attr( get_post_meta( $prd->ID, '_sptb_tab_icon', true ) );
+				$sptb_tabs[ $key ]['display_globally']    = esc_attr( Util::is_tab_global( $prd->ID ) );
+				$sptb_tabs[ $key ] = apply_filters( 'sptb_filter_product_tab', $sptb_tabs[ $key ] );
 			}
 		}
 
 
-
-		$sptb_tabs = apply_filters( 'sptb_filter_product_tabs', $sptb_tabs );
+		$sptb_tabs = $this->tab_status_check( $sptb_tabs );
 
 		if ( ! empty( $sptb_tabs ) ) {
 
@@ -270,28 +259,26 @@ class Frontend {
 						unset( $tabs[ $tab_key ] );
 					}
 
-					// check category condition
-					$cat_list = wp_get_post_terms( $product->get_id(), 'product_cat', [ 'fields' => 'ids' ] );
-					$tag_list = wp_get_post_terms( $product->get_id(), 'product_tag', [ 'fields' => 'ids' ] );
-					$show     = true;
+					
 
-					if ( empty( $tab['conditions_category'] ) && empty( $tab['conditions_tag'] ) && empty( $tab['conditions_product'] ) ) {
-						$show = true;
-					} else {
+					if ( ! $tab[ 'display_globally' ] ) {
+						
+						// check category condition
+						$cat_list = wp_get_post_terms( $product->get_id(), 'product_cat', [ 'fields' => 'ids' ] );
 
-						if ( ! empty( $tab['conditions_category'] ) && is_array( $tab['conditions_category'] ) && array_intersect( $cat_list, $tab['conditions_category'] ) ) {
+						$show = false;
+
+						// It means the tab has to show globally. 
+						if ( ! empty( $tab['conditions_category'] ) && is_array( $tab['conditions_category'] ) &&  array_intersect( $cat_list, $tab['conditions_category'] ) ) {
 							$show = true;
-						} elseif ( ! empty( $tab['conditions_tag'] ) && is_array( $tab['conditions_tag'] ) && array_intersect( $tag_list, $tab['conditions_tag'] ) ) {
-							$show = true;
-						} elseif ( ! empty( $tab['conditions_product'] ) && is_array( $tab['conditions_product'] ) && in_array( $product->get_id(), $tab['conditions_product'] ) ) {
-							$show = true;
-						} else {
-							$show = false;
 						}
-					}
+						$show = apply_filters( 'sptb_visibility_check', $show , $tab ) ;
 
-					if ( $show == false ) {
-						unset( $tabs[ $tab_key ] );
+						if( ! $show ) {
+							
+							unset( $tabs[ $tab_key ] );
+						}
+						
 					}
 				}
 			} // end foreach
@@ -323,127 +310,6 @@ class Frontend {
 
 	}
 
-	function meta_query_search_join( $join ) {
-		global $wpdb;
-
-		$search_by_tab = Util::get_option( 'search_by_tabs' );
-		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
-			$join .= ' LEFT JOIN ' . $wpdb->postmeta . ' ON ' . $wpdb->posts . '.ID = ' . $wpdb->postmeta . '.post_id ';
-		}
-		return $join;
-	}
-
-	function meta_query_search_where( $where, \WP_Query $query ) {
-		global $wpdb;
-		$search_by_tab = Util::get_option( 'search_by_tabs' );
-
-		if ( ! is_admin() && $query->is_main_query() && $query->is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
-
-			$tabs_args = [
-				's'              => sanitize_text_field( $_GET['s'] ),
-				'post_type'      => Post_Type::POST_SLUG,
-				'post_status'    => 'publish',
-				'posts_per_page' => -1,
-			];
-
-			$tabs = get_posts( $tabs_args );
-
-			$selected_p_ids = [];
-			if ( ! empty( $tabs ) ) {
-				foreach ( $tabs as $tab ) {
-					$tab_id = $tab->ID;
-
-					$product_args = [
-						'post_type'      => 'product',
-						'post_status'    => 'publish',
-						'posts_per_page' => -1,
-						'fields'         => 'ids',
-					];
-
-
-					// check meta key tab in product
-						$product_args['meta_query'] = [
-							'relation' => 'AND',
-							[
-								'key'     => '_sptb_field_' . $tab->post_name,
-								'compare' => 'NOT EXISTS'
-							]
-						];
-
-
-					$product_ids = get_posts( $product_args );
-
-					$terms       = get_post_meta( $tab_id, '_sptb_conditions_category', true );
-					$tags        = wp_get_post_terms( $tab_id, 'product_tag', [ 'fields' => 'ids' ] );
-					$tab_product = get_post_meta( $tab_id, '_sptb_conditions_product', true );
-
-					if ( ! empty( $terms ) || ! empty( $tags ) || ! empty( $tab_product ) ) {
-
-						// check tabs product
-						if ( ! empty( $tab_product ) ) {
-							$selected_p_ids = array_merge( $selected_p_ids, $tab_product );
-						}
-
-						if ( ! empty( $terms ) || ! empty( $tags ) ) {
-							$tax_query = [ 'relation' => 'OR' ];
-
-							// check tabs terms
-							if ( ! empty( $terms ) ) {
-								$tax_query[] = [
-									'taxonomy' => 'product_cat',
-									'field'    => 'term_id',
-									'terms'    => $terms,
-								];
-							}
-
-							// check tabs tag
-							if ( ! empty( $tags ) ) {
-								$tax_query[] = [
-									'taxonomy' => 'product_tag',
-									'field'    => 'term_id',
-									'terms'    => $tags,
-								];
-							}
-
-							$product_args['tax_query'] = $tax_query;
-							$product_ids               = get_posts( $product_args );
-
-						} else {
-							$product_ids = [];
-						}
-					}
-
-					$selected_p_ids = array_merge( $selected_p_ids, $product_ids );
-
-				}
-			}
-			$selected_p_ids = array_unique( $selected_p_ids );
-			$allow_products = '';
-			if ( ! empty( $selected_p_ids ) ) {
-				$allow_products = ' OR (' . $wpdb->posts . '.ID IN (' . implode( ',', $selected_p_ids ) . ') )';
-			}
-
-			$where = preg_replace(
-				'/\(\s*' . $wpdb->posts . ".post_title\s+LIKE\s*(\'[^\']+\')\s*\)/",
-				'(' . $wpdb->posts . '.post_title LIKE $1) OR (' . $wpdb->postmeta . '.meta_value LIKE $1)' . $allow_products,
-				$where
-			);
-
-		}
-
-		return $where;
-	}
-
-	function meta_query_search_distinct( $where ) {
-		global $wpdb;
-
-		$search_by_tab = Util::get_option( 'search_by_tabs' );
-		if ( is_search() && ( isset( $_GET['post_type'] ) && $_GET['post_type'] == 'product' ) && ( ! empty( $search_by_tab ) && $search_by_tab == 1 ) ) {
-			return 'DISTINCT';
-		}
-
-		return $where;
-	}
 
 	function enqueue_files() {
 

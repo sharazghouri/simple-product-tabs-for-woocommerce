@@ -52,7 +52,7 @@
       searchedTermsList.html(searchedTermsHTML).show();
     });
   }
-  $('#swt-category-search, #swt-tag-search').on('keyup', debounce(termSearch, 500));
+  $('#swt-category-search, #swt-tag-search', '#swt-product-search').on('keyup', debounce(termSearch, 500));
 
   /**
    * Display/Hide inclusions sections based on the visibility condition

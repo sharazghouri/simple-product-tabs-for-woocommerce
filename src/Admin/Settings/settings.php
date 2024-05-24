@@ -228,5 +228,5 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 		),
 	);
 
-	return $sbsa_settings;
+	return apply_filters( Admin_Controller::SETTING_SLUG . '_settings', $sbsa_settings, );
 }

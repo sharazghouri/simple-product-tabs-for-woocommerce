@@ -40,10 +40,13 @@ var __webpack_exports__ = {};
     let searchParam = new URLSearchParams({
       search: searchTerm
     });
-
+    let searchPatch = `/wc/v3/products/${taxonomy}/?${searchParam.toString()}`
+    if( taxonomy == 'product') {
+      searchPatch = `/wc/v3/products/?${searchParam.toString()}`
+    } 
     // Make WooCommerce REST API call to get terms
     wp.apiFetch({
-      path: `/wc/v3/products/${taxonomy}/?${searchParam.toString()}`
+      path: searchPatch
     }).then(terms => {
       // hide the loader
       self.closest('.swt-inclusion-selector').find('.swt-loader').hide();
@@ -59,7 +62,7 @@ var __webpack_exports__ = {};
       searchedTermsList.html(searchedTermsHTML).show();
     });
   }
-  $('#swt-category-search, #swt-tag-search').on('keyup', debounce(termSearch, 500));
+  $('#swt-category-search, #swt-tag-search, #swt-product-search').on('keyup', debounce(termSearch, 500));
 
   /**
    * Display/Hide inclusions sections based on the visibility condition
