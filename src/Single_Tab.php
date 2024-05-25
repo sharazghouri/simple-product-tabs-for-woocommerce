@@ -15,7 +15,7 @@ class Single_Tab {
 			add_action( 'save_post', array( $this, 'save_visibility_condition' ) );
 			add_action( 'save_post', array( $this, 'save_category_selector' ) );
 			add_action( 'save_post', array( $this, 'save_tab_priority' ) );
-			add_action( 'save_post', array( $this, 'save_tab_icon' ) );
+			add_action( 'save_post', array( $this, 'save_tab_icon') );
 	}
 
 		/**
