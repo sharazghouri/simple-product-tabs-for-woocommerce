@@ -11,7 +11,7 @@ class Post_Type {
 
 
 
-	const POST_SLUG = 'product_tabs_woo';
+	const POST_SLUG = 'sptb_product_tabs_woo';
 	/**
 	 * Register function to hook.
 	 *
