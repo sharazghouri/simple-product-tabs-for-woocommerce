@@ -3,7 +3,7 @@
  * Plugin Name: Simple Product Tabs for WooCommerce
  * Plugin URI:
  * Description: Boost your sale by adding custom tabs containing extra information.
- * Version: 1.0.4
+ * Version: 1.0.3
  * Author: Solution Box
  * Author URI: https://solbox.dev/
  * Text Domain: simple-product-tabs
@@ -28,7 +28,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-const SPTB_PLUGIN_VERSION = '1.0.4';
+const SPTB_PLUGIN_VERSION = '1.0.3';
 const SPTB_PLUGIN_FILE    = __FILE__;
 const SPTB_PLUGIN_DIR     = __DIR__;
 

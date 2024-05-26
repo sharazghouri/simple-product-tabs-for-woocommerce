@@ -158,11 +158,15 @@ class Post_Type {
 			2  => __( 'Custom field updated.', 'simple-product-tabs' ),
 			3  => __( 'Custom field deleted.', 'simple-product-tabs' ),
 			4  => __( 'Tab updated.', 'simple-product-tabs' ),
-			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			5  => isset( $_GET['revision'] ) ? 
+			// translators: %s: the title of the post revision being restored
+			sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs' ),
+			wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
 			6  => __( 'Tab published.', 'simple-product-tabs' ),
 			7  => __( 'Tab saved.', 'simple-product-tabs' ),
 			8  => __( 'Tab submitted.', 'simple-product-tabs' ),
-			9  => sprintf(
+			9  => sprintf( 
+				    // translators: %%1$s: the data format place holder
 				__( 'Tab scheduled for: <strong>%1$s</strong>.', 'simple-product-tabs' ),
 				date_i18n( __( 'M j, Y @ G:i', 'simple-product-tabs' ), strtotime( $post->post_date ) )
 			),
