@@ -1,12 +1,12 @@
 === Simple Product Tabs for WooCommerce ===
 
 Contributors: sharazghouri
-Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs, product tabs, woocommerce product tab, product custom tabs, multiple product tabs, woocommerce custom tabs, woocommerce tabs, tabs for woocommerce, product tab, woocommerce, product, woocommerce product tabs, custom tab, woo product custom tabs, change tab, product page tabs, woocommerce custom tab, woocommerce tab, tabs plugin, woocommerce tabs plugin
+Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs, product tabs
 Requires PHP: 8.1
 Requires at least: 6.0
 Tested up to: 6.4.3
-Stable tag: 1.0.3
-License: GNU General Public License v3.0
+Stable tag: 1.0.5
+License: GPL-3.0-or-later
 License URI: http://www.gnu.org/licenses/gpl-3.0.html
 Donate link: https://solbox.dev/
 
@@ -26,11 +26,8 @@ Discover the easy way to add extra tabs to your WooCommerce product pages.
 = 1.0.0 =
  * landing on org
 
-
-
 = 1.0.0 =
 * Initial release
 
 == Upgrade Notice ==
 Simple Product Tabs for WooCommerce
-

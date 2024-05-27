@@ -71,7 +71,7 @@ class Product_Tabs {
 	public function callback( $key, $tab ) {
 		global $product;
 
-		$tab_post = get_page_by_path( $key, OBJECT, 'woo_product_tabs' );
+		$tab_post = get_page_by_path( $key, OBJECT, 'sptb_product_tabs' );
 		if ( empty( $tab_post ) ) {
 			return;
 		}
@@ -123,24 +123,6 @@ class Product_Tabs {
 			$content = apply_filters( 'sptb_filter_tab_content', $content );
 		}
 		return $content;
-	}
-
-	/**
-	 * Check to enable custom filter for the content.
-	 *
-	 * @since 1.0.0
-	 */
-	public function enable_the_content_filter() {
-		$disable_the_content_filter = Util::get_option( 'disable_content_filter' );
-		$output                     = false;
-
-		if ( empty( $disable_the_content_filter ) || $disable_the_content_filter !== '1' ) {
-			$output = false;
-		} else {
-			$output = true;
-		}
-
-		return $output;
 	}
 
 }

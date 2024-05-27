@@ -84,9 +84,11 @@ class Plugin {
 
 		if ( is_admin() ) {
 			$this->admin = new Admin\Admin_Controller( $this );
+			
+			$this->post_type = new Post_Type();
+			$this->post_type->register();
 		}
-		$this->post_type = new Post_Type();
-		$this->post_type->register();
+
 
 		$this->product_tabs = new Product_Tabs();
 		$this->product_tabs->register();
@@ -97,7 +99,7 @@ class Plugin {
 	 */
 	public function load_textdomain() {
 
-		load_plugin_textdomain( 'simple-product-tabs', false, $this->get_slug() . '/languages' );
+		load_plugin_textdomain( 'simple-product-tabs-for-woocommerce', false, $this->get_slug() . '/languages' );
 	}
 
 

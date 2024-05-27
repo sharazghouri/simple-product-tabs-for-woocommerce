@@ -4,9 +4,6 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs\Admin;
 
 use Solution_Box\Plugin\Simple_Product_Tabs\Plugin;
 
-use  SolutionBoxSettings as Settings_API_Helper;
-
-use const Solution_Box\Plugin\Simple_Product_Tabs\SPTB_PLUGIN_FILE;
 
 /**
  * Handles the admin functions.
@@ -18,10 +15,7 @@ class Admin_Controller {
 
 	private $plugin;
 	private $plugin_name;
-	private $version;
-	private $settings_page;
 
-	const SETTING_SLUG = 'simple_woo_tabs';
 
 
 	public function __construct( Plugin $plugin ) {
@@ -39,7 +33,7 @@ class Admin_Controller {
 	public function add_plugin_action_links( $links ) {
 		$output = array_merge(
 			array(
-				'product-tabs' => '<a href="' . esc_url( admin_url( 'edit.php?post_type=woo_product_tabs' ) ) . '">' . esc_html__( 'Product Tabs', 'simple-product-tabs' ) . '</a>',
+				'product-tabs' => '<a href="' . esc_url( admin_url( 'edit.php?post_type=sptb_product_tabs' ) ) . '">' . esc_html__( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ) . '</a>',
 
 			),
 			$links

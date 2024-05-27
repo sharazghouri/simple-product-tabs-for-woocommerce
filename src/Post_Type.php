@@ -11,7 +11,7 @@ class Post_Type {
 
 
 
-	const POST_SLUG = 'sptb_product_tabs_woo';
+	const POST_SLUG = 'sptb_product_tabs';
 	/**
 	 * Register function to hook.
 	 *
@@ -21,16 +21,14 @@ class Post_Type {
 		add_action( 'init', array( $this, 'tab_post_type' ), 99 );
 		add_action( 'admin_head-post.php', array( $this, 'hide_publishing_actions' ) );
 		add_action( 'admin_head-post-new.php', array( $this, 'hide_publishing_actions' ) );
-		add_filter( 'manage_woo_product_tab_posts_columns', array( $this, 'add_columns_in_tab_listing' ) );
-		add_action( 'manage_woo_product_tab_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
+		add_filter( 'manage_' . self::POST_SLUG . '_posts_columns', array( $this, 'add_columns_in_tab_listing' ) );
+		add_action( 'manage_' . self::POST_SLUG . '_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
 		add_filter( 'post_updated_messages', array( $this, 'tab_post_updated_messages' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'tab_post_row_actions' ), 10, 2 );
-		add_filter( 'manage_edit-woo_product_tab_sortable_columns', array( $this, 'sortable_tab_columns' ) );
-		add_filter( 'parent_file', array( $this, 'highlight_menu_item' ), 99 );
 		add_filter( 'custom_menu_order', '__return_true', 99 );
 		add_filter( 'menu_order', array( $this, 'tabs_menu_order' ) );
 		add_filter( 'use_block_editor_for_post_type', array( $this, 'disable_gutenberg_editor' ), 20, 2 );
-		add_action( 'save_post', array( $this, 'woo_product_tab_override_tab_slug' ), 20, 3 );
+		add_action( 'save_post', array( $this, 'sptb_product_tabs_override_tab_slug' ), 20, 3 );
 	}
 
 	/**
@@ -39,20 +37,20 @@ class Post_Type {
 	public function tab_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Product Tabs', 'post type general name', 'simple-product-tabs' ),
-			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs' ),
-			'menu_name'          => _x( 'Simple Product Tabs', 'admin menu', 'simple-product-tabs' ),
-			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs' ),
-			'add_new'            => _x( 'Add New', 'add new item', 'simple-product-tabs' ),
-			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs' ),
-			'new_item'           => __( 'New Tab', 'simple-product-tabs' ),
-			'edit_item'          => __( 'Edit Tab', 'simple-product-tabs' ),
-			'view_item'          => __( 'View Tab', 'simple-product-tabs' ),
-			'all_items'          => __( 'Product Tabs', 'simple-product-tabs' ),
-			'search_items'       => __( 'Search Tabs', 'simple-product-tabs' ),
-			'parent_item_colon'  => __( 'Parent Tabs:', 'simple-product-tabs' ),
-			'not_found'          => __( 'No tabs found.', 'simple-product-tabs' ),
-			'not_found_in_trash' => __( 'No tabs found in Trash.', 'simple-product-tabs' ),
+			'name'               => _x( 'Product Tabs', 'post type general name', 'simple-product-tabs-for-woocommerce' ),
+			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs-for-woocommerce' ),
+			'menu_name'          => _x( 'Simple Product Tabs', 'admin menu', 'simple-product-tabs-for-woocommerce' ),
+			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs-for-woocommerce' ),
+			'add_new'            => _x( 'Add New', 'add new item', 'simple-product-tabs-for-woocommerce' ),
+			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs-for-woocommerce' ),
+			'new_item'           => __( 'New Tab', 'simple-product-tabs-for-woocommerce' ),
+			'edit_item'          => __( 'Edit Tab', 'simple-product-tabs-for-woocommerce' ),
+			'view_item'          => __( 'View Tab', 'simple-product-tabs-for-woocommerce' ),
+			'all_items'          => __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ),
+			'search_items'       => __( 'Search Tabs', 'simple-product-tabs-for-woocommerce' ),
+			'parent_item_colon'  => __( 'Parent Tabs:', 'simple-product-tabs-for-woocommerce' ),
+			'not_found'          => __( 'No tabs found.', 'simple-product-tabs-for-woocommerce' ),
+			'not_found_in_trash' => __( 'No tabs found in Trash.', 'simple-product-tabs-for-woocommerce' ),
 		);
 
 		$args = array(
@@ -102,10 +100,7 @@ class Post_Type {
 	 */
 	public function add_columns_in_tab_listing( $columns ) {
 
-		unset( $columns['date'] );
-		$columns['priority']         = __( 'Priority', 'simple-product-tabs' );
-		$columns['display-globally'] = __( 'Display globally', 'simple-product-tabs' );
-		$columns['tab-key']          = __( 'Tab Key', 'simple-product-tabs' );
+		$columns['tab-key']          = __( 'Tab Key', 'simple-product-tabs-for-woocommerce' );
 
 		return $columns;
 	}
@@ -120,20 +115,8 @@ class Post_Type {
 
 		$post = get_post( $post_id );
 		switch ( $column ) {
-			case 'priority':
-				esc_html( $post->menu_order );
-				break;
 			case 'tab-key':
 				echo '<code>' . esc_html( $post->post_name ) . '</code>';
-				break;
-			case 'display-globally':
-				$flag_default_for_all = Util::is_tab_global( $post_id );
-				$tab_categories       = get_post_meta( $post_id, '_wpt_conditions_category', true );
-				if ( 'no' === $flag_default_for_all && $tab_categories ) {
-					echo '<span class="dashicons dashicons-no-alt"></span>';
-				} else {
-					echo '<span class="dashicons dashicons-yes"></span>';
-				}
 				break;
 			default:
 				break;
@@ -154,23 +137,25 @@ class Post_Type {
 		$messages[ self::POST_SLUG ] = array(
 
 			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Tab updated.', 'simple-product-tabs' ),
-			2  => __( 'Custom field updated.', 'simple-product-tabs' ),
-			3  => __( 'Custom field deleted.', 'simple-product-tabs' ),
-			4  => __( 'Tab updated.', 'simple-product-tabs' ),
+			1  => __( 'Tab updated.', 'simple-product-tabs-for-woocommerce' ),
+			2  => __( 'Custom field updated.', 'simple-product-tabs-for-woocommerce' ),
+			3  => __( 'Custom field deleted.', 'simple-product-tabs-for-woocommerce' ),
+			4  => __( 'Tab updated.', 'simple-product-tabs-for-woocommerce' ),
+			 // phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Already type casting in else
 			5  => isset( $_GET['revision'] ) ? 
 			// translators: %s: the title of the post revision being restored
-			sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs' ),
+			sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs-for-woocommerce' ),
+			// phpcs:ignore WordPress.Security.NonceVerification.Recommended -- Already type casting
 			wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => __( 'Tab published.', 'simple-product-tabs' ),
-			7  => __( 'Tab saved.', 'simple-product-tabs' ),
-			8  => __( 'Tab submitted.', 'simple-product-tabs' ),
+			6  => __( 'Tab published.', 'simple-product-tabs-for-woocommerce' ),
+			7  => __( 'Tab saved.', 'simple-product-tabs-for-woocommerce' ),
+			8  => __( 'Tab submitted.', 'simple-product-tabs-for-woocommerce' ),
 			9  => sprintf( 
 				    // translators: %%1$s: the data format place holder
-				__( 'Tab scheduled for: <strong>%1$s</strong>.', 'simple-product-tabs' ),
-				date_i18n( __( 'M j, Y @ G:i', 'simple-product-tabs' ), strtotime( $post->post_date ) )
+				__( 'Tab scheduled for: <strong>%1$s</strong>.', 'simple-product-tabs-for-woocommerce' ),
+				date_i18n( __( 'M j, Y @ G:i', 'simple-product-tabs-for-woocommerce' ), strtotime( $post->post_date ) )
 			),
-			10 => __( 'Tab draft updated.', 'simple-product-tabs' ),
+			10 => __( 'Tab draft updated.', 'simple-product-tabs-for-woocommerce' ),
 		);
 		return $messages;
 
@@ -185,21 +170,6 @@ class Post_Type {
 
 	}
 
-	/**
-	 * Highlight menu in sub pages.
-	 *
-	 * @param mixed $file file object.
-	 * @return mixed
-	 */
-	public function highlight_menu_item( $file ) {
-		global $plugin_page, $submenu_file;
-
-		if ( 'wta_settings' == $plugin_page ) {
-			$plugin_page  = 'edit.php?post_type=product';
-			$submenu_file = 'edit.php?post_type=' . self::POST_SLUG;
-		}
-		return $file;
-	}
 
 	/**
 	 * Priority the tab menu
@@ -213,6 +183,8 @@ class Post_Type {
 		if ( $submenu['edit.php?post_type=product'] ) {
 			$index = 0;
 			foreach ( $submenu['edit.php?post_type=product'] as $i => $item ) {
+				// var_dump($submenu ,$item[2] );
+				// die('ssss');
 				if ( $item[2] === 'edit.php?post_type=' . self::POST_SLUG ) {
 					$index = $i;
 					break;
@@ -249,7 +221,7 @@ class Post_Type {
 	 * @param WP_Post $post WP_Post object.
 	 * @param bool    $update Whether this is update or not.
 	 */
-	function woo_product_tab_override_tab_slug( $post_id, $post, $update ) {
+	function sptb_product_tabs_override_tab_slug( $post_id, $post, $update ) {
 		// Only want to set if this is a new post.
 		if ( $update ) {
 			return;
@@ -270,7 +242,7 @@ class Post_Type {
 			return;
 		}
 
-		remove_action( 'save_post', array( $this, 'woo_product_tab_override_tab_slug' ), 20 );
+		remove_action( 'save_post', array( $this, 'sptb_product_tabs_override_tab_slug' ), 20 );
 
 		$unique_slug = 'swt-' . $post_id;
 
@@ -281,19 +253,7 @@ class Post_Type {
 
 		wp_update_post( $new_data );
 
-		add_action( 'save_post', array( $this, 'woo_product_tab_override_tab_slug' ), 20, 3 );
+		add_action( 'save_post', array( $this, 'sptb_product_tabs_override_tab_slug' ), 20, 3 );
 	}
 
-	/**
-	 * Sort by menu order
-	 *
-	 * @param array $columns columns array.
-	 * @return array
-	 */
-	public function sortable_tab_columns( $columns ) {
-
-		$columns['priority'] = 'menu_order';
-		return $columns;
-
-	}
 }

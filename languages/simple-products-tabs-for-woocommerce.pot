@@ -1,0 +1,141 @@
+# Copyright (C) 2024 Solution Box
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Product Tabs for WooCommerce 1.0.3\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-product-tabs-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-05-27T10:34:24+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: simple-product-tabs-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+msgid "Simple Product Tabs for WooCommerce"
+msgstr ""
+
+#. Description of the plugin
+msgid "Boost your sale by adding custom tabs containing extra information."
+msgstr ""
+
+#. Author of the plugin
+msgid "Solution Box"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://solbox.dev/"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:36
+#: src/Post_Type.php:49
+msgid "Product Tabs"
+msgstr ""
+
+#: src/Post_Type.php:40
+msgctxt "post type general name"
+msgid "Product Tabs"
+msgstr ""
+
+#: src/Post_Type.php:41
+msgctxt "post type singular name"
+msgid "Tab"
+msgstr ""
+
+#: src/Post_Type.php:42
+msgctxt "admin menu"
+msgid "Simple Product Tabs"
+msgstr ""
+
+#: src/Post_Type.php:43
+msgctxt "add new on admin bar"
+msgid "Tab"
+msgstr ""
+
+#: src/Post_Type.php:44
+msgctxt "add new item"
+msgid "Add New"
+msgstr ""
+
+#: src/Post_Type.php:45
+msgid "Add New Tab"
+msgstr ""
+
+#: src/Post_Type.php:46
+msgid "New Tab"
+msgstr ""
+
+#: src/Post_Type.php:47
+msgid "Edit Tab"
+msgstr ""
+
+#: src/Post_Type.php:48
+msgid "View Tab"
+msgstr ""
+
+#: src/Post_Type.php:50
+msgid "Search Tabs"
+msgstr ""
+
+#: src/Post_Type.php:51
+msgid "Parent Tabs:"
+msgstr ""
+
+#: src/Post_Type.php:52
+msgid "No tabs found."
+msgstr ""
+
+#: src/Post_Type.php:53
+msgid "No tabs found in Trash."
+msgstr ""
+
+#: src/Post_Type.php:103
+msgid "Tab Key"
+msgstr ""
+
+#: src/Post_Type.php:140
+#: src/Post_Type.php:143
+msgid "Tab updated."
+msgstr ""
+
+#: src/Post_Type.php:141
+msgid "Custom field updated."
+msgstr ""
+
+#: src/Post_Type.php:142
+msgid "Custom field deleted."
+msgstr ""
+
+#. translators: %s: the title of the post revision being restored
+#: src/Post_Type.php:147
+msgid "Tab restored to revision from %s"
+msgstr ""
+
+#: src/Post_Type.php:150
+msgid "Tab published."
+msgstr ""
+
+#: src/Post_Type.php:151
+msgid "Tab saved."
+msgstr ""
+
+#: src/Post_Type.php:152
+msgid "Tab submitted."
+msgstr ""
+
+#. translators: %%1$s: the data format place holder
+#: src/Post_Type.php:155
+msgid "Tab scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#. translators: %%1$s: the data format place holder
+#: src/Post_Type.php:156
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: src/Post_Type.php:158
+msgid "Tab draft updated."
+msgstr ""

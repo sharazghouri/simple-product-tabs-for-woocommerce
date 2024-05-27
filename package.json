@@ -1,5 +1,5 @@
 {
-	"name": "simple-product-tabs",
+	"name": "simple-product-tabs-for-woocommerce",
 	"title": "Simple Simple Product Tabs (Free)",
 	"version": "1.0.0",
 	"license": "GPL-2.0+",
@@ -25,7 +25,8 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"translate": "wp i18n make-pot ./ languages/simple-products-tabs-for-woocommerce.pot"
 	},
 	"bugs": {
 		"url": "https://github.com/sharazghouri/simple-product-tabs/issues"
@@ -34,6 +35,7 @@
 	"devDependencies": {
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.8.0",
 		"@wordpress/scripts": "^26.4.0",
+		"@wordpress/i18n": "^4.58.0",
 		"gulp": "^4.0.2"
 	},
 	"files":[
@@ -42,9 +44,8 @@
 		"includes/**",
 		"languages/**",
 		"public/**",
-		"simple-product-tabs.php",
+		"simple-product-tabs-for-woocommerce.php",
 		"uninstall.php",
-		"block.json",
 		"changelog.*",
 		"license.*",
 		"readme.*",
