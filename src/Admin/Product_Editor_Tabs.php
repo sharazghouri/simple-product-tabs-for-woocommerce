@@ -95,7 +95,6 @@ class Product_Editor_Tabs {
 			ARRAY_FILTER_USE_KEY
 		);
 
-	
 		foreach ( $posted_tab_data as $post_key => $tab_content ) {
 
 			$tab_slug       = substr( $post_key, 12 );

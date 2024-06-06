@@ -15,7 +15,7 @@ class Single_Tab {
 			add_action( 'save_post', array( $this, 'save_visibility_condition' ) );
 			add_action( 'save_post', array( $this, 'save_category_selector' ) );
 			add_action( 'save_post', array( $this, 'save_tab_priority' ) );
-			add_action( 'save_post', array( $this, 'save_tab_icon') );
+			add_action( 'save_post', array( $this, 'save_tab_icon' ) );
 	}
 
 		/**
@@ -23,7 +23,7 @@ class Single_Tab {
 		 */
 	public function wta_inclusion_categories_selector( $post_id, $times_svg_icon ) {
 			$sptb_conditions_category = get_post_meta( $post_id, '_sptb_conditions_category', true );
-			$selected_categories     = $this->get_selected_terms( $sptb_conditions_category, 'product_cat' );
+			$selected_categories      = $this->get_selected_terms( $sptb_conditions_category, 'product_cat' );
 		?>
 				<div class="swt-categories-selector swt-inclusion-selector">
 						<div class="swt-component-search-field">
@@ -83,22 +83,24 @@ class Single_Tab {
 						</div>
 				</div>
 
-				<?php if( ! Util::is_pro_active() ) { ?>
+				<?php if ( ! Util::is_pro_active() ) { ?>
 					<div class="swt-component-search-field disabled">
 									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
-						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
+						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK ); ?>">
 								<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 						</a>
 					</div>
 					<div class="swt-component-search-field disabled">
 									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
-						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK );?>">
+						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK ); ?>">
 							<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
 						</a>
 					</div>
-				<?php } else {
-					do_action( 'sptb_inclusion_categories_options', $post_id, $times_svg_icon  );
-				} ?>
+					<?php
+				} else {
+					do_action( 'sptb_inclusion_categories_options', $post_id, $times_svg_icon );
+				}
+				?>
 				<?php
 	}
 
@@ -164,7 +166,7 @@ class Single_Tab {
 	 *
 	 * @return boolean
 	 */
-	public function check_meta_box_nonce(){
+	public function check_meta_box_nonce() {
 
 		// Check if our nonce is set.
 		if ( ! isset( $_POST['sptb_meta_box_tab_nonce'] ) ) {
@@ -179,7 +181,6 @@ class Single_Tab {
 				return false;
 		}
 
-		
 		if ( Post_Type::POST_SLUG != $_POST['post_type'] ) {
 				return false;
 		}
@@ -193,7 +194,7 @@ class Single_Tab {
 		 */
 	public function save_visibility_condition( $post_id ) {
 
-		if( ! $this->check_meta_box_nonce() ){
+		if ( ! $this->check_meta_box_nonce() ) {
 			return false;
 		}
 		// Show tabs on all products
@@ -204,7 +205,6 @@ class Single_Tab {
 			$display_globally = 'no';
 		}
 
-
 			update_post_meta( $post_id, '_sptb_display_tab_globally', $display_globally );
 
 	}
@@ -214,24 +214,21 @@ class Single_Tab {
 	 *
 	 * @since 1.0.0
 	 */
-public function save_tab_icon( $post_id ) {
+	public function save_tab_icon( $post_id ) {
 
-
-
-	if ( ! $this->check_meta_box_nonce() ) {
+		if ( ! $this->check_meta_box_nonce() ) {
 			return;
+		}
+
+		$tab_icon = '';
+		if ( isset( $_POST['_sptb_tab_icon'] ) ) {
+			$tab_icon = sanitize_text_field( wp_unslash( $_POST['_sptb_tab_icon'] ?? '' ) );
+
+		}
+
+		update_post_meta( $post_id, '_sptb_tab_icon', $tab_icon );
+
 	}
-
-	$tab_icon = '';
-	if ( isset( $_POST['_sptb_tab_icon'] ) ) {
-		$tab_icon = sanitize_text_field( wp_unslash( $_POST['_sptb_tab_icon'] ?? '' ) );
-			
-	}
-
-
-	update_post_meta( $post_id, '_sptb_tab_icon', $tab_icon );
-
-}
 
 	public function save_tab_priority( $post_id ) {
 
@@ -322,7 +319,7 @@ public function save_tab_icon( $post_id ) {
 								</tbody>
 						</table>
 
-						<table id="inclusions-list" class="form-table <?php echo (! $is_tab_global  ) ? '' : 'hide-section'; ?> ">
+						<table id="inclusions-list" class="form-table <?php echo ( ! $is_tab_global ) ? '' : 'hide-section'; ?> ">
 								<tbody>
 										<tr>
 												<th><?php _e( 'Inclusions', 'simple-product-tabs' ); ?></th>
@@ -338,24 +335,25 @@ public function save_tab_icon( $post_id ) {
 	}
 
 	public function sptb_icon_section( $post ) {
-			
-		?>	
-				<div class="icon-wrap">
-				<a href="#" class="tab_icon  button button-secondary  sbsa-browse-icon <?php echo !Util::is_pro_active() ? 'disabled': ''; ?>" data-model="sbsa-modal-icon-product-tab-screen"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
+
+		?>
+						<div class="icon-wrap">
+				<a href="#" class="tab_icon  button button-secondary  sbsa-browse-icon <?php echo ! Util::is_pro_active() ? 'disabled' : ''; ?>" data-model="sbsa-modal-icon-product-tab-screen"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
 				<input type="text" name="_sptb_tab_icon" id="sbsa-browse-icon" value="" class="regular-text hidden sbsa-icon-input ">
-				<?php  
+				<?php
 
 				$icon_output = '';
-				if( $icon_value = get_post_meta( $post->ID, '_sptb_tab_icon', true ) ) {
-					$icon_output = sprintf('<i class="%s"></i><a href="#" class="sbsa-icon-remove">Remove</a>', esc_attr( $icon_value  ), __( 'Remove', 'simple-product-tabs-pro' ) );
+				if ( $icon_value = get_post_meta( $post->ID, '_sptb_tab_icon', true ) ) {
+					$icon_output = sprintf( '<i class="%s"></i><a href="#" class="sbsa-icon-remove">Remove</a>', esc_attr( $icon_value ), __( 'Remove', 'simple-product-tabs-pro' ) );
 				}
 
-				echo sprintf('<div class="sbsa-icon-output">%s</div>', $icon_output );
+				echo sprintf( '<div class="sbsa-icon-output">%s</div>', $icon_output );
 
-				$args['id' ] = 'product-tab-screen';
-				include_once plugin_dir_path( __FILE__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/includes/icons.php'; ?>
-				<?php if( ! Util::is_pro_active() ){ ?>
-				<a href="<?php echo esc_url( Util::PRO_LINK ) ;?>" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
+				$args['id'] = 'product-tab-screen';
+				include_once plugin_dir_path( __FILE__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/includes/icons.php';
+				?>
+				<?php if ( ! Util::is_pro_active() ) { ?>
+				<a href="<?php echo esc_url( Util::PRO_LINK ); ?>" class="pro-version-link" target="_blank"><?php _e( 'Pro version only' ); ?></a>
 				<?php } ?>
 				</div>
 				<?php

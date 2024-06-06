@@ -55,20 +55,18 @@ class Frontend {
 	 */
 	public function __construct( $plugin ) {
 
-
 		$this->plugin            = $plugin;
 		$this->plugin_name       = $plugin->get_slug();
 		$this->version           = $plugin->get_version();
 		$this->product_tabs_list = get_posts(
-			[
+			array(
 				'post_type'        => Post_Type::POST_SLUG,
 				'posts_per_page'   => -1,
 				'orderby'          => 'menu_order',
 				'order'            => 'asc',
 				'suppress_filters' => 0,
-			]
+			)
 		);
-
 
 		if ( ! empty( $this->product_tabs_list ) ) {
 			foreach ( $this->product_tabs_list as $key => $t ) {
@@ -76,10 +74,9 @@ class Frontend {
 			}
 		}
 
-
 		if ( $this->enable_the_content_filter() ) {
 			add_filter( 'sptb_use_the_content_filter', '__return_false' );
-			add_filter( 'sptb_filter_tab_content', [ $this, 'product_tabs_filter_content' ], 10, 1 );
+			add_filter( 'sptb_filter_tab_content', array( $this, 'product_tabs_filter_content' ), 10, 1 );
 		}
 
 	}
@@ -93,11 +90,10 @@ class Frontend {
 	 */
 	public function register() {
 		// Public custom hooks
-		add_filter( 'woocommerce_product_tabs', [ $this, 'custom_woocommerce_product_tabs' ], 60 );
-
+		add_filter( 'woocommerce_product_tabs', array( $this, 'custom_woocommerce_product_tabs' ), 60 );
 
 		// Public Search by meta query
-		add_action( 'wp_enqueue_scripts', [ $this, 'enqueue_files' ] );
+		add_action( 'wp_enqueue_scripts', array( $this, 'enqueue_files' ) );
 	}
 
 
@@ -105,8 +101,7 @@ class Frontend {
 	public function custom_woocommerce_product_tabs( $tabs ) {
 		global $product;
 
-
-		$sptb_tabs = [];
+		$sptb_tabs = array();
 		if ( ! empty( $this->product_tabs_list ) ) {
 			foreach ( $this->product_tabs_list as $key => $prd ) {
 
@@ -116,10 +111,9 @@ class Frontend {
 				$sptb_tabs[ $key ]['priority']            = esc_attr( $prd->menu_order );
 				$sptb_tabs[ $key ]['conditions_category'] = get_post_meta( $prd->ID, '_sptb_conditions_category', true );
 				$sptb_tabs[ $key ]['display_globally']    = esc_attr( Util::is_tab_global( $prd->ID ) );
-				$sptb_tabs[ $key ] = apply_filters( 'sptb_filter_product_tab', $sptb_tabs[ $key ] );
+				$sptb_tabs[ $key ]                        = apply_filters( 'sptb_filter_product_tab', $sptb_tabs[ $key ] );
 			}
 		}
-
 
 		$sptb_tabs = $this->tab_status_check( $sptb_tabs );
 
@@ -132,48 +126,45 @@ class Frontend {
 					$span_icon = '<span class="' . $tab['tab_icon'] . '"></span> ';
 				}
 
-				$tab_temp             = [];
+				$tab_temp             = array();
 				$tab_temp['title']    = $span_icon . $tab['title'];
 				$tab_temp['priority'] = $tab['priority'];
-				$tab_temp['callback'] = [ $this, 'callback' ];
+				$tab_temp['callback'] = array( $this, 'callback' );
 				$tabs[ $tab['id'] ]   = $tab_temp;
 			}
 		}
 		$tabs_reorder = Util::get_option( 'tabs_order' );
 
-		$tabs_reorder = explode(',', $tabs_reorder );
-
+		$tabs_reorder = explode( ',', $tabs_reorder );
 
 		$priority = 10;
 
-		foreach( $tabs_reorder as $_tab ) {
+		foreach ( $tabs_reorder as $_tab ) {
 
 			$tabs[ $_tab ]['priority'] = $priority;
-			$priority += 10;
+			$priority                 += 10;
 		}
-
-
 
 		if ( ! empty( $tabs['description']['title'] ) ) {
 
-			//Maybe update the title
+			// Maybe update the title
 			if ( ! empty( $tab_title = Util::get_option( 'description_tab_title' ) ) ) {
 				$tabs['description']['title'] = $tab_title;
 			}
 
 			$des_icon = '';
-				//Maybe Add the icon
+				// Maybe Add the icon
 			if ( ! empty( $tab_icon = Util::get_option( 'desc_tab_icon' ) ) ) {
 				$des_icon = '<span class="' . $tab_icon . '"></span> ';
 			}
 
 			$tabs['description']['title'] = $des_icon . $tabs['description']['title'];
-			
+
 		}
 
 		if ( ! empty( $tabs['additional_information']['title'] ) ) {
 
-			if ( ! empty(  $tab_title = Util::get_option( 'information_tab_title' ) ) ) {
+			if ( ! empty( $tab_title = Util::get_option( 'information_tab_title' ) ) ) {
 				$tabs['additional_information']['title'] = $tab_title;
 			}
 
@@ -183,7 +174,7 @@ class Frontend {
 			}
 
 			$tabs['additional_information']['title'] = $info_icon . $tabs['additional_information']['title'];
-			
+
 		}
 
 		if ( ! empty( $tabs['reviews']['title'] ) ) {
@@ -194,29 +185,24 @@ class Frontend {
 
 			$review_icon = '';
 			if ( ! empty( $tab_icon = Util::get_option( 'review_tab_icon' ) ) ) {
-				$review_icon = '<span class="' . $tab_icon. '"></span>' ;
+				$review_icon = '<span class="' . $tab_icon . '"></span>';
 			}
 
 			$tabs['reviews']['title'] = $review_icon . $tabs['reviews']['title'];
 
-		
 		}
 
-
-		 
-		if (Util::get_option( 'hide_description' ) ) {
+		if ( Util::get_option( 'hide_description' ) ) {
 			unset( $tabs['description'] );
 		}
 
-		if (Util::get_option( 'hide_information' ) ) {
+		if ( Util::get_option( 'hide_information' ) ) {
 			unset( $tabs['additional_information'] );
 		}
 
-		if (Util::get_option( 'hide_reviews' ) ) {
+		if ( Util::get_option( 'hide_reviews' ) ) {
 			unset( $tabs['reviews'] );
 		}
-
-
 
 		return $tabs;
 
@@ -248,7 +234,7 @@ class Frontend {
 
 					$content_to_show = $tab_default_value;
 
-					if ( Util::is_tab_overridden( $tab_post->name , $product->get_id() ) ) {
+					if ( Util::is_tab_overridden( $tab_post->name, $product->get_id() ) ) {
 						$tab_value = get_post_meta( $product->get_id(), '_sptb_field_' . $key, true );
 						if ( ! empty( $tab_value ) ) {
 							$content_to_show = $tab_value;
@@ -259,26 +245,23 @@ class Frontend {
 						unset( $tabs[ $tab_key ] );
 					}
 
-					
+					if ( ! $tab['display_globally'] ) {
 
-					if ( ! $tab[ 'display_globally' ] ) {
-						
 						// check category condition
-						$cat_list = wp_get_post_terms( $product->get_id(), 'product_cat', [ 'fields' => 'ids' ] );
+						$cat_list = wp_get_post_terms( $product->get_id(), 'product_cat', array( 'fields' => 'ids' ) );
 
 						$show = false;
 
-						// It means the tab has to show globally. 
-						if ( ! empty( $tab['conditions_category'] ) && is_array( $tab['conditions_category'] ) &&  array_intersect( $cat_list, $tab['conditions_category'] ) ) {
+						// It means the tab has to show globally.
+						if ( ! empty( $tab['conditions_category'] ) && is_array( $tab['conditions_category'] ) && array_intersect( $cat_list, $tab['conditions_category'] ) ) {
 							$show = true;
 						}
-						$show = apply_filters( 'sptb_visibility_check', $show , $tab ) ;
+						$show = apply_filters( 'sptb_visibility_check', $show, $tab );
 
-						if( ! $show ) {
-							
+						if ( ! $show ) {
+
 							unset( $tabs[ $tab_key ] );
 						}
-						
 					}
 				}
 			} // end foreach
@@ -314,9 +297,9 @@ class Frontend {
 	function enqueue_files() {
 
 		if ( is_singular( 'product' ) ) {
-			wp_enqueue_style( $this->plugin_name . '-fontawesome', plugin_dir_url( __DIR__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/assets/vendor/fontawesome/css/all.min.css' , [], 	'6.5.2', 'all' );
+			wp_enqueue_style( $this->plugin_name . '-fontawesome', plugin_dir_url( __DIR__ ) . '../vendor/solutionbox/wordpress-settings-framework/src/assets/vendor/fontawesome/css/all.min.css', array(), '6.5.2', 'all' );
 
-			wp_enqueue_style( $this->plugin_name . '-public', plugin_dir_url( __DIR__ ) . '../assets/css/public.css' , [  $this->plugin_name . '-fontawesome' ], $this->version, 'all' );
+			wp_enqueue_style( $this->plugin_name . '-public', plugin_dir_url( __DIR__ ) . '../assets/css/public.css', array( $this->plugin_name . '-fontawesome' ), $this->version, 'all' );
 		}
 
 	}
@@ -373,8 +356,8 @@ class Frontend {
 	 */
 	public function enable_the_content_filter() {
 		$disable_the_content_filter = Util::get_option( 'page_builder_support' );
-		
-		$output                     = false;
+
+		$output = false;
 
 		if ( empty( $disable_the_content_filter ) ) {
 			$disable_the_content_filter = false;

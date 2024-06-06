@@ -127,9 +127,9 @@ class Post_Type {
 				echo '<code>' . $post->post_name . '</code>';
 				break;
 			case 'display-globally':
-				$flag_default_for_all =  Util::is_tab_global( $post_id );
+				$flag_default_for_all = Util::is_tab_global( $post_id );
 
-				$tab_categories       = get_post_meta( $post_id, '_sptb_conditions_category', true );
+				$tab_categories = get_post_meta( $post_id, '_sptb_conditions_category', true );
 				if ( 'no' === $flag_default_for_all && $tab_categories ) {
 					echo '<span class="dashicons dashicons-no-alt"></span>';
 				} else {

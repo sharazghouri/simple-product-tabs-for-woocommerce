@@ -2,8 +2,6 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs;
 
-
-
 /**
  * The main plugin class.
  *
@@ -64,7 +62,6 @@ class Plugin {
 	 */
 	public function __construct( $file = null, $version = '1.0' ) {
 
-
 		$this->data = array(
 			'version'        => $version,
 			'file'           => $file,
@@ -91,7 +88,6 @@ class Plugin {
 	 */
 	public function init() {
 		// $this->setup_plugin();
-		
 
 		// Admin only services.
 		if ( is_admin() ) {
@@ -106,15 +102,11 @@ class Plugin {
 			$this->single_tab->register();
 		}
 
-
 		if ( ! is_admin() ) {
 			$this->frontend = new Frontend\Frontend( $this );
 			$this->frontend->register();
 
 		}
-
-	
-
 
 	}
 

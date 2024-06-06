@@ -22,7 +22,7 @@ final class Util {
 	 */
 	public static function is_tab_global( $tab_id ) {
 
-			return  'yes' == get_post_meta( $tab_id, '_sptb_display_tab_globally', true );
+			return 'yes' == get_post_meta( $tab_id, '_sptb_display_tab_globally', true );
 
 	}
 
@@ -77,7 +77,6 @@ final class Util {
 
 		$override_meta = get_post_meta( $product_id, '_sptb_override_' . $tab_key, true );
 
-
 		return 'yes' === $override_meta;
 	}
 
@@ -86,16 +85,16 @@ final class Util {
 	 *
 	 * @since 1.0.0
 	 */
-	public static function get_option( $key , $section = '' ) {
+	public static function get_option( $key, $section = '' ) {
 		if ( empty( $key ) ) {
 			return;
 		}
 
-		if( ! empty( $section ) ) {
+		if ( ! empty( $section ) ) {
 			$key = "settings_section_{$section}_{$key}";
 		}
 
-		$plugin_options =  get_option( 'simple_product_tabs_settings' );
+		$plugin_options = get_option( 'simple_product_tabs_settings' );
 
 		$value = null;
 
@@ -107,7 +106,7 @@ final class Util {
 	}
 
 
-	public static function  tabs_frontend_callback( $key, $tab ) {
+	public static function tabs_frontend_callback( $key, $tab ) {
 
 		global $product;
 
@@ -116,7 +115,7 @@ final class Util {
 			return;
 		}
 
-		$override_content = Util::is_tab_overridden( $key, $product->get_id() );
+		$override_content = self::is_tab_overridden( $key, $product->get_id() );
 
 		if ( ! $override_content ) {
 			// Display default tab content.
@@ -136,9 +135,8 @@ final class Util {
 	 *
 	 * @return boolean
 	 */
-	public static function is_pro_active(){
+	public static function is_pro_active() {
 
-	
 		return class_exists( '\Solution_Box\Plugin\Simple_Product_Tabs_Pro\Plugin_Pro' );
 	}
 }

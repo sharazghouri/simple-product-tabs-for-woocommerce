@@ -2,7 +2,6 @@
 
 namespace Solution_Box\Plugin\Simple_Product_Tabs\Admin;
 
-
 use Solution_Box\Plugin\Simple_Product_Tabs\Plugin;
 use Solution_Box\Plugin\Simple_Product_Tabs\Post_Type;
 use Solution_Box\Plugin\Simple_Product_Tabs\Util;
@@ -22,7 +21,7 @@ class Admin_Controller {
 	private $plugin_name;
 	private $version;
 	private $settings_page;
-	public  $product_tabs_list;
+	public $product_tabs_list;
 
 	const SETTING_SLUG = 'simple_product_tabs';
 
@@ -54,15 +53,14 @@ class Admin_Controller {
 
 	/**
 	 * Set Tab list.
-	 *
 	 */
-	function set_tab_list(){
+	function set_tab_list() {
 		$this->product_tabs_list = get_posts(
-			[
+			array(
 				'post_type'      => Post_Type::POST_SLUG,
 				'posts_per_page' => -1,
 				'order'          => 'asc',
-			]
+			)
 		);
 
 	}
@@ -113,14 +111,13 @@ class Admin_Controller {
 				esc_html__( 'Docs', 'simple-product-tabs' )
 			);
 
-			if( ! Util::is_pro_active() ) {
+			if ( ! Util::is_pro_active() ) {
 				$links[] = sprintf(
 					'<a href="%1$s" target="_blank"><strong>%2$s</strong></a>',
 					esc_url( 'https://solutionbox.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=pluginsadmin&utm_content=swtplugins' ),
 					esc_html__( 'Pro version', 'simple-product-tabs' )
 				);
 			}
-		
 		}
 
 		return $links;
@@ -141,11 +138,10 @@ class Admin_Controller {
 			wp_enqueue_script( $this->plugin_name . '-settings', plugin_dir_url( __DIR__ ) . '../assets/js/admin.js', array( 'jquery', 'wp-element', 'wp-api-fetch' ), $this->version, true );
 			wp_enqueue_style( $this->plugin_name . '-settings', plugin_dir_url( __DIR__ ) . '../assets/css/admin.css', array(), $this->plugin->get_version(), 'all' );
 
-			if( 'woo_product_tabs' == $screen->id) {
+			if ( 'woo_product_tabs' == $screen->id ) {
 				$this->settings_page->admin_enqueue_scripts(); // Get from settings framework
 				wp_enqueue_style( 'sbsa-fontawesome' ); // Get from settings framework
 			}
-			
 		}
 
 	}

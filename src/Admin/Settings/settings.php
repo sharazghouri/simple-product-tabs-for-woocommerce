@@ -32,7 +32,6 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Util;
  */
 function sptb_tabbed_settings( $sbsa_settings ) {
 
-
 	$pro_link = array(
 		'url'      => esc_url( Util::PRO_LINK ),
 		'type'     => 'pro-link', // Can be 'tooltip', 'pro-link'or 'link'. Default is 'tooltip'.
@@ -40,18 +39,18 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 		'external' => true, // Default is `true`.
 	);
 
-	$plugin_factory = '\Solution_Box\Plugin\Simple_Product_Tabs\Plugin_Factory';
+	$plugin_factory      = '\Solution_Box\Plugin\Simple_Product_Tabs\Plugin_Factory';
 	$simple_product_tabs = array();
 
 	if ( ! empty( $_product_tabs = $plugin_factory::$plugin->admin->product_tabs_list ) ) {
 		foreach ( $_product_tabs as $k => $item ) {
-		 $simple_product_tabs[ $item->post_name  ] =  $item->post_title;
-		 
+			$simple_product_tabs[ $item->post_name ] = $item->post_title;
+
 		}
 	}
 	// Define a function to create a tab object for better reusability
-	function create_tab($id, $title ) {
-		return [ $id => $title ];
+	function create_tab( $id, $title ) {
+		return array( $id => $title );
 	}
 
 	// Create tab objects with localization and priority settings
@@ -59,16 +58,15 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 	$info        = create_tab( 'additional_information', 'Additional Information' );
 	$review      = create_tab( 'reviews', 'Reviews' );
 
-
 	// Add tabs to the $tab_posts array using array_merge
-	$simple_product_tabs = array_merge( $simple_product_tabs,  $description, $info, $review  );
+	$simple_product_tabs = array_merge( $simple_product_tabs, $description, $info, $review );
 
 	// Tabs.
 	$sbsa_settings['tabs'] = array(
 		array(
 			'id'    => 'product_tabs',
 			'title' => esc_html__( 'Product Tabs', 'simple-product-tabs' ),
-			'link'  => admin_url( 'edit.php?post_type=woo_product_tabs' )
+			'link'  => admin_url( 'edit.php?post_type=woo_product_tabs' ),
 		),
 		array(
 			'id'    => 'settings',
@@ -88,7 +86,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'section_id'    => 'section_1',
 			'section_title' => 'Section 1',
 			'section_order' => 10,
-			'fields'        => array()
+			'fields'        => array(),
 		),
 		array(
 			'tab_id'        => 'settings',
@@ -98,14 +96,14 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'          => 'description_tab_title',
-					'name'          => 'description_tab_title',
+					'name'        => 'description_tab_title',
 					'title'       => 'Description',
 					'type'        => 'text',
 					'placeholder' => 'Description',
 				),
 				array(
 					'id'      => 'hide_description',
-					'name'      => 'hide_description',
+					'name'    => 'hide_description',
 					'title'   => __( 'Hide Description', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
@@ -113,14 +111,14 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'          => 'information_tab_title',
-					'name'          => 'information_tab_title',
+					'name'        => 'information_tab_title',
 					'title'       => 'Additional Information	',
 					'type'        => 'text',
 					'placeholder' => 'Additional Information',
 				),
 				array(
 					'id'      => 'hide_information',
-					'name'      => 'hide_information',
+					'name'    => 'hide_information',
 					'title'   => __( 'Hide Additional Information', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
@@ -128,14 +126,14 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'          => 'review_tab_title',
-					'name'          => 'review_tab_title',
+					'name'        => 'review_tab_title',
 					'title'       => __( 'Review', 'simple-woo-tabs' ),
 					'type'        => 'text',
 					'placeholder' => 'Review',
 				),
 				array(
 					'id'      => 'hide_reviews',
-					'name'      => 'hide_reviews',
+					'name'    => 'hide_reviews',
 					'title'   => __( 'Hide Reviews', 'simple-woo-tabs' ),
 					'type'    => 'toggle',
 					'default' => false,
@@ -143,7 +141,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'      => 'desc_tab_icon',
-					'name'      => 'desc_tab_icon',
+					'name'    => 'desc_tab_icon',
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
@@ -159,7 +157,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'      => 'desc_tab_icon',
-					'name'      => 'desc_tab_icon',
+					'name'    => 'desc_tab_icon',
 					'title'   => __( 'Description Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
@@ -167,7 +165,7 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 				),
 				array(
 					'id'      => 'review_tab_icon',
-					'name'      => 'review_tab_icon',
+					'name'    => 'review_tab_icon',
 					'title'   => __( 'Reviews Tab Icon', 'simple-woo-tabs' ),
 					'type'    => 'icon',
 					'default' => false,
@@ -183,19 +181,19 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'fields'        => array(
 				array(
 					'id'       => 'search_by_tabs',
-					'name'       => 'search_by_tabs',
+					'name'     => 'search_by_tabs',
 					'title'    => 'Search By Tabs Content',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Enhance the product search by adding product tabs title and content.', 'simple-woo-tabs' ),
-					'link'    => $pro_link,
+					'link'     => $pro_link,
 				),
 				array(
 					'id'       => 'page_builder_support',
-					'name'       => 'page_builder_support',
+					'name'     => 'page_builder_support',
 					'title'    => 'Enable Page Builder Support',
 					'type'     => 'toggle',
 					'subtitle' => __( 'Disable <pre style="display:inline-block;margin:0">the_content</pre> filter if you are having issue in tab content while using page builders.', 'simple-woo-tabs' ),
-					'link'    => $pro_link,
+					'link'     => $pro_link,
 				),
 			),
 		),
@@ -206,11 +204,11 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'section_order' => 11,
 			'fields'        => array(
 				array(
-					'id'       => 'tabs_order',
-					'name'       => 'tabs_order',
-					'title'    => __( 'Reorder', 'simple-woo-tabs' ),
-					'type'     => 'sortable_list',
-					'choices'  => $simple_product_tabs,
+					'id'      => 'tabs_order',
+					'name'    => 'tabs_order',
+					'title'   => __( 'Reorder', 'simple-woo-tabs' ),
+					'type'    => 'sortable_list',
+					'choices' => $simple_product_tabs,
 					'link'    => $pro_link,
 				),
 			),
