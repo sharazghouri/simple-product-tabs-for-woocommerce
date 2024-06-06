@@ -79,17 +79,6 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 			'title' => esc_html__( 'Reorder', 'simple-product-tabs' ),
 
 		),
-		array(
-			'id'                => 'license',
-			'title'             => esc_html__( 'License', 'simple-product-tabs' ),
-			'tab_control_group' => 'tab-control',
-			'show_if'           => array( // Field will only show if the control `settings_section_2_tab-control` is set to true.
-				array(
-					'field' => 'settings_section_3_tab-control',
-					'value' => array( '1' ),
-				),
-			),
-		),
 	);
 
 	// Settings.

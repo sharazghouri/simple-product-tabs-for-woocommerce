@@ -25,7 +25,7 @@ class Post_Type {
 		add_action( 'manage_woo_product_tabs_posts_custom_column', array( $this, 'custom_columns_in_tab_listing' ), 10, 2 );
 		add_filter( 'post_updated_messages', array( $this, 'tab_post_updated_messages' ), 10, 2 );
 		add_filter( 'post_row_actions', array( $this, 'tab_post_row_actions' ), 10, 2 );
-		add_filter( 'manage_edit-woo_product_tab_sortable_columns', array( $this, 'sortable_tab_columns' ) );
+		add_filter( 'manage_edit-woo_product_tabs_sortable_columns', array( $this, 'sortable_tab_columns' ) );
 		add_filter( 'parent_file', array( $this, 'highlight_menu_item' ), 99 );
 		add_filter( 'custom_menu_order', '__return_true', 99 );
 		add_filter( 'menu_order', array( $this, 'tabs_menu_order' ) );

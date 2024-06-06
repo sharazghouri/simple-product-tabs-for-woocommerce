@@ -179,6 +179,7 @@ class Single_Tab {
 				return false;
 		}
 
+		
 		if ( Post_Type::POST_SLUG != $_POST['post_type'] ) {
 				return false;
 		}
@@ -192,7 +193,7 @@ class Single_Tab {
 		 */
 	public function save_visibility_condition( $post_id ) {
 
-		if( $this->check_meta_box_nonce() ){
+		if( ! $this->check_meta_box_nonce() ){
 			return false;
 		}
 		// Show tabs on all products
@@ -217,7 +218,7 @@ public function save_tab_icon( $post_id ) {
 
 
 
-	if ( $this->check_meta_box_nonce() ) {
+	if ( ! $this->check_meta_box_nonce() ) {
 			return;
 	}
 
@@ -234,7 +235,7 @@ public function save_tab_icon( $post_id ) {
 
 	public function save_tab_priority( $post_id ) {
 
-		if ( $this->check_meta_box_nonce() ) {
+		if ( ! $this->check_meta_box_nonce() ) {
 				return;
 		}
 			// priority
