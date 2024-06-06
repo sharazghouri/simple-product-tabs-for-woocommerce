@@ -10,7 +10,7 @@
 	],
 	"require": {
 		"woocommerce/woocommerce-sniffs": "^0.1.0",
-		"solutionbox/wordpress-settings-framework": "^1.0.0"
+		"solutionbox/wordpress-settings-framework": "^1.2.0"
 	},
 	"autoload": {
 			"psr-4": {"Solution_Box\\Plugin\\Simple_Product_Tabs\\": "src/"}

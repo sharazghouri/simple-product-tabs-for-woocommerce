@@ -6,7 +6,7 @@ $vendorDir = dirname(__DIR__);
 $baseDir = dirname($vendorDir);
 
 return array(
+    'Solution_Box_Settings\\' => array($vendorDir . '/solutionbox/wordpress-settings-framework/src'),
     'Solution_Box\\Plugin\\Simple_Product_Tabs\\' => array($baseDir . '/src'),
-    'SolutionBoxSettings\\' => array($vendorDir . '/solutionbox/wordpress-settings-framework/src'),
     'Dealerdirect\\Composer\\Plugin\\Installers\\PHPCodeSniffer\\' => array($vendorDir . '/dealerdirect/phpcodesniffer-composer-installer/src'),
 );

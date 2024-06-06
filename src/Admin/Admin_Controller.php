@@ -6,7 +6,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs\Admin;
 use Solution_Box\Plugin\Simple_Product_Tabs\Plugin;
 use Solution_Box\Plugin\Simple_Product_Tabs\Post_Type;
 use Solution_Box\Plugin\Simple_Product_Tabs\Util;
-use  SolutionBoxSettings as Settings_API_Helper;
+use  Solution_Box_Settings as Settings_API_Helper;
 
 use const Solution_Box\Plugin\Simple_Product_Tabs\SPTB_PLUGIN_FILE;
 

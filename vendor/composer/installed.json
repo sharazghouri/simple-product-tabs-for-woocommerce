@@ -145,32 +145,32 @@
         },
         {
             "name": "phpcompatibility/phpcompatibility-paragonie",
-            "version": "1.3.2",
-            "version_normalized": "1.3.2.0",
+            "version": "1.3.3",
+            "version_normalized": "1.3.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie.git",
-                "reference": "bba5a9dfec7fcfbd679cfaf611d86b4d3759da26"
+                "reference": "293975b465e0e709b571cbf0c957c6c0a7b9a2ac"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityParagonie/zipball/bba5a9dfec7fcfbd679cfaf611d86b4d3759da26",
-                "reference": "bba5a9dfec7fcfbd679cfaf611d86b4d3759da26",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityParagonie/zipball/293975b465e0e709b571cbf0c957c6c0a7b9a2ac",
+                "reference": "293975b465e0e709b571cbf0c957c6c0a7b9a2ac",
                 "shasum": ""
             },
             "require": {
                 "phpcompatibility/php-compatibility": "^9.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0",
                 "paragonie/random_compat": "dev-master",
                 "paragonie/sodium_compat": "dev-master"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
-            "time": "2022-10-25T01:46:02+00:00",
+            "time": "2024-04-24T21:30:46+00:00",
             "type": "phpcodesniffer-standard",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -199,23 +199,38 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/issues",
+                "security": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie/security/policy",
                 "source": "https://github.com/PHPCompatibility/PHPCompatibilityParagonie"
             },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCompatibility",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
             "install-path": "../phpcompatibility/phpcompatibility-paragonie"
         },
         {
             "name": "phpcompatibility/phpcompatibility-wp",
-            "version": "2.1.4",
-            "version_normalized": "2.1.4.0",
+            "version": "2.1.5",
+            "version_normalized": "2.1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCompatibility/PHPCompatibilityWP.git",
-                "reference": "b6c1e3ee1c35de6c41a511d5eb9bd03e447480a5"
+                "reference": "01c1ff2704a58e46f0cb1ca9d06aee07b3589082"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityWP/zipball/b6c1e3ee1c35de6c41a511d5eb9bd03e447480a5",
-                "reference": "b6c1e3ee1c35de6c41a511d5eb9bd03e447480a5",
+                "url": "https://api.github.com/repos/PHPCompatibility/PHPCompatibilityWP/zipball/01c1ff2704a58e46f0cb1ca9d06aee07b3589082",
+                "reference": "01c1ff2704a58e46f0cb1ca9d06aee07b3589082",
                 "shasum": ""
             },
             "require": {
@@ -223,13 +238,13 @@
                 "phpcompatibility/phpcompatibility-paragonie": "^1.0"
             },
             "require-dev": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7"
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0"
             },
             "suggest": {
-                "dealerdirect/phpcodesniffer-composer-installer": "^0.7 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
+                "dealerdirect/phpcodesniffer-composer-installer": "^1.0 || This Composer plugin will sort out the PHP_CodeSniffer 'installed_paths' automatically.",
                 "roave/security-advisories": "dev-master || Helps prevent installing dependencies with known security issues."
             },
-            "time": "2022-10-24T09:00:36+00:00",
+            "time": "2024-04-24T21:37:59+00:00",
             "type": "phpcodesniffer-standard",
             "installation-source": "dist",
             "notification-url": "https://packagist.org/downloads/",
@@ -257,34 +272,49 @@
             ],
             "support": {
                 "issues": "https://github.com/PHPCompatibility/PHPCompatibilityWP/issues",
+                "security": "https://github.com/PHPCompatibility/PHPCompatibilityWP/security/policy",
                 "source": "https://github.com/PHPCompatibility/PHPCompatibilityWP"
             },
+            "funding": [
+                {
+                    "url": "https://github.com/PHPCompatibility",
+                    "type": "github"
+                },
+                {
+                    "url": "https://github.com/jrfnl",
+                    "type": "github"
+                },
+                {
+                    "url": "https://opencollective.com/php_codesniffer",
+                    "type": "open_collective"
+                }
+            ],
             "install-path": "../phpcompatibility/phpcompatibility-wp"
         },
         {
             "name": "solutionbox/wordpress-settings-framework",
-            "version": "1.0.0",
-            "version_normalized": "1.0.0.0",
+            "version": "1.2.0",
+            "version_normalized": "1.2.0.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sharazghouri/soution-box-settings.git",
-                "reference": "1f47fca269f23b2f23f4e474a519b26d92a30f07"
+                "reference": "12735d9b31739090e36c310a68b777e16a8454d3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/1f47fca269f23b2f23f4e474a519b26d92a30f07",
-                "reference": "1f47fca269f23b2f23f4e474a519b26d92a30f07",
+                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/12735d9b31739090e36c310a68b777e16a8454d3",
+                "reference": "12735d9b31739090e36c310a68b777e16a8454d3",
                 "shasum": ""
             },
             "require": {
                 "woocommerce/woocommerce-sniffs": "^0.1.0"
             },
-            "time": "2024-04-22T11:12:35+00:00",
+            "time": "2024-06-06T18:00:43+00:00",
             "type": "library",
             "installation-source": "dist",
             "autoload": {
                 "psr-4": {
-                    "SolutionBoxSettings\\": "src/"
+                    "Solution_Box_Settings\\": "src/"
                 }
             },
             "notification-url": "https://packagist.org/downloads/",
@@ -305,23 +335,23 @@
             ],
             "support": {
                 "issues": "https://github.com/sharazghouri/soution-box-settings/issues",
-                "source": "https://github.com/sharazghouri/soution-box-settings/tree/1.0.0"
+                "source": "https://github.com/sharazghouri/soution-box-settings/tree/1.2.0"
             },
             "install-path": "../solutionbox/wordpress-settings-framework"
         },
         {
             "name": "squizlabs/php_codesniffer",
-            "version": "3.9.1",
-            "version_normalized": "3.9.1.0",
+            "version": "3.10.1",
+            "version_normalized": "3.10.1.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/PHPCSStandards/PHP_CodeSniffer.git",
-                "reference": "267a4405fff1d9c847134db3a3c92f1ab7f77909"
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/267a4405fff1d9c847134db3a3c92f1ab7f77909",
-                "reference": "267a4405fff1d9c847134db3a3c92f1ab7f77909",
+                "url": "https://api.github.com/repos/PHPCSStandards/PHP_CodeSniffer/zipball/8f90f7a53ce271935282967f53d0894f8f1ff877",
+                "reference": "8f90f7a53ce271935282967f53d0894f8f1ff877",
                 "shasum": ""
             },
             "require": {
@@ -333,7 +363,7 @@
             "require-dev": {
                 "phpunit/phpunit": "^4.0 || ^5.0 || ^6.0 || ^7.0 || ^8.0 || ^9.3.4"
             },
-            "time": "2024-03-31T21:03:09+00:00",
+            "time": "2024-05-22T21:24:41+00:00",
             "bin": [
                 "bin/phpcbf",
                 "bin/phpcs"

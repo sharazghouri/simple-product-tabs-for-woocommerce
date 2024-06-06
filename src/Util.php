@@ -10,7 +10,7 @@ final class Util {
 
 
 
-	const PRO_LINK = 'https://solbox.dev/plugins/sticky-cart/';
+	const PRO_LINK = 'https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/';
 
 
 	/**
