@@ -1,0 +1,291 @@
+# Copyright (C) 2024 Solution Box
+# This file is distributed under the GNU General Public License v3.0.
+msgid ""
+msgstr ""
+"Project-Id-Version: Simple Product Tabs for WooCommerce 1.0.0\n"
+"Report-Msgid-Bugs-To: https://wordpress.org/support/plugin/simple-product-tabs-for-woocommerce\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"POT-Creation-Date: 2024-06-07T10:54:14+00:00\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
+"X-Generator: WP-CLI 2.7.1\n"
+"X-Domain: simple-product-tabs-for-woocommerce\n"
+
+#. Plugin Name of the plugin
+msgid "Simple Product Tabs for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin
+msgid "https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/"
+msgstr ""
+
+#. Description of the plugin
+msgid "Boost your sale by adding custom tabs containing extra information."
+msgstr ""
+
+#. Author of the plugin
+msgid "Solution Box"
+msgstr ""
+
+#. Author URI of the plugin
+msgid "https://solbox.dev/"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:74
+msgid "WooCommerce Tabs Settings"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:75
+msgid "Tabs Settings"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:93
+#: src/Admin/Admin_Controller.php:169
+#: src/Admin/Settings/settings.php:73
+#: src/Single_Tab.php:279
+msgid "Settings"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:111
+msgid "Docs"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:118
+msgid "Pro version"
+msgstr ""
+
+#: src/Admin/Admin_Controller.php:166
+#: src/Admin/Product_Editor_Tabs.php:53
+#: src/Admin/Settings/settings.php:68
+#: src/Post_Type.php:51
+msgid "Product Tabs"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:77
+#: src/Admin/Settings/settings.php:217
+msgid "Reorder"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:85
+msgid "Premium"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:115
+msgid "Hide Description"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:130
+msgid "Hide Additional Information"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:138
+msgid "Review"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:145
+msgid "Hide Reviews"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:153
+#: src/Admin/Settings/settings.php:169
+msgid "Description Tab Icon"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:161
+msgid "Additional information Tab Icon"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:177
+msgid "Reviews Tab Icon"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:187
+msgid "Other Options"
+msgstr ""
+
+#: src/Admin/Settings/settings.php:195
+msgid "Enhance the product search by adding product tabs title and content."
+msgstr ""
+
+#: src/Admin/Settings/settings.php:203
+msgid "Disable <pre style=\"display:inline-block;margin:0\">the_content</pre> filter if you are having issue in tab content while using page builders."
+msgstr ""
+
+#: src/Admin/Settings/settings.php:211
+msgid "Reorder The Tabs"
+msgstr ""
+
+#: src/Post_Type.php:42
+msgctxt "post type general name"
+msgid "Product Tabs"
+msgstr ""
+
+#: src/Post_Type.php:43
+msgctxt "post type singular name"
+msgid "Tab"
+msgstr ""
+
+#: src/Post_Type.php:44
+msgctxt "admin menu"
+msgid "WooCommerce Product Tabs"
+msgstr ""
+
+#: src/Post_Type.php:45
+msgctxt "add new on admin bar"
+msgid "Tab"
+msgstr ""
+
+#: src/Post_Type.php:47
+msgid "Add New Tab"
+msgstr ""
+
+#: src/Post_Type.php:48
+msgid "New Tab"
+msgstr ""
+
+#: src/Post_Type.php:49
+msgid "Edit Tab"
+msgstr ""
+
+#: src/Post_Type.php:50
+msgid "View Tab"
+msgstr ""
+
+#: src/Post_Type.php:52
+msgid "Search Tabs"
+msgstr ""
+
+#: src/Post_Type.php:53
+msgid "Parent Tabs:"
+msgstr ""
+
+#: src/Post_Type.php:54
+msgid "No tabs found."
+msgstr ""
+
+#: src/Post_Type.php:55
+msgid "No tabs found in Trash."
+msgstr ""
+
+#: src/Post_Type.php:106
+#: src/Single_Tab.php:365
+msgid "Priority"
+msgstr ""
+
+#: src/Post_Type.php:107
+msgid "Display globally"
+msgstr ""
+
+#: src/Post_Type.php:108
+msgid "Tab Key"
+msgstr ""
+
+#: src/Post_Type.php:158
+#: src/Post_Type.php:161
+msgid "Tab updated."
+msgstr ""
+
+#: src/Post_Type.php:159
+msgid "Custom field updated."
+msgstr ""
+
+#: src/Post_Type.php:160
+msgid "Custom field deleted."
+msgstr ""
+
+#: src/Post_Type.php:162
+msgid "Tab restored to revision from %s"
+msgstr ""
+
+#: src/Post_Type.php:163
+msgid "Tab published."
+msgstr ""
+
+#: src/Post_Type.php:164
+msgid "Tab saved."
+msgstr ""
+
+#: src/Post_Type.php:165
+msgid "Tab submitted."
+msgstr ""
+
+#: src/Post_Type.php:167
+msgid "Tab scheduled for: <strong>%1$s</strong>."
+msgstr ""
+
+#: src/Post_Type.php:168
+msgid "M j, Y @ G:i"
+msgstr ""
+
+#: src/Post_Type.php:170
+msgid "Tab draft updated."
+msgstr ""
+
+#: src/Single_Tab.php:30
+msgid "Search for categories"
+msgstr ""
+
+#: src/Single_Tab.php:36
+msgid "No categories found"
+msgstr ""
+
+#: src/Single_Tab.php:42
+msgid "Selected categories"
+msgstr ""
+
+#: src/Single_Tab.php:46
+msgid "Clear all selected categories"
+msgstr ""
+
+#: src/Single_Tab.php:88
+msgid "Search for products"
+msgstr ""
+
+#: src/Single_Tab.php:90
+#: src/Single_Tab.php:96
+msgid "Pro version only"
+msgstr ""
+
+#: src/Single_Tab.php:94
+msgid "Search for tags"
+msgstr ""
+
+#: src/Single_Tab.php:263
+msgid "Conditions"
+msgstr ""
+
+#: src/Single_Tab.php:271
+msgid "Select icon"
+msgstr ""
+
+#: src/Single_Tab.php:304
+#: src/Single_Tab.php:307
+msgid "Visibility"
+msgstr ""
+
+#: src/Single_Tab.php:310
+msgid "Display globally on all products"
+msgstr ""
+
+#: src/Single_Tab.php:314
+msgid "Show on specific categories"
+msgstr ""
+
+#: src/Single_Tab.php:325
+msgid "Inclusions"
+msgstr ""
+
+#: src/Single_Tab.php:341
+msgid "Select Icon"
+msgstr ""
+
+#: templates/product-tab-html.php:61
+msgid "Override the default tab content for this product"
+msgstr ""
+
+#: templates/product-tab-html.php:72
+msgid "Manage global tab"
+msgstr ""

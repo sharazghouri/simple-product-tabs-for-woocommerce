@@ -25,7 +25,8 @@
 		"plugin-zip": "wp-scripts plugin-zip",
 		"start": "wp-scripts start",
 		"test:e2e": "wp-scripts test-e2e",
-		"test:unit": "wp-scripts test-unit-js"
+		"test:unit": "wp-scripts test-unit-js",
+		"translate": "wp i18n make-pot ./ languages/simple-products-tabs-for-woocommerce.pot"
 	},
 	"bugs": {
 		"url": "https://github.com/sharazghouri/simple-product-tabs-for-woocommerce/issues"
@@ -34,6 +35,7 @@
 	"devDependencies": {
 		"@wordpress/dependency-extraction-webpack-plugin": "^4.8.0",
 		"@wordpress/scripts": "^26.4.0",
+		"@wordpress/i18n": "^4.58.0",
 		"gulp": "^4.0.2"
 	},
 	"dependencies": {
