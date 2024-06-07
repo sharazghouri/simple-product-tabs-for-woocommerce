@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => '4b4c3c2f954792cfcb3f4d636ef91c06d6d7dd6e',
-        'name' => 'solutionbox/simple-product-tabs',
+        'name' => 'solutionbox/simple-product-tabs-for-woocommerce',
         'dev' => true,
     ),
     'versions' => array(
@@ -46,7 +46,7 @@
             'reference' => '01c1ff2704a58e46f0cb1ca9d06aee07b3589082',
             'dev_requirement' => false,
         ),
-        'solutionbox/simple-product-tabs' => array(
+        'solutionbox/simple-product-tabs-for-woocommerce' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'library',

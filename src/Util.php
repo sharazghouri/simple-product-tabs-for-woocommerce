@@ -4,13 +4,13 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Utility functions for WooCommerce Product Tabs.
  *
- * @package   Solution_Box\simple-product-tabs
+ * @package   Solution_Box\simple-product-tabs-for-woocommerce
  */
 final class Util {
 
 
 
-	const PRO_LINK = 'https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/';
+	const PRO_LINK = 'https://solbox.dev/plugins/simple-product-tabs-for-woocommerce-for-woocommerce/';
 
 
 	/**

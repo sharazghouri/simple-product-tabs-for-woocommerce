@@ -4,7 +4,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Plugin Setup
  *
- * @package   Solution_Box/simple-product-tabs
+ * @package   Solution_Box/simple-product-tabs-for-woocommerce
  */
 /**
  * Plugin factory

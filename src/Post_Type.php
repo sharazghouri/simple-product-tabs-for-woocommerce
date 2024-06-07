@@ -5,7 +5,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Registering the post type
  *
- * @package   Solution_Box/simple-product-tabs
+ * @package   Solution_Box/simple-product-tabs-for-woocommerce
  */
 class Post_Type {
 
@@ -39,20 +39,20 @@ class Post_Type {
 	public function tab_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Product Tabss', 'post type general name', 'simple-product-tabs' ),
-			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs' ),
-			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-product-tabs' ),
-			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs' ),
-			'add_new'            => _x( 'Add New', 'simple-product-tabs' ),
-			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs' ),
-			'new_item'           => __( 'New Tab', 'simple-product-tabs' ),
-			'edit_item'          => __( 'Edit Tab', 'simple-product-tabs' ),
-			'view_item'          => __( 'View Tab', 'simple-product-tabs' ),
-			'all_items'          => __( 'Product Tabs', 'simple-product-tabs' ),
-			'search_items'       => __( 'Search Tabs', 'simple-product-tabs' ),
-			'parent_item_colon'  => __( 'Parent Tabs:', 'simple-product-tabs' ),
-			'not_found'          => __( 'No tabs found.', 'simple-product-tabs' ),
-			'not_found_in_trash' => __( 'No tabs found in Trash.', 'simple-product-tabs' ),
+			'name'               => _x( 'Product Tabss', 'post type general name', 'simple-product-tabs-for-woocommerce' ),
+			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs-for-woocommerce' ),
+			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-product-tabs-for-woocommerce' ),
+			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs-for-woocommerce' ),
+			'add_new'            => _x( 'Add New', 'simple-product-tabs-for-woocommerce' ),
+			'add_new_item'       => __( 'Add New Tab', 'simple-product-tabs-for-woocommerce' ),
+			'new_item'           => __( 'New Tab', 'simple-product-tabs-for-woocommerce' ),
+			'edit_item'          => __( 'Edit Tab', 'simple-product-tabs-for-woocommerce' ),
+			'view_item'          => __( 'View Tab', 'simple-product-tabs-for-woocommerce' ),
+			'all_items'          => __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ),
+			'search_items'       => __( 'Search Tabs', 'simple-product-tabs-for-woocommerce' ),
+			'parent_item_colon'  => __( 'Parent Tabs:', 'simple-product-tabs-for-woocommerce' ),
+			'not_found'          => __( 'No tabs found.', 'simple-product-tabs-for-woocommerce' ),
+			'not_found_in_trash' => __( 'No tabs found in Trash.', 'simple-product-tabs-for-woocommerce' ),
 		);
 
 		$args = array(
@@ -103,9 +103,9 @@ class Post_Type {
 	public function add_columns_in_tab_listing( $columns ) {
 
 		unset( $columns['date'] );
-		$columns['priority']         = __( 'Priority', 'simple-product-tabs' );
-		$columns['display-globally'] = __( 'Display globally', 'simple-product-tabs' );
-		$columns['tab-key']          = __( 'Tab Key', 'simple-product-tabs' );
+		$columns['priority']         = __( 'Priority', 'simple-product-tabs-for-woocommerce' );
+		$columns['display-globally'] = __( 'Display globally', 'simple-product-tabs-for-woocommerce' );
+		$columns['tab-key']          = __( 'Tab Key', 'simple-product-tabs-for-woocommerce' );
 
 		return $columns;
 	}
@@ -155,19 +155,19 @@ class Post_Type {
 		$messages[ self::POST_SLUG ] = array(
 
 			0  => '', // Unused. Messages start at index 1.
-			1  => __( 'Tab updated.', 'simple-product-tabs' ),
-			2  => __( 'Custom field updated.', 'simple-product-tabs' ),
-			3  => __( 'Custom field deleted.', 'simple-product-tabs' ),
-			4  => __( 'Tab updated.', 'simple-product-tabs' ),
-			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
-			6  => __( 'Tab published.', 'simple-product-tabs' ),
-			7  => __( 'Tab saved.', 'simple-product-tabs' ),
-			8  => __( 'Tab submitted.', 'simple-product-tabs' ),
+			1  => __( 'Tab updated.', 'simple-product-tabs-for-woocommerce' ),
+			2  => __( 'Custom field updated.', 'simple-product-tabs-for-woocommerce' ),
+			3  => __( 'Custom field deleted.', 'simple-product-tabs-for-woocommerce' ),
+			4  => __( 'Tab updated.', 'simple-product-tabs-for-woocommerce' ),
+			5  => isset( $_GET['revision'] ) ? sprintf( __( 'Tab restored to revision from %s', 'simple-product-tabs-for-woocommerce' ), wp_post_revision_title( (int) $_GET['revision'], false ) ) : false,
+			6  => __( 'Tab published.', 'simple-product-tabs-for-woocommerce' ),
+			7  => __( 'Tab saved.', 'simple-product-tabs-for-woocommerce' ),
+			8  => __( 'Tab submitted.', 'simple-product-tabs-for-woocommerce' ),
 			9  => sprintf(
-				__( 'Tab scheduled for: <strong>%1$s</strong>.', 'simple-product-tabs' ),
-				date_i18n( __( 'M j, Y @ G:i', 'simple-product-tabs' ), strtotime( $post->post_date ) )
+				__( 'Tab scheduled for: <strong>%1$s</strong>.', 'simple-product-tabs-for-woocommerce' ),
+				date_i18n( __( 'M j, Y @ G:i', 'simple-product-tabs-for-woocommerce' ), strtotime( $post->post_date ) )
 			),
-			10 => __( 'Tab draft updated.', 'simple-product-tabs' ),
+			10 => __( 'Tab draft updated.', 'simple-product-tabs-for-woocommerce' ),
 		);
 		return $messages;
 

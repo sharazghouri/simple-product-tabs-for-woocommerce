@@ -5,7 +5,7 @@ namespace Solution_Box\Plugin\Simple_Product_Tabs;
 /**
  * Add metaboxes and handles their behavior for the singled edit tab page
  *
- * @package   Solution_Box\simple-product-tabs
+ * @package   Solution_Box\simple-product-tabs-for-woocommerce
  * @author    Solution Box <solutionboxdev@gmail.com>
  */
 class Single_Tab {
@@ -27,23 +27,23 @@ class Single_Tab {
 		?>
 				<div class="swt-categories-selector swt-inclusion-selector">
 						<div class="swt-component-search-field">
-								<input data-type="category" type="text" data-taxonomy="categories" id="swt-category-search" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-product-tabs' ); ?>">
+								<input data-type="category" type="text" data-taxonomy="categories" id="swt-category-search" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for categories', 'simple-product-tabs-for-woocommerce' ); ?>">
 						</div>
 						<div class="swt-spinner swt-loader">
 								<svg width="18" height="18" viewBox="0 0 38 38" xmlns="http://www.w3.org/2000/svg" stroke="#c3c4c7"> <g fill="none" fillRule="evenodd"> <g transform="translate(1 1)" strokeWidth="2"> <circle strokeOpacity="1" cx="18" cy="18" r="18"/> <path d="M36 18c0-9.94-8.06-18-18-18"> <animateTransform attributeName="transform" type="rotate" from="0 18 18" to="360 18 18" dur="1s" repeatCount="indefinite"/> </path> </g> </g></svg>
 						</div>
 						<div class="swt-component-no-results">
-								<span><?php _e( 'No categories found', 'simple-product-tabs' ); ?></span>
+								<span><?php _e( 'No categories found', 'simple-product-tabs-for-woocommerce' ); ?></span>
 						</div>
 						<ul class="solution-box-search-list__list">
 						</ul>
 						<div class="solution-box-search-list__selected <?php echo ( $selected_categories ) ? '' : 'swt-hide-selected-terms-section'; ?>">
 								<div class="solution-box-search-list__selected-header">
-										<strong><?php _e( 'Selected categories', 'simple-product-tabs' ); ?></strong>
+										<strong><?php _e( 'Selected categories', 'simple-product-tabs-for-woocommerce' ); ?></strong>
 									<?php
 											printf(
 												'<button type="button" aria-label="%1$s" class="solution-box-search-list-clear__all solution-box-remove-inclusions">%1$s</button>',
-												__( 'Clear all selected categories', 'simple-product-tabs' ),
+												__( 'Clear all selected categories', 'simple-product-tabs-for-woocommerce' ),
 											);
 									?>
 								</div>
@@ -85,15 +85,15 @@ class Single_Tab {
 
 				<?php if ( ! Util::is_pro_active() ) { ?>
 					<div class="swt-component-search-field disabled">
-									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs' ); ?>">
+									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for products', 'simple-product-tabs-for-woocommerce' ); ?>">
 						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK ); ?>">
-								<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
+								<?php _e( 'Pro version only', 'simple-product-tabs-for-woocommerce' ); ?>
 						</a>
 					</div>
 					<div class="swt-component-search-field disabled">
-									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs' ); ?>">
+									<input disabled type="text" class="swt-component-search-field-control" placeholder="<?php _e( 'Search for tags', 'simple-product-tabs-for-woocommerce' ); ?>">
 						<a class="pro-version-link" target="_blank" href="<?php echo esc_url( Util::PRO_LINK ); ?>">
-							<?php _e( 'Pro version only', 'simple-product-tabs' ); ?>
+							<?php _e( 'Pro version only', 'simple-product-tabs-for-woocommerce' ); ?>
 						</a>
 					</div>
 					<?php
@@ -259,24 +259,24 @@ class Single_Tab {
 		foreach ( $screens as $screen ) {
 				// Settings Metabox
 				add_meta_box(
-					'simple-product-tabs_conditions_section',
-					__( 'Conditions', 'simple-product-tabs' ),
+					'simple-product-tabs-for-woocommerce_conditions_section',
+					__( 'Conditions', 'simple-product-tabs-for-woocommerce' ),
 					array( $this, 'sptb_conditions_section' ),
 					$screen,
 					'normal',
 					'high'
 				);
 				add_meta_box(
-					'simple-product-tabs_icon_section',
-					__( 'Select icon', 'simple-product-tabs' ),
+					'simple-product-tabs-for-woocommerce_icon_section',
+					__( 'Select icon', 'simple-product-tabs-for-woocommerce' ),
 					array( $this, 'sptb_icon_section' ),
 					$screen,
 					'side',
 					'high'
 				);
 				add_meta_box(
-					'simple-product-tabs_priority_section',
-					__( 'Settings', 'simple-product-tabs' ),
+					'simple-product-tabs-for-woocommerce_priority_section',
+					__( 'Settings', 'simple-product-tabs-for-woocommerce' ),
 					array( $this, 'sptb_priority_section' ),
 					$screen,
 					'side',
@@ -301,17 +301,17 @@ class Single_Tab {
 						<table class="form-table visibility-form">
 								<tbody>
 										<tr>
-												<th><?php _e( 'Visibility', 'simple-product-tabs' ); ?></th>
+												<th><?php _e( 'Visibility', 'simple-product-tabs-for-woocommerce' ); ?></th>
 												<td>
 														<fieldset>
-																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-product-tabs' ); ?></span></legend>
+																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-product-tabs-for-woocommerce' ); ?></span></legend>
 																<label>
 																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" checked="checked" value="yes" <?php checked( true, $is_tab_global, true ); ?>>
-																			<?php _e( 'Display globally on all products', 'simple-product-tabs' ); ?>
+																			<?php _e( 'Display globally on all products', 'simple-product-tabs-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce' ); ?>
 																</label><br>
 																<label>
 																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" value="no" <?php checked( false, $is_tab_global, true ); ?>>
-																			<?php _e( 'Show on specific categories', 'simple-product-tabs' ); ?>
+																			<?php _e( 'Show on specific categories', 'simple-product-tabs-for-woocommerce' ); ?>
 																</label><br>
 														</fieldset>
 												</td>
@@ -322,7 +322,7 @@ class Single_Tab {
 						<table id="inclusions-list" class="form-table <?php echo ( ! $is_tab_global ) ? '' : 'hide-section'; ?> ">
 								<tbody>
 										<tr>
-												<th><?php _e( 'Inclusions', 'simple-product-tabs' ); ?></th>
+												<th><?php _e( 'Inclusions', 'simple-product-tabs-for-woocommerce' ); ?></th>
 												<td class="swt-term-inclusions-section">
 													<?php
 													$this->wta_inclusion_categories_selector( $post_id, $times_svg_icon );
@@ -338,13 +338,13 @@ class Single_Tab {
 
 		?>
 						<div class="icon-wrap">
-				<a href="#" class="tab_icon  button button-secondary  sbsa-browse-icon <?php echo ! Util::is_pro_active() ? 'disabled' : ''; ?>" data-model="sbsa-modal-icon-product-tab-screen"><?php esc_html_e( 'Select Icon', 'simple-product-tabs' ); ?></a>
+				<a href="#" class="tab_icon  button button-secondary  sbsa-browse-icon <?php echo ! Util::is_pro_active() ? 'disabled' : ''; ?>" data-model="sbsa-modal-icon-product-tab-screen"><?php esc_html_e( 'Select Icon', 'simple-product-tabs-for-woocommerce' ); ?></a>
 				<input type="text" name="_sptb_tab_icon" id="sbsa-browse-icon" value="" class="regular-text hidden sbsa-icon-input ">
 				<?php
 
 				$icon_output = '';
 				if ( $icon_value = get_post_meta( $post->ID, '_sptb_tab_icon', true ) ) {
-					$icon_output = sprintf( '<i class="%s"></i><a href="#" class="sbsa-icon-remove">Remove</a>', esc_attr( $icon_value ), __( 'Remove', 'simple-product-tabs-pro' ) );
+					$icon_output = sprintf( '<i class="%s"></i><a href="#" class="sbsa-icon-remove">Remove</a>', esc_attr( $icon_value ), __( 'Remove', 'simple-product-tabs-for-woocommerce-pro' ) );
 				}
 
 				echo sprintf( '<div class="sbsa-icon-output">%s</div>', $icon_output );
@@ -362,7 +362,7 @@ class Single_Tab {
 	public function sptb_priority_section( $post ) {
 			$priority = $post->menu_order;
 		echo '<p><label for="_sptb_option_priority"><strong>';
-			echo __( 'Priority', 'simple-product-tabs' );
+			echo __( 'Priority', 'simple-product-tabs-for-woocommerce' );
 		echo '</strong></label></p>';
 			echo '<input type="number" name="_sptb_option_priority" id="_sptb_option_priority" value="' . $priority . '" min="0" style="max-width:70px;"/>';
 	}

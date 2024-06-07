@@ -7,7 +7,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Post_Type;
 /**
  * Add metaboxes and handles their behavior for the singled edit tab page
  *
- * @package   Solution_Box/simple-product-tabs
+ * @package   Solution_Box/simple-product-tabs-for-woocommerce
  */
 class Product_Editor_Tabs {
 
@@ -50,8 +50,8 @@ class Product_Editor_Tabs {
 	 */
 	function simple_woo_tabs_data_tab( $product_data_tabs ) {
 		$product_data_tabs['swtp-product-tab'] = array(
-			'label'  => __( 'Product Tabs', 'simple-product-tabs' ),
-			'target' => 'simple-product-tabs',
+			'label'  => __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ),
+			'target' => 'simple-product-tabs-for-woocommerce',
 		);
 		return $product_data_tabs;
 	}

@@ -12,7 +12,7 @@ use const Solution_Box\Plugin\Simple_Product_Tabs\SPTB_PLUGIN_FILE;
 /**
  * Handles the admin functions.
  *
- * @package   Solution_Box\simple-product-tabs
+ * @package   Solution_Box\simple-product-tabs-for-woocommerce
  */
 class Admin_Controller {
 
@@ -71,8 +71,8 @@ class Admin_Controller {
 		$this->settings_page->add_settings_page(
 			array(
 				'parent_slug' => 'woocommerce',
-				'page_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs' ),
-				'menu_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs' ),
+				'page_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs-for-woocommerce' ),
+				'menu_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs-for-woocommerce' ),
 				'capability'  => 'manage_woocommerce',
 			)
 		);
@@ -90,7 +90,7 @@ class Admin_Controller {
 			sprintf(
 				'<a href="%1$s">%2$s</a>',
 				esc_url( $this->plugin->get_data( 'settings_path' ) ),
-				esc_html__( 'Settings', 'simple-product-tabs' )
+				esc_html__( 'Settings', 'simple-product-tabs-for-woocommerce' )
 			)
 		);
 		return $links;
@@ -107,15 +107,15 @@ class Admin_Controller {
 		if ( $file === $this->plugin->get_basename() ) {
 			$links[] = sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
-				esc_url( 'https://solutionbox.com/kb/simple-product-tabs-free-documentation/' ),
-				esc_html__( 'Docs', 'simple-product-tabs' )
+				esc_url( 'https://solbox.dev/docs?utm_source=freemium&utm_medium=dashbaord&utm_campaign=go_pro' ),
+				esc_html__( 'Docs', 'simple-product-tabs-for-woocommerce' )
 			);
 
 			if ( ! Util::is_pro_active() ) {
 				$links[] = sprintf(
 					'<a href="%1$s" target="_blank"><strong>%2$s</strong></a>',
-					esc_url( 'https://solutionbox.com/wordpress-plugins/simple-product-tabs/?utm_source=settings&utm_medium=settings&utm_campaign=pluginsadmin&utm_content=swtplugins' ),
-					esc_html__( 'Pro version', 'simple-product-tabs' )
+					esc_url( 'https://solutionbox.com/plugins/simple-product-tabs-for-woocommerce/utm_source=freemium&utm_medium=dashbaord&utm_campaign=go_pro' ),
+					esc_html__( 'Pro version', 'simple-product-tabs-for-woocommerce-for-woocommerce' )
 				);
 			}
 		}
@@ -162,10 +162,10 @@ class Admin_Controller {
 		?>
 		<ul class="sbsa-nav">
 			<li class="sbsa-nav__item sbsa-nav__item--active">
-				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-product-tabs' ); ?></a>
+				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 			<li class="sbsa-nav__item">
-				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs' ); ?></a>
+				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-for-woocommerce-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 		</ul>
 		<style>

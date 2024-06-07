@@ -3,7 +3,7 @@ use Solution_Box\Plugin\Simple_Product_Tabs\Util;
 
 defined( 'ABSPATH' ) || exit;
 ?>
-<div id="simple-product-tabs" class="panel woocommerce_options_panel">
+<div id="simple-product-tabs-for-woocommerce" class="panel woocommerce_options_panel">
 	<?php
 	$post_id  = get_the_ID();
 	$cat_list = wp_get_post_terms( $post_id, 'product_cat', array( 'fields' => 'ids' ) );
@@ -58,7 +58,7 @@ defined( 'ABSPATH' ) || exit;
 
 				// Checking this option would enable the content
 				$args = array(
-					'label'         => __( 'Override the default tab content for this product', 'simple-product-tabs' ),
+					'label'         => __( 'Override the default tab content for this product', 'simple-product-tabs-for-woocommerce' ),
 					'id'            => '_sptb_override_' . $tab->post_name,
 					'name'          => '_sptb_override_' . $tab->post_name,
 					'class'         => 'override-tab-content',
@@ -69,7 +69,7 @@ defined( 'ABSPATH' ) || exit;
 
 				wp_editor( $tab_value, '_sptb_field_' . esc_attr( $tab->post_name ), $settings );
 				echo '<div class="edit-tab-product edit-tab-footer">';
-				echo '<a class="edit-global-tab" target="_blank" href="' . get_edit_post_link( $tab->ID ) . '"><span class="dashicons dashicons-edit"></span> ' . __( 'Manage global tab', 'simple-product-tabs' ) . '</a>';
+				echo '<a class="edit-global-tab" target="_blank" href="' . get_edit_post_link( $tab->ID ) . '"><span class="dashicons dashicons-edit"></span> ' . __( 'Manage global tab', 'simple-product-tabs-for-woocommerce' ) . '</a>';
 				echo '</div></div><br />';
 			}
 		}
