@@ -38,6 +38,21 @@
 		"@wordpress/i18n": "^4.58.0",
 		"gulp": "^4.0.2"
 	},
+	"files":[
+		"admin/**",
+		"build/**",
+		"includes/**",
+		"languages/**",
+		"public/**",
+		"simple-product-tabs-for-woocommerce.php",
+		"uninstall.php",
+		"changelog.*",
+		"license.*",
+		"readme.*",
+		"src/**/",
+		"vendor/**/",
+		"composer.json"
+	],
 	"dependencies": {
 	}
 }

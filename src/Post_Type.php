@@ -189,10 +189,10 @@ class Post_Type {
 	 * @return mixed
 	 */
 	public function highlight_menu_item( $file ) {
-		global $plugin_page, $submenu_file;
+		global $plugin-page, $submenu_file;
 
-		if ( 'wta_settings' == $plugin_page ) {
-			$plugin_page  = 'edit.php?post_type=product';
+		if ( 'wta_settings' == $plugin-page ) {
+			$plugin-page  = 'edit.php?post_type=product';
 			$submenu_file = 'edit.php?post_type=' . self::POST_SLUG;
 		}
 		return $file;

@@ -107,14 +107,14 @@ class Admin_Controller {
 		if ( $file === $this->plugin->get_basename() ) {
 			$links[] = sprintf(
 				'<a href="%1$s" target="_blank">%2$s</a>',
-				esc_url( 'https://solbox.dev/docs?utm_source=freemium&utm_medium=dashbaord&utm_campaign=go_pro' ),
+				esc_url( 'https://solbox.dev/docs/?utm_source=freemium&utm_medium=dashboard&utm_campaign=go_pro_doc_tabs)' ),
 				esc_html__( 'Docs', 'simple-product-tabs-for-woocommerce' )
 			);
 
 			if ( ! Util::is_pro_active() ) {
 				$links[] = sprintf(
 					'<a href="%1$s" target="_blank" style="color: #39b54a; font-weight:700"><strong>%2$s</strong></a>',
-					esc_url( 'https://solutionbox.com/plugins/simple-product-tabs-for-woocommerce/utm_source=freemium&utm_medium=dashbaord&utm_campaign=go_pro' ),
+					esc_url( 'https://solutionbox.com/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=dasboarde&utm_campaign=go_pro_tabs' ),
 					esc_html__( 'Pro version', 'simple-product-tabs-for-woocommerce' )
 				);
 			}

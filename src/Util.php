@@ -10,7 +10,7 @@ final class Util {
 
 
 
-	const PRO_LINK = 'https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/';
+	const PRO_LINK = 'https://solutionbox.com/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=plugin-page&utm_campaign=go_pro_tabs';
 
 
 	/**
