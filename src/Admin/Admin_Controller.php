@@ -71,8 +71,8 @@ class Admin_Controller {
 		$this->settings_page->add_settings_page(
 			array(
 				'parent_slug' => 'woocommerce',
-				'page_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs-for-woocommerce' ),
-				'menu_title'  => __( 'Woocommerce Product Tabs', 'simple-product-tabs-for-woocommerce' ),
+				'page_title'  => __( 'WooCommerce Tabs Settings', 'simple-product-tabs-for-woocommerce' ),
+				'menu_title'  => __( 'Tabs Settings', 'simple-product-tabs-for-woocommerce' ),
 				'capability'  => 'manage_woocommerce',
 			)
 		);
@@ -113,9 +113,9 @@ class Admin_Controller {
 
 			if ( ! Util::is_pro_active() ) {
 				$links[] = sprintf(
-					'<a href="%1$s" target="_blank"><strong>%2$s</strong></a>',
+					'<a href="%1$s" target="_blank" style="color: #39b54a; font-weight:700"><strong>%2$s</strong></a>',
 					esc_url( 'https://solutionbox.com/plugins/simple-product-tabs-for-woocommerce/utm_source=freemium&utm_medium=dashbaord&utm_campaign=go_pro' ),
-					esc_html__( 'Pro version', 'simple-product-tabs-for-woocommerce-for-woocommerce' )
+					esc_html__( 'Pro version', 'simple-product-tabs-for-woocommerce' )
 				);
 			}
 		}
@@ -131,7 +131,8 @@ class Admin_Controller {
 	public function settings_page_scripts( $hook ) {
 		$screen = get_current_screen();
 
-		$screen_ids = array( 'edit-woo_product_tabs', 'admin_page_wta_settings', 'woo_product_tabs', 'product' );
+
+		$screen_ids = array( 'edit-woo_product_tabs', 'woo_product_tabs', 'product' , 'woocommerce_page_simple-product-tabs-settings');
 
 		if ( in_array( $screen->id, $screen_ids ) ) {
 
@@ -165,7 +166,7 @@ class Admin_Controller {
 				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 			<li class="sbsa-nav__item">
-				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-for-woocommerce-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs-for-woocommerce' ); ?></a>
+				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 		</ul>
 		<style>

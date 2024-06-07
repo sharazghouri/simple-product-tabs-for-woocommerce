@@ -307,7 +307,7 @@ class Single_Tab {
 																<legend class="screen-reader-text"><span><?php _e( 'Visibility', 'simple-product-tabs-for-woocommerce' ); ?></span></legend>
 																<label>
 																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" checked="checked" value="yes" <?php checked( true, $is_tab_global, true ); ?>>
-																			<?php _e( 'Display globally on all products', 'simple-product-tabs-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce' ); ?>
+																			<?php _e( 'Display globally on all products', 'simple-product-tabs-for-woocommerce' ); ?>
 																</label><br>
 																<label>
 																		<input type="radio" id="_sptb_display_tab_globally" name="_sptb_display_tab_globally" class="sptb_visibility_condition" value="no" <?php checked( false, $is_tab_global, true ); ?>>

@@ -79,6 +79,14 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 		),
 	);
 
+	if( ! Util::is_pro_active() ) {
+		$sbsa_settings[ 'tabs' ][ ] = array(
+			'id'    => 'pro',
+			'title' => esc_html__( 'Premium', 'simple-product-tabs-for-woocommerce' ),
+			'link'  => Util::PRO_LINK,
+		);
+	}
+
 	// Settings.
 	$sbsa_settings['sections'] = array(
 		array(
@@ -212,6 +220,13 @@ function sptb_tabbed_settings( $sbsa_settings ) {
 					'link'    => $pro_link,
 				),
 			),
+		),
+		array(
+			'tab_id'        => 'pro',
+			'section_id'    => 'section_100',
+			'section_title' => 'Buy Premium',
+			'section_order' => 10,
+			'fields'        => array(),
 		),
 	);
 

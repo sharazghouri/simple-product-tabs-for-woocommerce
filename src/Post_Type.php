@@ -39,7 +39,7 @@ class Post_Type {
 	public function tab_post_type() {
 
 		$labels = array(
-			'name'               => _x( 'Product Tabss', 'post type general name', 'simple-product-tabs-for-woocommerce' ),
+			'name'               => _x( 'Product Tabs', 'post type general name', 'simple-product-tabs-for-woocommerce' ),
 			'singular_name'      => _x( 'Tab', 'post type singular name', 'simple-product-tabs-for-woocommerce' ),
 			'menu_name'          => _x( 'WooCommerce Product Tabs', 'admin menu', 'simple-product-tabs-for-woocommerce' ),
 			'name_admin_bar'     => _x( 'Tab', 'add new on admin bar', 'simple-product-tabs-for-woocommerce' ),
