@@ -315,3 +315,18 @@ $background-color_2: #f1f1f1;
 		margin-top: 10px;
 	}
 }
+
+/* Settings */
+.sbsa-nav__item-link {
+	 &[href="https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/"] {
+		text-decoration: none;
+		background: #6344a2;
+		font-weight: 700;
+		color: #fff;
+		font-size: 11px;
+		padding-left: 10px;
+		padding-right: 10px;
+		font-size: 13px;
+		margin-bottom: -4px;
+	}
+}
