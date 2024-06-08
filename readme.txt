@@ -1,19 +1,18 @@
 === Simple Product Tabs for WooCommerce ===
-
 Contributors: solbox 
 Author URI: https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=author-uri&utm_campaign=go_pro_tabs
 Donate link: https://solbox.dev/
 Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs, product tabs, woocommerce product tab, product custom tabs, multiple product tabs, woocommerce custom tabs, woocommerce tabs, tabs for woocommerce, product tab, woocommerce, product, woocommerce product tabs, custom tab, woo product custom tabs, change tab, product page tabs, woocommerce custom tab, woocommerce tab, tabs plugin, woocommerce tabs plugin
-Requires PHP: 8.1
+Requires PHP: 7.4
 Requires at least: 6.0
 Tested up to: 6.4.3
 Stable tag: 1.0.0
 License: GPLv2 or later
 License URI: htttp://www.gnu.org/licenses/gpl-2.0.html
 
+== Description ==
 
 Discover the easy way to add extra tabs to your WooCommerce product pages.
-== Description 📄 ==
  [Documentation](https://solbox.dev/docs/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs) | [Support](https://solbox.dev/support/) | [Demo](https://solbox.dev/product-tabs) | [Premium Version](https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs)
 
 **Simple WooCommerce Tabs for WooCommerce** lets you effortlessly add unlimited custom tabs to any product page in your WooCommerce store. Enhance your product pages with rich, dynamic content using our intuitive WYSIWYG editor. Whether you want to include HTML, shortcodes, images, videos, or audio embeds, the possibilities are endless! 🚀

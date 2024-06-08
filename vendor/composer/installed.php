@@ -5,8 +5,8 @@
         'type' => 'library',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '4b4c3c2f954792cfcb3f4d636ef91c06d6d7dd6e',
-        'name' => 'solutionbox/simple-product-tabs-for-woocommerce',
+        'reference' => 'fdd2dcffe43e52c45939706959dae74bfa69acef',
+        'name' => 'solutionbox/simple-product-tabs-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce',
         'dev' => true,
     ),
     'versions' => array(
@@ -46,22 +46,22 @@
             'reference' => '01c1ff2704a58e46f0cb1ca9d06aee07b3589082',
             'dev_requirement' => false,
         ),
-        'solutionbox/simple-product-tabs-for-woocommerce' => array(
+        'solutionbox/simple-product-tabs-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce-for-woocommerce' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'library',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '4b4c3c2f954792cfcb3f4d636ef91c06d6d7dd6e',
+            'reference' => 'fdd2dcffe43e52c45939706959dae74bfa69acef',
             'dev_requirement' => false,
         ),
         'solutionbox/wordpress-settings-framework' => array(
-            'pretty_version' => '1.2.0',
-            'version' => '1.2.0.0',
+            'pretty_version' => '1.3.0',
+            'version' => '1.3.0.0',
             'type' => 'library',
             'install_path' => __DIR__ . '/../solutionbox/wordpress-settings-framework',
             'aliases' => array(),
-            'reference' => '12735d9b31739090e36c310a68b777e16a8454d3',
+            'reference' => '82c3e152b74f95b83a7e3972278dc19b25cd2466',
             'dev_requirement' => false,
         ),
         'squizlabs/php_codesniffer' => array(

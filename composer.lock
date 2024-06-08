@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "0a7ab1d1cb905a46049ab267569c6689",
+    "content-hash": "cc54a6e155c4f6f2b205eb3201131681",
     "packages": [
         {
             "name": "dealerdirect/phpcodesniffer-composer-installer",
@@ -287,16 +287,16 @@
         },
         {
             "name": "solutionbox/wordpress-settings-framework",
-            "version": "1.2.0",
+            "version": "1.3.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sharazghouri/soution-box-settings.git",
-                "reference": "12735d9b31739090e36c310a68b777e16a8454d3"
+                "reference": "82c3e152b74f95b83a7e3972278dc19b25cd2466"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/12735d9b31739090e36c310a68b777e16a8454d3",
-                "reference": "12735d9b31739090e36c310a68b777e16a8454d3",
+                "url": "https://api.github.com/repos/sharazghouri/soution-box-settings/zipball/82c3e152b74f95b83a7e3972278dc19b25cd2466",
+                "reference": "82c3e152b74f95b83a7e3972278dc19b25cd2466",
                 "shasum": ""
             },
             "require": {
@@ -326,9 +326,9 @@
             ],
             "support": {
                 "issues": "https://github.com/sharazghouri/soution-box-settings/issues",
-                "source": "https://github.com/sharazghouri/soution-box-settings/tree/1.2.0"
+                "source": "https://github.com/sharazghouri/soution-box-settings/tree/1.3.0"
             },
-            "time": "2024-06-06T18:00:43+00:00"
+            "time": "2024-06-07T17:36:30+00:00"
         },
         {
             "name": "squizlabs/php_codesniffer",
