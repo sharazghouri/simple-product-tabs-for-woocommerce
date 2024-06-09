@@ -140,9 +140,10 @@ class Frontend {
 		$priority = 10;
 
 		foreach ( $tabs_reorder as $_tab ) {
-
-			$tabs[ $_tab ]['priority'] = $priority;
-			$priority                 += 10;
+			if( isset( $tab [ $_tab ] ) ) {
+				$tabs[ $_tab ]['priority'] = $priority;
+				$priority                 += 10;
+			}
 		}
 
 		if ( ! empty( $tabs['description']['title'] ) ) {
@@ -204,6 +205,7 @@ class Frontend {
 			unset( $tabs['reviews'] );
 		}
 
+		
 		return $tabs;
 
 	}

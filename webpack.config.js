@@ -13,7 +13,6 @@ defaultConfig.plugins.forEach( (p,i) => {
 			const dirInc = ['!/assets/scss/**/*', '!/assets/admin/**/*', '!/assets/public/**/*' ];
 
 			p.cleanAfterEveryBuildPatterns.push( ...dirInc ); // Ignore this directory after build to cleanup
-
 			console.log( p);
 		}
 })

@@ -52,7 +52,7 @@
       searchedTermsList.html(searchedTermsHTML).show();
     });
   }
-  $('#swt-category-search, #swt-tag-search', '#swt-product-search').on('keyup', debounce(termSearch, 500));
+  $('#swt-category-search, #swt-tag-search , #swt-product-search').on('keyup', debounce(termSearch, 500));
 
   /**
    * Display/Hide inclusions sections based on the visibility condition
@@ -123,7 +123,7 @@
    }
  
    // Show the editor field
-   const overrideInputs = $( '.sptb_accordion .override-tab-content' );
+   const overrideInputs = $( '.woocommerce_options_panel .override-tab-content' );
    if( overrideInputs ) {
      overrideInputs.each( function( i ) {
        let editor = $( this ).parents('.tab-container').find( '.wp-editor-wrap' );

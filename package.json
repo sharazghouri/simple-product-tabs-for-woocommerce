@@ -41,8 +41,10 @@
 	"files":[
 		"admin/**",
 		"build/**",
+		"assets/**",
 		"includes/**",
 		"languages/**",
+		"templates/**",
 		"public/**",
 		"simple-product-tabs-for-woocommerce.php",
 		"uninstall.php",
