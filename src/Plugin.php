@@ -79,6 +79,8 @@ class Plugin {
 		add_action( 'plugins_loaded', array( $this, 'init' ) );
 
 		add_action( 'init', array( $this, 'load_textdomain' ), 5 );
+
+		add_action( 'before_woocommerce_init', array( $this, 'add_hpos_support' ) );
 	}
 
 	/**
@@ -167,5 +169,17 @@ class Plugin {
 	public function get_basename() {
 		$base_file = basename( dirname( $this->get_data( 'file' ) ) ) . '/' . $this->get_slug() . '.php';
 		return $base_file;
+	}
+
+
+	/**
+	 * HPOS support
+	 *
+	 * @see https://woocommerce.com/posts/platform-update-high-performance-order-storage-for-woocommerce/
+	 */
+	public function add_hpos_support() {
+		if ( class_exists( \Automattic\WooCommerce\Utilities\FeaturesUtil::class ) ) {
+			\Automattic\WooCommerce\Utilities\FeaturesUtil::declare_compatibility( 'custom_order_tables', $this->get_data( 'file' ), true );
+		}
 	}
 }
