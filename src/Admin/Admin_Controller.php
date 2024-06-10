@@ -166,7 +166,7 @@ class Admin_Controller {
 				<a class="sbsa-nav__item-link " href="javascript:void(0)"><?php echo __( 'Product Tabs', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 			<li class="sbsa-nav__item">
-				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs-for-woocommerce' ); ?></a>
+				<a class="sbsa-nav__item-link " href="<?php echo admin_url( 'admin.php?page=simple-product-tabs-settings#tab-settings' ); ?>"><?php echo __( 'Settings', 'simple-product-tabs-for-woocommerce' ); ?></a>
 			</li>
 		</ul>
 		<style>
