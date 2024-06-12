@@ -2,7 +2,7 @@
 Contributors: solbox 
 Author URI: https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=author-uri&utm_campaign=go_pro_tabs
 Donate link: https://solbox.dev/
-Tags: woocommerce product custom tabs, multiple product tabs, tabs, custom tabs, product tabs, woocommerce product tab, product custom tabs, multiple product tabs, woocommerce custom tabs, woocommerce tabs, tabs for woocommerce, product tab, woocommerce, product, woocommerce product tabs, custom tab, woo product custom tabs, change tab, product page tabs, woocommerce custom tab, woocommerce tab, tabs plugin, woocommerce tabs plugin
+Tags: woocommerce product custom tabs, product custom tabs, multiple product tabs, product page tabs, woocommerce custom tab, woocommerce tabs plugin
 Requires PHP: 7.4
 Requires at least: 6.0
 Tested up to: 6.4.3
