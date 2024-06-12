@@ -33,10 +33,15 @@
     let searchParam = new URLSearchParams({
       search: searchTerm
     });
+ 
+    let API_SEARCH = `/wc/v3/products/${taxonomy}/?${searchParam.toString()}`;
+    if( taxonomy == 'product' ) {
+      API_SEARCH = `/wc/v3/products/?${searchParam.toString()}`;
+    }
 
     // Make WooCommerce REST API call to get terms
     wp.apiFetch({
-      path: `/wc/v3/products/${taxonomy}/?${searchParam.toString()}`
+      path: API_SEARCH
     }).then(terms => {
       // hide the loader
       self.closest('.swt-inclusion-selector').find('.swt-loader').hide();

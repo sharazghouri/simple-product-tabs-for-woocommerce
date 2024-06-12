@@ -187,11 +187,11 @@ class Single_Tab {
 		return true;
 	}
 
-		/**
-		 *  Save product tabs settings.
-		 *
-		 * @since 1.0.0
-		 */
+	/**
+	 *  Save product tabs settings.
+	 *
+	 * @since 1.0.0
+	 */
 	public function save_visibility_condition( $post_id ) {
 
 		if ( ! $this->check_meta_box_nonce() ) {
@@ -221,12 +221,12 @@ class Single_Tab {
 		}
 
 		$tab_icon = '';
-		if ( isset( $_POST['_sptb_tab_icon'] ) ) {
+		if ( isset( $_POST['_sptb_tab_icon'] ) && ! empty( $_POST['_sptb_tab_icon'] ) ) {
 			$tab_icon = sanitize_text_field( wp_unslash( $_POST['_sptb_tab_icon'] ?? '' ) );
-
+			update_post_meta( $post_id, '_sptb_tab_icon', $tab_icon );
 		}
 
-		update_post_meta( $post_id, '_sptb_tab_icon', $tab_icon );
+		
 
 	}
 
