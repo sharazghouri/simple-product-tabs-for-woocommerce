@@ -19,7 +19,7 @@ msgid "Simple Product Tabs for WooCommerce"
 msgstr ""
 
 #. Plugin URI of the plugin
-msgid "https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/"
+msgid "https://solbox.dev/plugins/custom-product-tabs/"
 msgstr ""
 
 #. Description of the plugin

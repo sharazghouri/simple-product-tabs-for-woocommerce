@@ -1,17 +1,17 @@
 === Simple Product Tabs for WooCommerce ===
 Contributors: solbox 
-Author URI: https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=author-uri&utm_campaign=go_pro_tabs
+Author URI: https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=author-uri&utm_campaign=go_pro_tabs
 Donate link: https://solbox.dev/
 Tags: woocommerce product custom tabs, product custom tabs, multiple product tabs, product page tabs, woocommerce custom tab, woocommerce tabs plugin
 Requires PHP: 7.4
 Requires at least: 6.0
-Tested up to: 6.4.3
+Tested up to: 6.7.1
 Stable tag: 1.1.0
 License: GPLv2 or later
 License URI: htttp://www.gnu.org/licenses/gpl-2.0.html
 Discover the easy way to add extra tabs to your WooCommerce product pages.
 == Description ==
- [Documentation](https://solbox.dev/docs/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs) | [Support](https://solbox.dev/support/) | [Demo](https://solbox.dev/product-tabs) | [Premium Version](https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs)
+ [Documentation](https://solbox.dev/docs/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs) | [Support](https://solbox.dev/support/) | [Demo](https://solbox.dev/product-tabs) | [Premium Version](https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs)
 
 **Simple WooCommerce Tabs for WooCommerce** lets you effortlessly add unlimited custom tabs to any product page in your WooCommerce store. Enhance your product pages with rich, dynamic content using our intuitive WYSIWYG editor. Whether you want to include HTML, shortcodes, images, videos, or audio embeds, the possibilities are endless! 🚀
 
@@ -47,7 +47,7 @@ With **Simple WooCommerce Tabs for WooCommerce**, you can easily create and mana
 
 
 
-- **[Homepage](https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs)** | **[Documentation](https://solbox.dev/docs/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs)** | **[Support](https://solbox.dev/support/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs)**
+- **[Homepage](https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs)** | **[Documentation](https://solbox.dev/docs/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs)** | **[Support](https://solbox.dev/support/?utm_source=freemium&utm_medium=reade-me&utm_campaign=go_pro_tabs)**
 
 ### Premium Features 🔥
 
@@ -59,7 +59,7 @@ Upgrade to the premium version for even more powerful features:
 - **Tag-Based Tabs**: Create tabs based on product tags.
 - **Enhanced Search**: Make your tabs searchable in WooCommerce product searches.
 
-Check out the [Pro Version](https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs) and take your product pages to the next level! 🚀
+Check out the [Pro Version](https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=read-me&utm_campaign=go_pro_tabs) and take your product pages to the next level! 🚀
 
 
 Elevate your WooCommerce store with **Simple WooCommerce Tabs for WooCommerce** and create an engaging, informative shopping experience for your customers! 🌟
@@ -94,7 +94,7 @@ No, you can create an unlimited number of tabs for your product pages.
 Yes, Simple WooCommerce Tabs for WooCommerce is compatible with multi-language plugins like WPML and Polylang.
 
 ### How do I upgrade to the premium version?
-You can upgrade to the premium version by visiting our [Pro Version](https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/?utm_source=freemium&utm_medium=read-me-faq&utm_campaign=go_pro_tabs) page and following the instructions.
+You can upgrade to the premium version by visiting our [Pro Version](https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=read-me-faq&utm_campaign=go_pro_tabs) page and following the instructions.
 
 ### Can I rename or hide default WooCommerce tabs?
 Yes, with the premium version, you can rename or hide the default WooCommerce tabs, as well as add custom icons.

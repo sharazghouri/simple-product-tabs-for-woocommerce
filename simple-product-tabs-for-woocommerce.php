@@ -1,7 +1,7 @@
 <?php
 /**
  * Plugin Name: Simple Product Tabs for WooCommerce
- * Plugin URI: https://solbox.dev/plugins/simple-product-tabs-for-woocommerce/
+ * Plugin URI: https://solbox.dev/plugins/custom-product-tabs/
  * Description: Boost your sale by adding custom tabs containing extra information.
  * Version: 1.1.0
  * Author: Solution Box
@@ -10,10 +10,10 @@
  * Domain Path: /languages
  * Requires PHP: 7.4
  * Requires at least: 6.0
- * Tested up to: 6.4.3
+ * Tested up to: 6.7.1
  * Requires Plugins: woocommerce
  * WC requires at least: 6.5
- * WC tested up to: 8.7.0
+ * WC tested up to: 9.4.2
  *
  * Copyright:       Solution Box
  * License:         GNU General Public License v3.0
