@@ -2,11 +2,11 @@
 Contributors: solbox 
 Author URI: https://solbox.dev/plugins/custom-product-tabs/?utm_source=freemium&utm_medium=author-uri&utm_campaign=go_pro_tabs
 Donate link: https://solbox.dev/
-Tags: woocommerce product custom tabs, product custom tabs, multiple product tabs, product page tabs, woocommerce custom tab, woocommerce tabs plugin
+Tags: woocommerce product custom tabs, product custom tabs, multiple product tabs, product page tabs, woocommerce custom tab
 Requires PHP: 7.4
 Requires at least: 6.0
 Tested up to: 6.7.1
-Stable tag: 1.1.0
+Stable tag: 1.2.0
 License: GPLv2 or later
 License URI: htttp://www.gnu.org/licenses/gpl-2.0.html
 Discover the easy way to add extra tabs to your WooCommerce product pages.
@@ -100,12 +100,17 @@ You can upgrade to the premium version by visiting our [Pro Version](https://sol
 Yes, with the premium version, you can rename or hide the default WooCommerce tabs, as well as add custom icons.
 
 ### How can I get support if I run into issues?
-For support, please visit our [Support](https://example.com/support) page and submit your query. Our team will assist you promptly.
+For support, please visit our [Support](https://solbox.dev/support/) page and submit your query. Our team will assist you promptly.
 
 
 == Screenshots ==
 
-1. Setting page
+1. Setting Page
+2. Product Custom Tabs
+3. Front End Demo Map Tab
+4. Tabs Reorder 
+5. Tabs Manager 
+6. Tabs Editor
 
 
 == Changelog ==
@@ -114,7 +119,11 @@ For support, please visit our [Support](https://example.com/support) page and su
 * Initial release
 
 = 1.1.0 =
+* More functionally Added
 
+= 1.2.0 =
+* Black Friday release
+* WP 6.7 Compatibility Added
 
 == Upgrade Notice ==
 
